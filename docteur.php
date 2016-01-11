@@ -19,7 +19,7 @@ while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
 
   	 
    	<tr>      
-       <td> <a href="fiche_patient.php?action=afficher&amp;id=id">- <?php echo $s->nom;?></a></td>	
+       <td> <a href="fiche_medecin.php?action=afficher&amp;id=id">- <?php echo $s->nom;?></a></td>	
    	</tr>
 	</table>
 
