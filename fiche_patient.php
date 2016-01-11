@@ -8,19 +8,19 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 <html>
 
 	<head>
-		<link rel="stylesheet" href="styles/General.css">
+		<link rel="stylesheet" href="">
 		<title>Fiche du patient</title>
 	</head>
-
+<h1>Fiche du patient</h1>
 	<body>
-		<div>Nom:<?php echo "nom"; ?></div>
-		<div>Prénom:<?php echo "nom"; ?></div>
-		<div>Date de naissance:<?php echo "nom"; ?></div>
-		<div>Téléphone:<?php echo "nom"; ?></div>
-		<div>Adresse:<?php echo "nom"; ?></div>
-		<div>Ville:<?php echo "nom"; ?></div>
-		<div>Code Postal:<?php echo "nom"; ?></div>
-		<div>Médecin traitant:<?php echo "nom"; ?></div>
+		<div>Nom:<?php echo "$s->nom"; ?></div>
+		<div>Prénom:<?php echo "$s->prenom"; ?></div>
+		<div>Date de naissance:<?php echo "$s->date_naissance"; ?></div>
+		<div>Téléphone:<?php echo "$s->tel_fixe"; ?></div>
+		<div>Adresse:<?php echo "$s->adresse"; ?></div>
+		<div>Ville:<?php echo "$s->ville"; ?></div>
+		<div>Code Postal:<?php echo "$s->cp"; ?></div>
+		<div>Médecin traitant:<?php echo "$s->medecin_traitant"; ?></div>
 		
 
 <?php }?>

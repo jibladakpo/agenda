@@ -8,7 +8,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 <html>
 
 	<head>
-	 	<link rel="stylesheet" href="styles/General.css">
+	 	<link rel="stylesheet" href="">
 		<title>Fiche du médecin</title>
 	</head>
 
