@@ -1,5 +1,7 @@
 <?php
 require_once ('includes/connexion_bdd.php');
+require_once ('includes/header.php');
+
 if($_GET['action']=='afficher'||$_GET['action']=='modifier'||$_GET['action']=='supprimer'){
 	$id=$_GET['id'];
 $select = $db->query ("SELECT * FROM `agenda_patient` WHERE id=$id");
@@ -12,7 +14,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		<title>Fiche du patient</title>
 	</head>
 <h1>Fiche du patient</h1>
-	<body>
+	<div id="corps">
 		<div>Nom:<?php echo "$s->nom"; ?></div>
 		<div>Prénom:<?php echo "$s->prenom"; ?></div>
 		<div>Date de naissance:<?php echo "$s->date_naissance"; ?></div>
@@ -30,6 +32,6 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 			<button type="reset" >Supprimer</button>
 		</div>
 
-	</body>
+	</div>
 
 </html>	

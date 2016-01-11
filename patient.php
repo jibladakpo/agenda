@@ -1,6 +1,6 @@
 <?php
 require_once ('includes/connexion_bdd.php');
-
+require_once ('includes/header.php');
 	?>
 <html>
 	<head>
@@ -8,8 +8,16 @@ require_once ('includes/connexion_bdd.php');
 		<title>Patient</title>
 	</head>
 	
-	<body>
+	<div id="corps">
 <h1>Patients</h1>	
+
+<form action="rechercher_patient.php" method="Post">
+<div>Recherche patient</div>
+Nom<input type="text" name="nom" size="10">
+Prénom<input type="text" name="prenom" size="10">
+Date de naissance<input type="date" name="date de naissance" size="100">
+<input type="submit" value="Ok">
+</form>
 	<?php 
 $select = $db->query ("SELECT nom, prenom FROM `agenda_patient` ORDER BY nom ASC");
 
@@ -25,6 +33,6 @@ while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
 
 <?php } ?>
 
-</body>
+</div>
 
 </html>

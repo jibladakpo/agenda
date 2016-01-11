@@ -1,15 +1,18 @@
 <?php
 require_once ('includes/connexion_bdd.php');
-
-
-	?>
+require_once ('includes/header.php');
+?>
+	
 <html>
 	<head>
 		 <link rel="stylesheet" href="">
 		<title>Docteur</title>
 	</head>
+
+	  <div id="corps">
+    
 <h1>Docteurs</h1>
-<body>
+
 
 <?php $select = $db->query ("SELECT nom FROM `agenda_praticien` ORDER BY nom ASC");
 
@@ -25,8 +28,8 @@ while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
 
 <?php } ?>
 
-</body>
 
+</div>
 </html>	
 
 
