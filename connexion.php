@@ -50,19 +50,21 @@ if(isset($_SESSION['admin_id'])){
 
 ?>
 <html>
-
- <LINK rel="" /> 
- 
+<head>
+  <link rel="stylesheet" href="styles/General.css">
+</head>
  <body>
   <form action="" method="POST">
   
   <h1>Connexion</h1>
-  <div>
+  
         
-    <div><input placeholder="Login" id="login" name="login" type="text" required/>
+    <input placeholder="Login" id="login" name="login" type="text" required/>
     <input placeholder="Mot de passe" id="mdp" name="mdp" type="password" required/>
+    
+    
         
-    </div>
+    
     <div class="button">
         <button type="submit" name="submit">Se connecter</button>
       <button type="reset" >Annuler</button>
@@ -70,5 +72,4 @@ if(isset($_SESSION['admin_id'])){
      
     
 </form>
-</div>
 </html>
