@@ -14,7 +14,7 @@ require_once ('includes/header.php');
 <h1>Docteurs</h1>
 
 
-<?php $select = $db->query ("SELECT nom FROM `agenda_praticien` ORDER BY nom ASC");
+<?php $select = $db->query ("SELECT nom, specialite FROM `agenda_praticien` ORDER BY nom ASC");
 
 while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
 ?>
@@ -22,7 +22,7 @@ while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
 
   	 
    	<tr>      
-       <td> <a href="fiche_medecin.php?action=afficher&amp;id=id">- <?php echo $s->nom;?></a></td>	
+       <td> <a href="fiche_medecin.php?action=afficher&amp;id=id">- <?php echo $s->nom;?> - <?php echo $s->specialite;?></a></td>	
    	</tr>
 	</table>
 
