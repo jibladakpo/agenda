@@ -18,6 +18,8 @@ Prénom<input type="text" name="prenom" size="10">
 Date de naissance<input type="date" name="date de naissance" size="100">
 <input type="submit" value="Ok">
 </form>
+
+<a href="ajouter_patient.php">Ajouter un nouveau patient</a>
 	<?php 
 $select = $db->query ("SELECT nom, prenom FROM `agenda_patient` ORDER BY nom ASC");
 

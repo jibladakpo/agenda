@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php 
+if (isset ( $_SESSION ['admin_id'] )) {
+echo'<!DOCTYPE html>
 <html>
 
    <LINK rel="stylesheet" href="styles/General.css" /> 
@@ -10,11 +12,16 @@
     
     <nav class="navbar">
       
-      <p id="accueil"><a href="">accueil</a></p>
-      <p id="produit"><a href="docteur.php">Médecins</a></p>
-      <p id="panier"><a href="patient.php">Patients</a></p>
-      <p id="client"><a href="rendez-vous.php">Rendez-vous</a></p>
+      <p id="accueil.php"><a href="">accueil</a></p>
+      <p id="docteur"><a href="docteur.php">Médecins</a></p>
+      <p id="patient"><a href="patient.php">Patients</a></p>
+      <p id="rdv"><a href="rendez-vous.php">Rendez-vous</a></p>
+      <p id="deconnexion"><a href="deconnexion.php">Déconnexion</a></p>
     </nav>
   
   
-</html>
+</html>';}
+ 
+else {header ('location: index.php');}
+
+	
