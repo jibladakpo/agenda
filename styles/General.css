@@ -49,10 +49,10 @@ body {
   color: lightgrey;
   text-transform: uppercase;
   text-decoration: none;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   display: inline-block;
-  margin-left:85px;
+  margin-left:75px;
   
   top: 0.95em;
 }

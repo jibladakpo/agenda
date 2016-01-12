@@ -18,46 +18,69 @@ require_once ('includes/header.php');
 	
 		$db->query ( "INSERT INTO agenda_patient VALUES ('','" . $nom . "','" . $prenom . "','" . $date_naissance . "','" . $tel_fixe . "','" . $adresse . "','" . $cp . "','" . $ville . "','". $medecin_traitant ."','','" . etablissement .  "')" );
 		
-		echo '<script>alert("patient ajoutée")</script>';
+		echo '<script>alert("patient ajouté")</script>';
 		header ( 'location: patient.php' );
 		}
 	
 ?>
 <html>
-<link rel="stylesheet" href="">
-<title></title>
-<head>
 
+<head>
+	<link rel="stylesheet" href="">
+	<title></title>
 </head>
 <div id="corps">
 	<h1>Ajouter un nouveau patient</h1>
-	 <form action="" method="POST">
-	<div><label>Nom:</label>
-	<input type="text" name="nom" id="nom" value="" placeholder="" class="form-control"></div>
-	<div><label>Prénom:</label>
-	<input type="text" name="prenom" id="prenom" class="form-control"> </div>
-	<div><label>Date de naissance:</label>
-	<input type="date" name="date_naissance" id="date_naissance" value="" placeholder="" class=""></div>
-	<div><label>Téléphone:</label>
-	<input type="text" name="tel_fixe" id="tel_fixe" value="" placeholder="" class=""></div>
-	<div><label>Adresse:</label>
-	<input type="text" name="adresse" id="adresse" value="" placeholder="" class=""></div>
-	<div><label>Ville:</label>
-	<input type="text" name="ville" id="ville" size=""></div>
-	<div><label>Code Postal:</label>
-	<input type="text" name="cp" id="cp" size=""></div>
-	<div><label>Médecin Traitant:</label>
-	<input type="text" name="medecin_traitant" id="medecin_traitant" placeholder="" size=""></div>
-	<label>Etablissement à contacter:</label>
-	<input type="text" name="etablissemeent" id="etablissement" placeholder="" size=""><br>
-    	
-    
+	<form action="" method="POST">
+		<table>
+		<tr align="center">
+			<td>Nom:</td>
+			<td><input type="text" name="nom" id="nom" value="" placeholder="" class=""></td>
+		</tr>
+		<tr align="center">
+			<td>Prénom:</td>
+			<td><input type="text" name="prenom" id="prenom" class=""></td>
+		</tr>
+		<tr align="center">
+			<td>Date de naissance:</td>
+			<td><input type="date" name="date_naissance" id="date_naissance" value="" size="20" placeholder="" class=""></td>
+		</tr>
+		<tr align="center">
+			<td>Téléphone:</td>
+			<td><input type="text" name="tel_fixe" id="tel_fixe" value="" placeholder="" class=""></td>
+		</tr>
+		<tr align="center">
+			<td>Adresse:</td>
+			<td><input type="text" name="adresse" id="adresse" value="" placeholder="" class=""></td>
+		</tr>
+		<tr align="center">
+			<td>Ville:</td>
+			<td><input type="text" name="ville" id="ville" size=""></td>
+		</tr>
+		<tr align="center">
+			<td>Code Postal:</td>
+			<td><input type="text" name="cp" id="cp" size=""></td>
+		</tr>
+		<tr align="center">
+			<td>Médecin Traitant:</td>
+			<td><input type="text" name="medecin_traitant" id="medecin_traitant" placeholder="" size=""></td>
+		</tr>
 	
-<div class="button">
-        <button type="submit" name="submit">Valider</button>
-      <button type="reset" >Annuler</button>
-    </div>
-</form>
+		<tr align="center">
+			<td>Etablissement à contacter:</td>
+			<td><input type="text" name="etablissemeent" id="etablissement" placeholder="" size=""></td>
+   	    </tr>	
+		<tr align="center">
+			<td></td>
+				<td>
+					<div class="button">
+       			 		<button type="submit" name="submit">Valider</button>
+     					<button type="reset" name="annuler">Annuler</button>
+    				</div>
+    			</td>
+    	</tr>
+		</table>
+	</form>
 </div>
 
 </html>

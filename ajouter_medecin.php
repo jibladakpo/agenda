@@ -27,24 +27,43 @@ require_once ('includes/header.php');
 <div id="corps">
 	<h1>Ajouter un nouveau médecin</h1>
 	<form action="" method="POST">
-	<div><label>Nom:</label>
-	<input type="text" name="nom" id="nom" value="" placeholder="" class="form-control"></div>
-	<div><label>Spécialité:</label>
-	<input type="text" name="specialite" id="specialite" value="" placeholder="" class=""></div>
-	<div><label>Jours de présences:</label>
-	<input type="text" name="jour_presence" id="jour_presence" value="" placeholder="" class="form-control"></div>
-	<div><label>Heure début:</label>
-	<input type="time" name="heure_debut" id="heure_debut" value="" placeholder="" class="form-control"></div>
-	<div><label>Heure fin:</label>
-	<input type="time" name="heure_fin" id="heure_fin" value="" placeholder="" class="form-control"></div>
+	 <table >
+	<tr align="center">
+		<td>Nom:</td>
+		<td><input type="text" name="nom" id="nom" value="" size="20"placeholder="" class=""></td>
+	</tr>
+	<tr align="center">
+		<td>Spécialité:</td>
+		<td><input type="text" name="specialite" id="specialite" value="" size="20" placeholder="" class=""></td>
+	</tr>
+	<tr align="center">
+		<td>Jours de présences:</td>
+		<td><input type="text" name="jour_presence" id="jour_presence" value=""  size="20"placeholder="" class=""></td>
+	</tr>
 	
-	<div><label>Durée du rendez-vous:</label>
-	<input type="text" name="duree_rdv" id="duree_rdv" value="" placeholder="" class="form-control"></div>
-
-	<div class="button">
+	<tr align="center">
+		<td>Durée du rendez-vous:</td>
+		<td><input type="text" name="duree_rdv" id="duree_rdv" value="" size="20" placeholder="" class=""></td>
+	</tr>
+	
+	<tr align="center">
+		<td>Heure début:</td>
+		<td><input type="time" name="heure_debut" id="heure_debut" value="" size="20" placeholder="" class=""></td>
+	</tr>
+	<tr align="center">
+		<td>Heure fin:</td>
+		<td><input type="time" name="heure_fin" id="heure_fin" value="" size="20" placeholder="" class=""></td>
+	</tr>
+	
+	<tr align="center">
+		<td></td>
+		<td><div class="button">
         <button type="submit" name="submit">Valider</button>
-      <button type="reset" >Annuler</button>
-    </div>
+        <button type="reset" >Annuler</button>
+    </div></td>
+    </tr>
+    </table>
+    
 	</form>
 </div>
 

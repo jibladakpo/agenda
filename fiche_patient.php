@@ -2,11 +2,16 @@
 require_once ('includes/connexion_bdd.php');
 require_once ('includes/header.php');
 
-if($_GET['action']=='afficher'||$_GET['action']=='modifier'||$_GET['action']=='supprimer'){
+if($_GET['action']=='afficher'){
 	$id=$_GET['id'];
 $select = $db->query ("SELECT * FROM `agenda_patient` WHERE id=$id");
 $s = $select->fetch ( PDO::FETCH_OBJ )
 ?>
+
+<?php if (isset ( $_POST ['submit'] )) {
+	header ( 'location: modifier_patient.php' );
+	}
+	?>
 <html>
 
 	<head>
@@ -18,22 +23,30 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 	
 	<h1>Fiche du patient</h1>
 		<div>Nom:<?php echo "$s->nom"; ?></div>
+		<br>
 		<div>Prénom:<?php echo "$s->prenom"; ?></div>
+		<br>
 		<div>Date de naissance:<?php echo "$s->date_naissance"; ?></div>
+		<br>
 		<div>Téléphone:<?php echo "$s->tel_fixe"; ?></div>
+		<br>
 		<div>Adresse:<?php echo "$s->adresse"; ?></div>
+		<br>
 		<div>Ville:<?php echo "$s->ville"; ?></div>
+		<br>
 		<div>Code Postal:<?php echo "$s->cp"; ?></div>
+		<br>
 		<div>Médecin traitant:<?php echo "$s->medecin_traitant"; ?></div>
+		<br>
 		<div>Dossier: <?php echo "$s->dossier"; ?></div>
+		<br>
 		
 <?php }?>
+			<a href="modifier_patient.php"><input type="button" value="Modifier"
+	name="modifier patient"></a>
+			<a href="supprimer.php"><input type="button" value="Supprimer"
+	name="supprimer_patient"></a>
 		
-		<div class="button">
-			<button type="submit" >Modifier</button>
-			<button type="reset" >Supprimer</button>
-		</div>
-
 	</div>
 
 </html>	
