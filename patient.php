@@ -19,7 +19,8 @@ Date de naissance<input type="date" name="date de naissance" size="100">
 <input type="submit" value="Ok">
 </form>
 
-<a href="ajouter_patient.php">Ajouter un nouveau patient</a>
+<a href="ajouter_patient.php">=>Ajouter un nouveau patient</a>
+
 	<?php 
 $select = $db->query ("SELECT nom, prenom FROM `agenda_patient` ORDER BY nom ASC");
 
@@ -29,7 +30,7 @@ while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
 
  
  			 <tr>      
-      			 <td> <a href="fiche_patient.php?action=afficher&amp;id=id">- <?php echo $s->nom;?> <?php echo $s->prenom;?></a></td> 		
+      			 <td> <a href="fiche_patient.php?action=afficher&amp;id=id">- <?php echo $s->nom;?> <?php echo $s->prenom;?></a> - modifier - X</td> 		
   			</tr>
 		</table>
 

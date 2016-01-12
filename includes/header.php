@@ -7,14 +7,15 @@ echo'<!DOCTYPE html>
 
   
     <div id="header">
-      <p><a href="#">Consultation externe - CHIC des Andaines</a></p>
+      <p><a href="accueil.php">Consultation externe - CHIC des Andaines</a></p>
     </div>
     
     <nav class="navbar">
       
-      <p id="accueil.php"><a href="">accueil</a></p>
+      <p id="accueil."><a href="accueil.php">accueil</a></p>
       <p id="docteur"><a href="docteur.php">Médecins</a></p>
       <p id="patient"><a href="patient.php">Patients</a></p>
+		<p id="agenda"><a href="agenda.php">Agenda</a></p>
       <p id="rdv"><a href="rendez-vous.php">Rendez-vous</a></p>
       <p id="deconnexion"><a href="deconnexion.php">Déconnexion</a></p>
     </nav>

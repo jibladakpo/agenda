@@ -13,8 +13,10 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		<link rel="stylesheet" href="">
 		<title>Fiche du patient</title>
 	</head>
-<h1>Fiche du patient</h1>
+
 	<div id="corps">
+	
+	<h1>Fiche du patient</h1>
 		<div>Nom:<?php echo "$s->nom"; ?></div>
 		<div>Prénom:<?php echo "$s->prenom"; ?></div>
 		<div>Date de naissance:<?php echo "$s->date_naissance"; ?></div>
@@ -23,8 +25,8 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		<div>Ville:<?php echo "$s->ville"; ?></div>
 		<div>Code Postal:<?php echo "$s->cp"; ?></div>
 		<div>Médecin traitant:<?php echo "$s->medecin_traitant"; ?></div>
+		<div>Dossier: <?php echo "$s->dossier"; ?></div>
 		
-
 <?php }?>
 		
 		<div class="button">

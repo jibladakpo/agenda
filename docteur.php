@@ -28,7 +28,7 @@ while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
 
 <?php } ?>
 
-
+<a href="ajouter_medecin.php">=>Ajouter un nouveau médecin</a>
 </div>
 </html>	
 

@@ -19,7 +19,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 	
 		<div>Nom: <?php echo "$s->nom"; ?></div>
 		<div>Spécialité: <?php  echo "$s->specialite"; ?></div>
-		<div>Jours présences: <?php  echo "$s->jour_presence"; ?></div>
+		<div>Jours de présences: <?php  echo "$s->jour_presence"; ?></div>
 		<div>Heure début: <?php  echo "$s->heure_debut"; ?></div>
 		<div>Heure fin: <?php  echo "$s->heure_fin"; ?></div>
 		<div>Durée des rendez-vous: <?php  echo "$s->duree_rdv"; ?></div>
