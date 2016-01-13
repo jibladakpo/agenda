@@ -42,8 +42,8 @@ require_once ('includes/header.php');
 			<td><input type="text" name="prenom" id="prenom" class=""></td>
 		</tr>
 		<tr align="center">
-			<td>Date de naissance:</td>
-			<td><input type="date" name="date_naissance" id="date_naissance" value="" size="20" placeholder="" class=""></td>
+			<td>Date de naissance (écrire jours/mois/année):</td>
+			<td><input type="text" name="date_naissance" id="date_naissance" value="" size="20" placeholder="" class=""></td>
 		</tr>
 		<tr align="center">
 			<td>Téléphone:</td>

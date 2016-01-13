@@ -24,7 +24,7 @@ while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
    	<tr>      
        <td> <a href="fiche_medecin.php?action=afficher&amp;id=<?php echo $s->id;?>">- <?php echo $s->nom;?> - <?php echo $s->specialite;?></a>
        <a href="modifier_medecin.php?action=modifier&amp;id=<?php echo $s->id;?>">/ modifier</a> 
-       <a href="docteur.php?action=supprimer&amp;id=<?php echo $s->id;?>">- supprimer</a>
+       <a href="supprimer_medecin.php?action=supprimer&amp;id=<?php echo $s->id;?>">- supprimer</a>
        </td>	
    	</tr>
 	</table>

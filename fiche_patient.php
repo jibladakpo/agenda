@@ -41,6 +41,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		<div>Dossier: <?php echo "$s->dossier"; ?></div>
 		<br>
 		<div>Etablissement à contacter(si dossier ailleurs): <?php echo "$s->etablissement"; ?></div>
+		<br>
 		
 <?php }?>
 			<a href="modifier_patient.php?action=modifier&amp;id=<?php echo $s->id;?>"><input type="button" value="Modifier"
