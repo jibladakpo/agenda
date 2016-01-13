@@ -3,3 +3,22 @@ require_once ('includes/connexion_bdd.php'); // inclure une fois le fichier head
 require_once ('includes/header.php');
 ?>
 
+<div id="corps">
+	<h1>Calendrier</h1>
+	
+		<select>
+			<optgroup label="Médecins">
+				<?php $select = $db->query ("SELECT nom,id, specialite FROM `agenda_praticien` ORDER BY nom ASC");
+				while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
+				?>
+				<option><?php echo $s->nom;?></option>
+				<?php }?>
+			</optgroup>
+		</select>
+		
+		  | Janvier | Février | Mars | Avril | Mai | Juin | Juillet | Août | Septembre | Octobre | Novembre | Décembre | 
+		 <br>
+		
+
+
+</div>

@@ -4,6 +4,7 @@ echo'<!DOCTYPE html>
 <html>
 
    <LINK rel="stylesheet" href="styles/General.css" /> 
+		<LINK rel="stylesheet" href="styles/calendrier.css" /> 
 
   
     <div id="header">
