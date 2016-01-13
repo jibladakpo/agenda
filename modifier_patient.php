@@ -2,8 +2,17 @@
 require_once ('includes/connexion_bdd.php');
 require_once ('includes/header.php');
 ?>
-<?php if (isset ( $_POST ['submit'] )) {
 
+<?php 
+if($_GET['action']=='modifier'){
+	$id=$_GET['id'];
+$select = $db->query ("SELECT * FROM `agenda_patient` WHERE id=$id");
+$s = $select->fetch ( PDO::FETCH_OBJ )
+
+?>
+
+<?php if (isset ( $_POST ['submit'] )) {
+	
 	$nom = ($_POST ['nom']);
 	$prenom = ($_POST ['prenom']);
 	$date_naissance = ($_POST ['date_naissance']);
@@ -16,30 +25,25 @@ require_once ('includes/header.php');
 	$etablissement =($_POST ['etablissement']);
 	
 	
-		$db->query ("UPDATE agenda_patient 
-					SET nom = '$nom',
-				prenom  = '$prenom', 
-				date_naissance = '$date_naissance', 
-				tel_fixe = '$tel_fixe', 
-				adresse = '$adresse', 
-				cp = '$cp', 
-				ville = '$ville', 
-				medecin_traitant = '$medecin_traitant', 
-				dossier = '$dossier', 
-				etablissement = '$etablissement'
+		$update = $db->prepare ("UPDATE agenda_patient 
+					SET nom = '".$nom."',
+				prenom  = '".$prenom."', 
+				date_naissance = '".$date_naissance."', 
+				tel_fixe = '".$tel_fixe."', 
+				adresse = '".$adresse."', 
+				cp = '".$cp."', 
+				ville = '".$ville."', 
+				medecin_traitant = '".$medecin_traitant."',
+				dossier = '".$dossier."',
+				etablissement = '".$etablissement."'
+				
 				WHERE id=$id");
+		$update->execute ();
 		
 		echo '<script>alert("patient ajouté")</script>';
 		header ( 'location: patient.php' );
 		}
 	
-?>
-<?php 
-if($_GET['action']=='modifier'){
-	$id=$_GET['id'];
-$select = $db->query ("SELECT * FROM `agenda_patient` WHERE id=$id");
-$s = $select->fetch ( PDO::FETCH_OBJ )
-
 ?>
 <html>
 
@@ -60,8 +64,8 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 			<td><input type="text" name="prenom" id="prenom"placeholder=""value="<?php echo "$s->prenom"; ?> " class=""></td>
 		</tr>
 		<tr align="center">
-			<td>Date de naissance:</td>
-			<td><input type="date" name="date_naissance" id="date_naissance" size="20" placeholder="" value="<?php echo "$s->date_naissance"; ?> " class=""></td>
+			<td>Date de naissance (écrire jour/mois/année):</td>
+			<td><input type="text" name="date_naissance" id="date_naissance" size="20" placeholder="" value="<?php echo "$s->date_naissance"; ?> " class=""></td>
 		</tr>
 		<tr align="center">
 			<td>Téléphone:</td>
@@ -78,15 +82,20 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		<tr align="center">
 			<td>Code Postal:</td>
 			<td><input type="text" name="cp" id="cp"  placeholder="" value="<?php echo "$s->cp"; ?>"size=""></td>
+		
 		</tr>
 		<tr align="center">
 			<td>Médecin Traitant:</td>
 			<td><input type="text" name="medecin_traitant" id="medecin_traitant" placeholder="" value="<?php echo "$s->medecin_traitant"; ?>" size=""></td>
 		</tr>
+		
+		<tr align="center">
+			<td>Dossier(LFM/ailleurs/aucun):</td>
+			<td><input type="text" name="dossier" id="dossier"  placeholder="" value="<?php echo "$s->dossier"; ?>"size=""></td>
 	
 		<tr align="center">
-			<td>Etablissement à contacter:</td>
-			<td><input type="text" name="etablissemeent" id="etablissement" placeholder="" value="<?php echo "$s->etablissement"; ?>" size=""></td>
+			<td>Etablissement à contacter (si ailleurs):</td>
+			<td><input type="text" name="etablissement" id="etablissement" placeholder="" value="<?php echo "$s->etablissement"; ?>" size=""></td>
 <?php }?>   	
    	    </tr>	
 		<tr align="center">

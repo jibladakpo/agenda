@@ -12,7 +12,9 @@ require_once ('includes/header.php');
 	
 <div id="corps">
 	<h1>Patients</h1>	
-
+	<a href="recherche_patient.php">=>Rechercher un patient</a>
+	<br>
+	<br>
 	<a href="ajouter_patient.php">=>Ajouter un nouveau patient</a>
 	<br>
 	<br>

@@ -2,8 +2,17 @@
 require_once ('includes/connexion_bdd.php');
 require_once ('includes/header.php');
 ?>
-<?php if (isset ( $_POST ['submit'] )) {
 
+<?php 
+if($_GET['action']=='modifier'){
+	$id=$_GET['id'];
+$select = $db->query ("SELECT * FROM `agenda_praticien` WHERE id=$id");
+$s = $select->fetch ( PDO::FETCH_OBJ )
+
+?>
+
+<?php if (isset ( $_POST ['submit'] )) {
+	
 	$nom = ($_POST ['nom']);
 	$specialite = ($_POST ['specialite']);
 	$jour_presence = ($_POST ['jour_presence']);
@@ -11,28 +20,20 @@ require_once ('includes/header.php');
 	$heure_fin = ($_POST ['heure_fin']);
 	$duree_rdv = ($_POST ['duree_rdv']);
 		
-		$db->query ("UPDATE agenda_patient 
-					SET nom = '$nom',
-				specialite  = '$specialite', 
-				jour_presence = '$jour_presence', 
-				heure_debut = 'heure_debut', 
-				heure_fin = '$heure_fin', 
-				duree_rdv = '$duree_rdv', 
-				 
-				
-				");
+		$update = $db->prepare ("UPDATE agenda_praticien 
+					SET nom = '".$nom."',
+				specialite  = '".$specialite."', 
+				jour_presence = '".$jour_presence."', 
+				heure_debut = '".$heure_debut."', 
+				heure_fin = '".$heure_fin."', 
+				duree_rdv = '".$duree_rdv."'
+				WHERE id=$id");
+		$update->execute ();
 		
 		echo '<script>alert("informations modifié")</script>';
 		header ( 'location: docteur.php' );
 		}
 	
-?>
-<?php 
-if($_GET['action']=='modifier'){
-	$id=$_GET['id'];
-$select = $db->query ("SELECT * FROM `agenda_praticien` WHERE id=$id");
-$s = $select->fetch ( PDO::FETCH_OBJ )
-
 ?>
 <html>
 
@@ -54,7 +55,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		</tr>
 		<tr align="center">
 			<td>Jours de présences:</td>
-			<td><input type="date" name="jour_presence" id="jour_presence" size="20" placeholder="" value="<?php echo "$s->jour_presence"; ?> " class=""></td>
+			<td><input type="text" name="jour_presence" id="jour_presence" size="20" placeholder="" value="<?php echo "$s->jour_presence"; ?> " class=""></td>
 		</tr>
 		<tr align="center">
 			<td>Heure du début de rendez-vous:</td>
@@ -66,7 +67,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		</tr>
 		<tr align="center">
 			<td>Durée du rendez-vous:</td>
-			<td><input type="text" name="duree_rendez-vous" id="duree_rendez-vous"  placeholder="" value="<?php echo "$s->duree_rdv"; ?>"size=""></td>
+			<td><input type="text" name="duree_rdv" id="duree_rdv"  placeholder="" value="<?php echo "$s->duree_rdv"; ?>"size=""></td>
 		</tr>
 <?php }?>   	
    	    	
