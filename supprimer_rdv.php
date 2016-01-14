@@ -9,7 +9,7 @@ if($_GET['action']=='supprimer'){
   //requête SQL permettant de supprimer un patient:
   $delete = $db->prepare("DELETE 
           FROM agenda_rdv
-	      WHERE id = $id ");
+	      WHERE id_rdv = $id ");
   $delete->execute ();
   echo '<script>alert("rendez-vous supprimé")</script>';
   header ( 'location: rdv.php' );

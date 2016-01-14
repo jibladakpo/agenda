@@ -12,18 +12,19 @@ require_once ('includes/header.php');
 	
 <div id="corps">
 <h1>Rendez-vous</h1>
-<p><a href="ajouter_rdv.php?action=ajouter&amp;"> =>Prendre rendez-vous</a></p>
+<p><a href="recherche_patient.php?action=ajouter&amp;"> =>Prendre rendez-vous</a></p>
+
+
+<table>
+			<tr>
+			<th>Fiche rdv</th>
+			<th>Nom du patient</th>
+			<th>Nom du médecin</th>
 	<?php 
 		$select = $db->query ("SELECT * FROM `agenda_rdv`,`agenda_patient`, `agenda_praticien` WHERE agenda_patient.id_patient = agenda_rdv.id_patient AND agenda_praticien.id_praticien = agenda_rdv.id_praticien GROUP BY agenda_patient.id_patient ORDER BY nom ASC ");
 
 		while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
 	?>
-	
-			<table>
-			<tr>
-			<th>Fiche rdv</th>
-			<th>Nom du patient</th>
-			<th>Nom du médecin</th>
 			
 			</tr>
  			 	<tr align="center"> 
@@ -33,12 +34,12 @@ require_once ('includes/header.php');
       				 
       				 
   				</tr>
-			</table>
+			
 	
-	<br>
+	
 
 	<?php } ?>
-
+</table>
 </div>
 
 </html>

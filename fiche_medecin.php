@@ -31,9 +31,9 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		<br>
 <?php }?>
 		
-		 <a href="modifier_medecin.php?action=modifier&amp;id=<?php echo $s->id;?>"><input type="button" value="Modifier"
+		 <a href="modifier_medecin.php?action=modifier&amp;id=<?php echo $s->id_praticien;?>"><input type="button" value="Modifier"
 	name="modifier medecin"></a>
-			<a href="supprimer_medecin.php?action=supprimer&amp;id=<?php echo $s->id;?>"><input type="button" value="Supprimer"
+			<a href="supprimer_medecin.php?action=supprimer&amp;id=<?php echo $s->id_praticien;?>"><input type="button" value="Supprimer"
 	name="supprimer_medecin"></a>
 	</div>
 

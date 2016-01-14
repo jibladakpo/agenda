@@ -13,7 +13,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 
 <?php if (isset ( $_POST ['submit'] )) {
 	
-	$nom = ($_POST ['nom_medecin']);
+	$nom_medecin = ($_POST ['nom_medecin']);
 	$specialite = ($_POST ['specialite']);
 	$jour_presence = ($_POST ['jour_presence']);
 	$heure_debut = ($_POST ['heure_debut']);
@@ -27,7 +27,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 				heure_debut = '".$heure_debut."', 
 				heure_fin = '".$heure_fin."', 
 				duree_rdv = '".$duree_rdv."'
-				WHERE id=$id");
+				WHERE id_praticien=$id");
 		$update->execute ();
 		
 		echo '<script>alert("informations modifié")</script>';
@@ -47,7 +47,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		<table>
 		<tr align="center">
 			<td>Nom:</td>
-			<td><input type="text" name="nom" id="nom" placeholder="" value="<?php echo "$s->nom_medecin"; ?>" class=""></td>
+			<td><input type="text" name="nom_medecin" id="nom_medecin" placeholder="" value="<?php echo "$s->nom_medecin"; ?>" class=""></td>
 		</tr>
 		<tr align="center">
 			<td>Spécialité:</td>

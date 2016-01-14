@@ -9,7 +9,7 @@ if(isset($_POST['requete']) && $_POST['requete'] != NULL) // on vérifie d'abord 
 mysql_connect('localhost','root','');
 mysql_select_db('agenda'); // on se connecte à MySQL. Je vous laisse remplacer les différentes informations pour adapter ce code à votre site.
 $requete = htmlspecialchars($_POST['requete']); // on crée une variable $requete pour faciliter l'écriture de la requête SQL, mais aussi pour empêcher les éventuels malins qui utiliseraient du PHP ou du JS, avec la fonction htmlspecialchars().
-$query = mysql_query("SELECT * FROM agenda_patient WHERE nom LIKE '%$requete%'OR prenom LIKE '%$requete%'  ORDER BY id DESC") or die (mysql_error()); // la requête, que vous devez maintenant comprendre ;)
+$query = mysql_query("SELECT * FROM agenda_patient WHERE nom LIKE '%$requete%'OR prenom LIKE '%$requete%'  ORDER BY id_patient DESC") or die (mysql_error()); // la requête, que vous devez maintenant comprendre ;)
 $nb_resultats = mysql_num_rows($query); // on utilise la fonction mysql_num_rows pour compter les résultats pour vérifier par après
 if($nb_resultats != 0) // si le nombre de résultats est supérieur à 0, on continue
 {
@@ -26,12 +26,15 @@ if($nb_resultats > 1) { echo ' résultats '; } else { echo ' résultat '; } // on 
 while($donnees = mysql_fetch_array($query)) // on fait un while pour afficher la liste des fonctions trouvées, ainsi que l'id qui permettra de faire le lien vers la page de la fonction
 {
 ?>
-<a href="fiche_patient.php?action=afficher&amp;id=<?php echo $donnees['id_patient']; ?>"><?php echo $donnees['nom']; ?> <?php echo $donnees['prenom']; ?></a><br/>
+<p><a href="fiche_patient.php?action=afficher&amp;id=<?php echo $donnees['id_patient']; ?>"><?php echo $donnees['nom']; ?> <?php echo $donnees['prenom']; ?></a><a href="ajouter_rdv.php?action=ajouter&amp;id=<?php echo $donnees['id_patient']; ?>"> 
+	<input type="button" value="Prendre rendez-vous"
+	name="ajouter_rdv">
+</a></p>
 <?php
 } // fin de la boucle
 ?><br/>
 <br/>
-<a href="recherche_patient.php">Faire une nouvelle recherche</a></p>
+<p><a href="recherche_patient.php">Faire une nouvelle recherche</a></p>
 </div>
 <?php
 }
@@ -59,6 +62,7 @@ else
 <input type="text" name="requete" size="20">
 <input type="submit" value="Ok">
 </form>
+<p><a href="ajouter_patient.php">Ajouter un nouveau patient</a></p>
 </div>
 <?php
 }

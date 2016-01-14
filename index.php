@@ -58,7 +58,7 @@ if(isset($_SESSION['admin_id'])){
 <div style="text-align:center;">
   <form action="" method="POST">
   <h1>Consultation externe - CHIC des Andaines</h1>
-  <img src="image/logo chic.png"/>
+  <img src="image/logo chic.png" width="300"/>
   <h2>Connexion</h2>
   
         

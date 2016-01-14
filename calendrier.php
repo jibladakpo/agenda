@@ -8,10 +8,10 @@ require_once ('includes/header.php');
 	
 		<select>
 			<optgroup label="Médecins">
-				<?php $select = $db->query ("SELECT nom,id, specialite FROM `agenda_praticien` ORDER BY nom ASC");
+				<?php $select = $db->query ("SELECT * FROM `agenda_praticien` ORDER BY nom_medecin ASC");
 				while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
 				?>
-				<option><?php echo $s->nom;?></option>
+				<option><?php echo $s->nom_medecin;?></option>
 				<?php }?>
 			</optgroup>
 		</select>

@@ -26,9 +26,9 @@ require_once ('includes/header.php');
 	
 			<table>
  			 	<tr align="center">      
-      				 <td> <a href="fiche_patient.php?action=afficher&amp;id=<?php echo $s->id;?>"> <?php echo $s->nom;?> <?php echo $s->prenom;?></a> 
-      				 <a href="modifier_patient.php?action=modifier&amp;id=<?php echo $s->id;?>">/ modifier</a> 
-      				 <a href="supprimer_patient.php?action=supprimer&amp;id=<?php echo $s->id;?>">- supprimer</a>
+      				 <td> <a href="fiche_patient.php?action=afficher&amp;id=<?php echo $s->id_patient;?>"> <?php echo $s->nom;?> <?php echo $s->prenom;?></a> 
+      				 <a href="modifier_patient.php?action=modifier&amp;id=<?php echo $s->id_patient;?>">/ modifier</a> 
+      				 <a href="supprimer_patient.php?action=supprimer&amp;id=<?php echo $s->id_patient;?>">- supprimer</a>
       				 </td> 
   				</tr>
 			</table>

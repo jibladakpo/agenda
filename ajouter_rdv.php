@@ -2,24 +2,29 @@
 require_once ('includes/connexion_bdd.php');
 require_once ('includes/header.php');
 ?>
+<?php 
+if($_GET['action']=='ajouter'){
+	$id=$_GET['id'];
+	
+?>
 <?php if (isset ( $_POST ['submit'] )) {
 
 	$id_praticien = ($_POST ['id_praticien']);
-	$nom_medecin = ($_POST ['id_patient']);
-	$nom_medecin = ($_POST ['date_heure_debut']);
-	$nom_medecin = ($_POST ['observation']);
-	$nom_medecin = ($_POST ['id_utilisateur']);
-	$nom_medecin = ($_POST ['date_creation']);
-	$nom_medecin = ($_POST ['date_motif']);
-	$nom_medecin = ($_POST ['dossier']);
-	$nom_medecin = ($_POST ['motif']);
-	$nom_medecin = ($_POST ['examen']);
+	$id_patient = ($_POST ['id_patient']);
+	$date_heure_debut = ($_POST ['date_heure_debut']);
+	$observation = ($_POST ['observation']);
+	$id_utilisateur = ($_POST ['id_utilisateur']);
+	$date_creation = ($_POST ['date_creation']);
+	$date_motif = ($_POST ['date_motif']);
+	$dossier = ($_POST ['dossier']);
+	$motif = ($_POST ['motif']);
+	$examen = ($_POST ['examen']);
 	
 		
-		$db->query ( "INSERT INTO agenda_rdv VALUES ('','" . $nom_medecin . "','" . $specialite . "','" . $jour_presence . "','" . $heure_debut . "','" . $heure_fin . "','" . $duree_rdv . "')" );
+		$db->query ( "INSERT INTO agenda_rdv VALUES ('','" . $id_praticien . "','" . $id_patient . "','" . $date_heure_debut . "','" . $observation . "','" . $id_utilisateur . "','" . $date_creation . "','" . $date_motif . "','" . $dossier . "','" . $motif . "','" . $examen . "') WHERE agenda_patient.id_patient= agenda.id_patient AND agenda_praticien.id_praticien = agenda_rdv.id_praticien" );
 		
-		echo '<script>alert("médecin ajoutée")</script>';
-		header ( 'location: docteur.php' );
+		echo '<script>alert("rendez-vous pris")</script>';
+		header ( 'location: calendrier.php' );
 		}
 	
 ?>
@@ -30,34 +35,61 @@ require_once ('includes/header.php');
 
 </head>
 <div id="corps">
-	<h1>Ajouter un nouveau médecin</h1>
+	<h1>Prendre rendez-vous</h1>
 	<form action="" method="POST">
 	 <table >
+<?php 	 
+	$select = $db->query ("SELECT * FROM `agenda_patient` WHERE id_patient=$id");
+$s = $select->fetch ( PDO::FETCH_OBJ )
+
+?>
 	<tr align="center">
-		<td>Nom:</td>
-		<td><input type="text" name="nom_medecin" id="nom_medecin" value="" size="20"placeholder="" class=""></td>
+		<td>Nom du patient:</td>
+		<td><input type="text" name="nom" id="id_patient" value="<?php echo "$s->nom"; ?>" size="20"placeholder="" class=""></td>
 	</tr>
 	<tr align="center">
-		<td>Spécialité:</td>
-		<td><input type="text" name="specialite" id="specialite" value="" size="20" placeholder="" class=""></td>
+		<td>Prénom du patient:</td>
+		<td><input type="text" name="prenom" id="id_patient" value="<?php echo "$s->prenom"; ?>" size="20"placeholder="" class=""></td>
+	</tr>
+<?php }?>
+	<tr align="center">
+	<td>Nom du médecin:</td>
+	<td><select>
+	
+			<optgroup label="Médecins">
+				<?php $select = $db->query ("SELECT *  FROM `agenda_praticien` ORDER BY nom_medecin ASC");
+				while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
+				?>
+				<option><?php echo $s->nom_medecin;?> </option>
+				<?php }?>
+			</optgroup>
+	</select></td>
 	</tr>
 	<tr align="center">
-		<td>Jours de présences:</td>
-		<td><input type="text" name="jour_presence" id="jour_presence" value=""  size="20"placeholder="" class=""></td>
+		<td>Date/heure du rendez-vous:</td>
+		<td><input type="text" name="date_heure_debut" id="date_heure_debut" value="" size="20" placeholder="" class=""></td>
+	</tr>
+	<tr align="center">
+		<td>Observartion:</td>
+		<td><textarea name="observation" id="observation"  placeholder="" class=""></textarea></td>
+	</tr>
+	<tr align="center">
+		<td>Dossier:</td>
+		<td><input type="text" name="dossier" id="dossier" value=""  size="20"placeholder="" class=""></td>
 	</tr>
 	
 	<tr align="center">
-		<td>Durée du rendez-vous:</td>
-		<td><input type="text" name="duree_rdv" id="duree_rdv" value="" size="20" placeholder="" class=""></td>
+		<td>Lieu du dossier:</td>
+		<td><input type="text" name="dossier_lieu" id="dossier_lieu" value="" size="20" placeholder="" class=""></td>
 	</tr>
 	
 	<tr align="center">
-		<td>Heure début:</td>
-		<td><input type="time" name="heure_debut" id="heure_debut" value="" size="20" placeholder="" class=""></td>
+		<td>Motif:</td>
+		<td><textarea name="motif" id="motif"  placeholder="" class=""></textarea></td>
 	</tr>
 	<tr align="center">
-		<td>Heure fin:</td>
-		<td><input type="time" name="heure_fin" id="heure_fin" value="" size="20" placeholder="" class=""></td>
+		<td>Examen:</td>
+		<td><textarea name="examen" id="examen"  placeholder="" class=""></textarea></td>
 	</tr>
 	
 	<tr align="center">

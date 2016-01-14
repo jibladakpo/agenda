@@ -17,23 +17,22 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 <div id="corps">
 <h1>Fiche rendez vous</h1>
 
-		<div>Nom du patient: <?php echo "$s->nom"; ?> <?php echo "$s->prenom"; ?></div>
+		<p>Nom  et prénom du patient: <?php echo "$s->nom"; ?> <?php echo "$s->prenom"; ?></p>
 	
-		<div>Nom: <?php echo "$s->nom_medecin"; ?></div>
+		<p>Nom: <?php echo "$s->nom_medecin"; ?></p>
 		
-		<br>
-		<div>Date/heure début: <?php echo "$s->date_heure_debut"; ?></div>
-		<br>
-		<div>Dossier: <?php echo "$s->dossier"; ?></div>
-		<br>
-		<div>Lieu du dossier: <?php echo "$s->dossier_lieu"; ?></div>
+		<p>Date/heure début: <?php echo "$s->date_heure_debut"; ?></p>
 		
-		<div>Motif: <?php echo "$s->motif"; ?></div>
+		<p>Dossier: <?php echo "$s->dossier"; ?></p>
 		
-		<div>Examen: <?php echo "$s->examen"; ?></div>
+		<p>Lieu du dossier: <?php echo "$s->dossier_lieu"; ?></p>
+		
+		<p>Motif: <?php echo "$s->motif"; ?></p>
+		
+		<p>Examen: <?php echo "$s->examen"; ?></p>
 <?php }?>
 		
-		 <a href="modifier_rdv.php?action=modifier&amp;id=<?php echo $s->id;?>"><input type="button" value="Modifier"
+		 <a href="modifier_rdv.php?action=modifier&amp;id=<?php echo $s->id_rdv;?>"><input type="button" value="Modifier"
 	name="modifier rdv"></a>
 			<a href="supprimer_rdv.php?action=supprimer&amp;id=<?php echo $s->id;?>"><input type="button" value="Supprimer"
 	name="supprimer_rdv"></a>
