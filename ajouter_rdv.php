@@ -15,13 +15,14 @@ if($_GET['action']=='ajouter'){
 	$observation = ($_POST ['observation']);
 	$id_utilisateur = ($_POST ['id_utilisateur']);
 	$date_creation = ($_POST ['date_creation']);
-	$date_motif = ($_POST ['date_motif']);
+	$date_modif = ($_POST ['date_modif']);
 	$dossier = ($_POST ['dossier']);
+	$dossier_lieu = ($_POST ['dossier_lieu']);
 	$motif = ($_POST ['motif']);
 	$examen = ($_POST ['examen']);
 	
 		
-		$db->query ( "INSERT INTO agenda_rdv VALUES ('','" . $id_praticien . "','" . $id_patient . "','" . $date_heure_debut . "','" . $observation . "','" . $id_utilisateur . "','" . $date_creation . "','" . $date_motif . "','" . $dossier . "','" . $motif . "','" . $examen . "') WHERE agenda_patient.id_patient= agenda.id_patient AND agenda_praticien.id_praticien = agenda_rdv.id_praticien" );
+		$db->query ( "INSERT INTO agenda_rdv VALUES ('','" . $id_praticien . "','" . $id_patient . "','" . $date_heure_debut . "','" . $observation . "','" . $id_utilisateur . "','" . $date_creation . "','" . $date_modif . "','" . $dossier . "','" . $dossier_lieu . "','" . $modif . "','" . $examen . "')" );
 		
 		echo '<script>alert("rendez-vous pris")</script>';
 		header ( 'location: calendrier.php' );
@@ -54,16 +55,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 <?php }?>
 	<tr align="center">
 	<td>Nom du médecin:</td>
-	<td><select>
-	
-			<optgroup label="Médecins">
-				<?php $select = $db->query ("SELECT *  FROM `agenda_praticien` ORDER BY nom_medecin ASC");
-				while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
-				?>
-				<option><?php echo $s->nom_medecin;?> </option>
-				<?php }?>
-			</optgroup>
-	</select></td>
+	<td><input type="text" name="nom_medecin" id="nom_medecin" value="" size="20"placeholder="" class=""></td>
 	</tr>
 	<tr align="center">
 		<td>Date/heure du rendez-vous:</td>

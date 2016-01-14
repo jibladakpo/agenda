@@ -19,7 +19,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 	$observation = ($_POST ['observation']);
 	$id_utilisateur = ($_POST ['id_utilisateur']);
 	$date_creation = ($_POST ['date_creation']);
-	$date_motif = ($_POST ['date_motif']);
+	$date_modif = ($_POST ['date_modif']);
 	$dossier = ($_POST ['dossier']);
 	$motif = ($_POST ['motif']);
 	$examen = ($_POST ['examen']);
@@ -31,9 +31,9 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 				observation = '".$observation."', 
 				id_utilisateur = '".$id_utilisateur."', 
 				date_creation = '".$date_creation."',
-				date_motif = '".$date_motif."',
+				date_modif = '".$date_modif."',
 				dossier = '".$dossier."',
-				motif = '".$motif."',
+				motif = '".$modif."',
 				examen = '".$examen."'
 				WHERE id_rdv=$id");
 		$update->execute ();
@@ -65,12 +65,20 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 
 	<tr align="center">
 	<td>Nom du médecin:</td>
-		<td><input type="text" name="prenom" id="id_patient" value="<?php echo "$s->nom_medecin"; ?>" size="20"placeholder="" class=""></td>
+		<td><input type="text" name="prenom" id="id_praticien" value="<?php echo "$s->nom_medecin"; ?>" size="20"placeholder="" class=""></td>
 	</tr>
 	
 	<tr align="center">
 		<td>Date/heure du rendez-vous:</td>
 		<td><input type="text" name="date_heure_debut" id="date_heure_debut" value="<?php echo $s->date_heure_debut;?>" size="20" placeholder="" class=""></td>
+	</tr>
+	<tr align="center">
+		<td>Date creation:</td>
+		<td><input type="text" name="date_creation" id="date_creation" value="<?php echo $s->date_creation;?>" size="20" placeholder="" class=""></td>
+	</tr>
+	<tr align="center">
+		<td>Date modification:</td>
+		<td><input type="text" name="date_motif" id="date_motif" value="<?php echo $s->date_modif;?>" size="20" placeholder="" class=""></td>
 	</tr>
 	<tr align="center">
 		<td>Observartion:</td>
