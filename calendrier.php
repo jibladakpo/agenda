@@ -15,8 +15,12 @@ require_once ('includes/header.php');
 				<?php }?>
 			</optgroup>
 		</select>
-		
-		  | Janvier | Février | Mars | Avril | Mai | Juin | Juillet | Août | Septembre | Octobre | Novembre | Décembre | 
+		<?php $select = $db->query ("SELECT * FROM `agenda_calendrier` GROUP BY mois_libelle   ");
+				while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
+				?>
+				<?php echo $s->mois_libelle;?>|
+				<?php }?>
+		  
 		 <br>
 		
 
