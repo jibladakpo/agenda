@@ -19,7 +19,7 @@ require_once ('includes/header.php');
 	<br>
 	<br>
 	<?php 
-		$select = $db->query ("SELECT nom, prenom, id FROM `agenda_patient` ORDER BY nom ASC");
+		$select = $db->query ("SELECT nom, prenom, id_patient FROM `agenda_patient` ORDER BY nom ASC");
 
 		while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
 	?>
@@ -33,7 +33,7 @@ require_once ('includes/header.php');
   				</tr>
 			</table>
 	
-	<br>
+	
 
 	<?php } ?>
 

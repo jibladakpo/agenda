@@ -6,7 +6,7 @@ require_once ('includes/header.php');
 <?php 
 if($_GET['action']=='modifier'){
 	$id=$_GET['id'];
-$select = $db->query ("SELECT * FROM `agenda_praticien` WHERE id_praticien=$id");
+$select = $db->query ("SELECT * FROM `agenda_praticien` WHERE id=$id");
 $s = $select->fetch ( PDO::FETCH_OBJ )
 
 ?>
@@ -86,4 +86,3 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 </div>
 
 </html>
-

@@ -4,14 +4,19 @@ require_once ('includes/header.php');
 ?>
 <?php if (isset ( $_POST ['submit'] )) {
 
-	$nom_medecin = ($_POST ['nom_medecin']);
-	$specialite = ($_POST ['specialite']);
-	$jour_presence = ($_POST ['jour_presence']);
-	$heure_debut = ($_POST ['heure_debut']);
-	$heure_fin = ($_POST ['heure_fin']);
-	$duree_rdv = ($_POST ['duree_rdv']);
+	$id_praticien = ($_POST ['id_praticien']);
+	$nom_medecin = ($_POST ['id_patient']);
+	$nom_medecin = ($_POST ['date_heure_debut']);
+	$nom_medecin = ($_POST ['observation']);
+	$nom_medecin = ($_POST ['id_utilisateur']);
+	$nom_medecin = ($_POST ['date_creation']);
+	$nom_medecin = ($_POST ['date_motif']);
+	$nom_medecin = ($_POST ['dossier']);
+	$nom_medecin = ($_POST ['motif']);
+	$nom_medecin = ($_POST ['examen']);
 	
-		$db->query ( "INSERT INTO agenda_praticien VALUES ('','" . $nom_medecin . "','" . $specialite . "','" . $jour_presence . "','" . $heure_debut . "','" . $heure_fin . "','" . $duree_rdv . "')" );
+		
+		$db->query ( "INSERT INTO agenda_rdv VALUES ('','" . $nom_medecin . "','" . $specialite . "','" . $jour_presence . "','" . $heure_debut . "','" . $heure_fin . "','" . $duree_rdv . "')" );
 		
 		echo '<script>alert("médecin ajoutée")</script>';
 		header ( 'location: docteur.php' );

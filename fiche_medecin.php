@@ -4,7 +4,7 @@ require_once ('includes/header.php');
 
 if($_GET['action']=='afficher'){
 	$id=$_GET['id'];
-$select = $db->query ("SELECT * FROM `agenda_praticien` WHERE id=$id");
+$select = $db->query ("SELECT * FROM `agenda_praticien` WHERE id_praticien=$id");
 $s = $select->fetch ( PDO::FETCH_OBJ )
 ?>
 <html>
@@ -17,7 +17,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 <div id="corps">
 <h1>Fiche du Médecin</h1>
 	
-		<div>Nom: <?php echo "$s->nom"; ?></div>
+		<div>Nom: <?php echo "$s->nom_medecin"; ?></div>
 		<br>
 		<div>Spécialité: <?php  echo "$s->specialite"; ?></div>
 		<br>
@@ -34,7 +34,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		 <a href="modifier_medecin.php?action=modifier&amp;id=<?php echo $s->id;?>"><input type="button" value="Modifier"
 	name="modifier medecin"></a>
 			<a href="supprimer_medecin.php?action=supprimer&amp;id=<?php echo $s->id;?>"><input type="button" value="Supprimer"
-	name="supprimer_medecint"></a>
+	name="supprimer_medecin"></a>
 	</div>
 
 </html>	

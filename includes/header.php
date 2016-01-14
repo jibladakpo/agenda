@@ -18,7 +18,7 @@ echo'<!DOCTYPE html>
       <p id="patient"><a href="patient.php">Patients</a></p>
 	  <p id="calendrier"><a href="calendrier.php">Calendrier</a></p>
 	  <p id="agenda"><a href="agenda.php">Agenda</a></p>
-      <p id="rdv"><a href="rendez-vous.php">Rendez-vous</a></p>
+      <p id="rdv"><a href="rdv.php">Rendez-vous</a></p>
       <p id="deconnexion"><a href="deconnexion.php">Déconnexion</a></p>
 		
     </nav>

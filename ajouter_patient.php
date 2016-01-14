@@ -16,7 +16,7 @@ require_once ('includes/header.php');
 	$etablissement =($_POST ['etablissement']);
 	
 	
-		$db->query ( "INSERT INTO agenda_patient VALUES ('','" . $nom . "','" . $prenom . "','" . $date_naissance . "','" . $tel_fixe . "','" . $adresse . "','" . $cp . "','" . $ville . "','". $medecin_traitant ."','','" . etablissement .  "')" );
+		$db->query ( "INSERT INTO agenda_patient VALUES ('','" . $nom . "','" . $prenom . "','" . $date_naissance . "','" . $tel_fixe . "','" . $adresse . "','" . $cp . "','" . $ville . "','". $medecin_traitant ."','". $dossier ."','" . etablissement .  "')" );
 		
 		echo '<script>alert("patient ajouté")</script>';
 		header ( 'location: patient.php' );
@@ -65,10 +65,15 @@ require_once ('includes/header.php');
 			<td>Médecin Traitant:</td>
 			<td><input type="text" name="medecin_traitant" id="medecin_traitant" placeholder="" size=""></td>
 		</tr>
+		
+		<tr align="center">
+			<td>Dossier (LFM, ailleurs, aucun):</td>
+			<td><input type="text" name="etablissement" id="etablissement" placeholder="" size=""></td>
+   	    </tr>	
 	
 		<tr align="center">
-			<td>Etablissement à contacter:</td>
-			<td><input type="text" name="etablissemeent" id="etablissement" placeholder="" size=""></td>
+			<td>Etablissement à contacter si ailleur:</td>
+			<td><input type="text" name="etablissement" id="etablissement" placeholder="" size=""></td>
    	    </tr>	
 		<tr align="center">
 			<td></td>

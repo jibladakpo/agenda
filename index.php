@@ -54,22 +54,22 @@ if(isset($_SESSION['admin_id'])){
   <link rel="stylesheet" href="styles/General.css">
 </head>
  <body>
+ 
+<div style="text-align:center;">
   <form action="" method="POST">
-  
-  <h1>Connexion</h1>
+  <h1>Consultation externe - CHIC des Andaines</h1>
+  <img src="image/logo chic.png"/>
+  <h2>Connexion</h2>
   
         
     <input placeholder="Login" id="login" name="login" type="text" required/>
+    <br><br>
     <input placeholder="Mot de passe" id="mdp" name="mdp" type="password" required/>
-    
-    
-        
-    
+    <br><br>
     <div class="button">
         <button type="submit" name="submit">Se connecter</button>
       <button type="reset" >Annuler</button>
     </div>
-     
-    
-</form>
+ </form>
+ </div>
 </html>
