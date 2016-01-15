@@ -27,5 +27,4 @@ echo'<!DOCTYPE html>
 </html>';}
  
 else {header ('location: index.php');}
-
-	
+?>

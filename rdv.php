@@ -20,13 +20,15 @@ require_once ('includes/header.php');
 			<th>Fiche rdv</th>
 			<th>Nom du patient</th>
 			<th>Nom du médecin</th>
+			
+			</tr>
 	<?php 
 		$select = $db->query ("SELECT * FROM `agenda_rdv`,`agenda_patient`, `agenda_praticien` WHERE agenda_patient.id_patient = agenda_rdv.id_patient AND agenda_praticien.id_praticien = agenda_rdv.id_praticien GROUP BY agenda_patient.id_patient ORDER BY nom ASC ");
 
 		while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
 	?>
 			
-			</tr>
+			
  			 	<tr align="center"> 
  			 		<td> <a href="fiche_rdv.php?action=afficher&amp;id=<?php echo $s->id_rdv;?>"><img src="image/fiche.png" width="30"/></a></td>    
       				 <td> <a href="fiche_patient.php?action=afficher&amp;id=<?php echo $s->id_patient;?>"> <?php echo $s->nom;?> <?php echo $s->prenom;?></a></td>
