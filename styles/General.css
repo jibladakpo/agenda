@@ -37,7 +37,7 @@ body {
 
 
 .navbar {
-  height: 2em;
+  height: 3em;
   width: 1000px;
   background-color: #E6E6E6;
   box-shadow: 0px 10px 10px #B8B8B8;
@@ -49,10 +49,10 @@ body {
   color: lightgrey;
   text-transform: uppercase;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 15px;
   letter-spacing: 0.1em;
   display: inline-block;
-  margin-left:53px;
+  margin-left:76px;
   
   top: 0.95em;
 }
@@ -70,13 +70,16 @@ a:hover {
 }
 
 
-/*
+
 table
 {
     border-collapse: collapse; /* Les bordures du tableau seront collées (plus joli) */
 }
 td
 {
-    border: 1px solid black;
+    border: 2px solid black;
 }
-*/
+
+th,td {
+    text-align: center;
+}
