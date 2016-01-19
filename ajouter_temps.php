@@ -93,3 +93,5 @@ while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
 <p><?php echo date('H:i', $s->date_heure_debut); ?> <?php echo "$s->nom"; ?> <?php echo "$s->motif"; ?></p>
 
 <?php }?>
+
+

@@ -5,13 +5,12 @@ require_once ('includes/header.php');
 	
 <html>
 	<head>
-		 <link rel="stylesheet" href="">
-		<title>Docteur</title>
+		<title>Médecin</title>
 	</head>
 
 	  <div id="corps">
     
-<h1>Docteurs</h1>
+<h1>Médecins</h1>
 <table>
 <tr>
 <th>fiche médecin</th>
@@ -27,11 +26,11 @@ while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
 	
   	 
    	<tr>      
-   	<td> <a href="fiche_medecin.php?action=afficher&amp;id=<?php echo $s->id_praticien;?>"><img src="image/fiche.png" width="30"/></a></td>   
-       <td> <?php echo $s->nom_medecin;?> </td>
-       <td> <?php echo $s->specialite;?></td>
-      <td><a href="modifier_medecin.php?action=modifier&amp;id=<?php echo $s->id_praticien;?>"> <img src="image/modifier.jpg" width="30"/></a> </td>
-       <td> <a href="supprimer_medecin.php?action=supprimer&amp;id=<?php echo $s->id_praticien;?>"> <img src="image/croix.jpg" width="30"/></a> </td>
+   	<td width=300> <a href="fiche_medecin.php?action=afficher&amp;id=<?php echo $s->id_praticien;?>"><img src="image/fiche.png" width="30"/></a></td>   
+       <td width=300> <?php echo $s->nom_medecin;?> </td>
+       <td width=300> <?php echo $s->specialite;?></td>
+      <td width=100><a href="modifier_medecin.php?action=modifier&amp;id=<?php echo $s->id_praticien;?>"> <img src="image/modifier.jpg" width="30"/></a> </td>
+       <td width=100> <a href="supprimer_medecin.php?action=supprimer&amp;id=<?php echo $s->id_praticien;?>"> <img src="image/croix.jpg" width="30"/></a> </td>
        	
    	</tr>
 	
