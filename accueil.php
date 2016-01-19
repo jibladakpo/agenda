@@ -11,6 +11,14 @@ require_once ('includes/header.php');
 <body>
 <DIV ALIGN="CENTER">
 <?php
+
+ $select = $db->query ("SELECT * FROM `agenda_praticien` ORDER BY nom_medecin ASC");
+
+ ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) 
+ 
+	?>
+<?php 
+
 $list_dispo=array(1);//Liste pour les jours disponibles; 
 $list_indispo=array();//Liste pour les jours indisponibles; 
 $list_vac=array();//Liste pour les jours de vacances; 
@@ -21,8 +29,9 @@ $col1="#d6f21a";//couleur au passage du souris pour les dates normales
 $col2="#8af5b5";//couleur au passage du souris pour les dates speciaux
 $col3="#6a92db";//couleur au passage du souris pour les dates disponibles
 $mois_fr = Array("", "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août","Septembre", "Octobre", "Novembre", "Décembre");
-if(isset($_GET['mois']) && isset($_GET['annee']))
+if(isset($_GET['medecin']) && isset($_GET['mois']) && isset($_GET['annee']))
 {
+	$medecin=$_GET['medecin'];
 	$mois=$_GET['mois'];
 	$annee=$_GET['annee'];
 }
@@ -43,12 +52,12 @@ $titre=$mois_fr[$mois]." : ".$annee;
 
 
 <form name="dt" method="get" action="">
-<select>
-			<optgroup label="Médecins">
+<select name="medecin" id="medecin" class="liste">
+			<optgroup label="Médecins" onChange="change()" >
 				<?php $select = $db->query ("SELECT * FROM `agenda_praticien` ORDER BY nom_medecin ASC");
 				while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
 				?>
-				<option><?php echo $s->nom_medecin;?></option>
+				<option value="<?php echo $s->nom_medecin;?>"><?php echo $s->nom_medecin;?></option>
 				<?php }?>
 			</optgroup>
 		</select>
@@ -157,4 +166,5 @@ function go_lien(a)
 }
 </script>
 </DIV>
+
 </body>

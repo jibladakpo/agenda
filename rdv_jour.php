@@ -40,18 +40,8 @@ $titre=$mois_fr[$mois]." : ".$annee;
 ?>
 
 
-
-
 <form name="dt" method="get" action="">
-<select>
-			<optgroup label="Médecins">
-				<?php $select = $db->query ("SELECT * FROM `agenda_praticien` ORDER BY nom_medecin ASC");
-				while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
-				?>
-				<option><?php echo $s->nom_medecin;?></option>
-				<?php }?>
-			</optgroup>
-		</select>
+
 <select name="mois" id="mois" onChange="change()" class="liste">
 <?php
 	for($i=1;$i<13;$i++)
