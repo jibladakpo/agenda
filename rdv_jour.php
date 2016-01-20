@@ -7,10 +7,13 @@ require_once ('includes/header.php');
 
 <link href="styles/calendrier2.css" rel="stylesheet" type="text/css" />
 </head>
-<div id="corps">
+<body>
+<DIV ALIGN="CENTER">
 
 <!--  ========Partie calendrier======== -->
-<?php
+
+<?php 
+
 $list_dispo=array(1);//Liste pour les jours disponibles; 
 $list_indispo=array();//Liste pour les jours indisponibles; 
 $list_vac=array();//Liste pour les jours de vacances; 
@@ -21,13 +24,15 @@ $col1="#d6f21a";//couleur au passage du souris pour les dates normales
 $col2="#8af5b5";//couleur au passage du souris pour les dates speciaux
 $col3="#6a92db";//couleur au passage du souris pour les dates disponibles
 $mois_fr = Array("", "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août","Septembre", "Octobre", "Novembre", "Décembre");
-if(isset($_GET['mois']) && isset($_GET['annee']))
+if(isset($_GET['id_praticien']) && isset($_GET['mois']) && isset($_GET['annee']))
 {
+	$id_praticien=$_GET['id_praticien'];
 	$mois=$_GET['mois'];
 	$annee=$_GET['annee'];
 }
 else
 {
+	$id_praticien=("p");
 	$mois=date("n");
 	$annee=date("Y");
 }
@@ -40,8 +45,15 @@ $titre=$mois_fr[$mois]." : ".$annee;
 ?>
 
 
+<!-- selection du médecin, mois et année -->
 <form name="dt" method="get" action="">
-
+<select name="id_praticien" id="id_praticien" onChange="change()" class="liste">
+				<?php $select = $db->query ("SELECT * FROM `agenda_praticien` ORDER BY nom_medecin ASC");
+				while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
+				?>
+				<option value="<?php echo $s->id_praticien;?>" <?php if($s->id_praticien==$id_praticien)echo'selected';else'';?> ><?php echo $s->nom_medecin;?></option>
+				<?php }?>
+		</select>
 <select name="mois" id="mois" onChange="change()" class="liste">
 <?php
 	for($i=1;$i<13;$i++)
@@ -55,7 +67,7 @@ $titre=$mois_fr[$mois]." : ".$annee;
 </select>
 <select name="annee" id="annee" onChange="change()" class="liste">
 <?php
-	for($i=1950;$i<2500;$i++)
+	for($i=1950;$i<2500;$i++) // l'année va de 1950 à 2500
 	{
 		echo '<option value="'.$i.'"';
 		if($i==$annee)
@@ -70,7 +82,16 @@ $titre=$mois_fr[$mois]." : ".$annee;
 <table class="tableau"><caption><?php echo $titre ;?></caption>
 <tr><th>Lun</th><th>Mar</th><th>Mer</th><th>Jeu</th><th>Ven</th><th>Sam</th><th>Dim</th></tr>
 <tr>
+
 <?php
+
+ $select = $db->query ("SELECT * FROM `agenda_praticien` ORDER BY nom_medecin ASC");
+
+ ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) 
+ 
+	?>
+<?php
+
 //echo $y;
 $case=0;
 if($x>1)
@@ -83,8 +104,9 @@ for($i=1;$i<($l_day+1);$i++)
 {
 	$f=$y=date("N", mktime(0, 0, 0, $mois,$i , $annee));
 	$da=$i."/".$mois."/".$annee;
+	$id= "$s->id_praticien";
 	$lien=$lien_redir;
-	$lien.="?dt=".$da;
+	$lien.="?id=$id;dt=".$da;
 	echo "<td";
 	if(in_array($da, $list_spe))
 	{
@@ -150,6 +172,8 @@ function go_lien(a)
 <!--  ========Partie agenda======== -->
 <?php 
 $d=$_GET['dt'];
+?>
+<?php
 $select = $db->query ("SELECT nom, date_heure_debut, heure_debut, heure_fin,agenda_praticien.id_praticien ,duree_rdv , observation, nom_medecin FROM `agenda_rdv`,`agenda_praticien`,`agenda_patient` 
 						WHERE agenda_praticien.id_praticien = agenda_rdv.id_praticien AND agenda_rdv.id_patient = agenda_patient.id_patient 
 						AND agenda_praticien.id_praticien = 2 ");
@@ -187,7 +211,7 @@ return $horaire;
 
 <tr>
 	<td colspan="2"><a href="fiche_medecin.php?action=afficher&amp;id=<?php echo$s->id_praticien;?>"><?php echo $s->nom_medecin?></a><br>
-	Date: <?php echo date($d); ?></td>
+	Date: <?php echo $d; ?></td>
 	
 </tr>
 
@@ -203,6 +227,7 @@ return $horaire;
 
 </table>
 
-</div>
+</DIV>
+</body>
 
 

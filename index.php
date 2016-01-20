@@ -4,9 +4,7 @@ require_once ('includes/connexion_bdd.php'); // inclure une fois le fichier head
 
 <?php
 
-
-
-if(isset($_SESSION['admin_id'])){
+if(isset($_SESSION['admin_id'])){ 
 	
 	header('location: accueil.php');
 	
@@ -19,7 +17,7 @@ if(isset($_SESSION['admin_id'])){
 			if($login && $mdp){
 			
 				$select = $db->query("SELECT id FROM agenda_util WHERE login='$login'AND mdp='$mdp'");
-				//Test du rÃ©sultat de la requête
+				//Test du résultat de la requête
 				if($select->fetchColumn()){
 					$select = $db->query("SELECT * FROM agenda_util WHERE login='$login'AND mdp='$mdp'");
 					$result = $select->fetch(PDO::FETCH_OBJ);
@@ -49,27 +47,27 @@ if(isset($_SESSION['admin_id'])){
 }
 
 ?>
+<!-- formulaire de connexion au site -->
 <html>
 <head>
-  <link rel="stylesheet" href="styles/General.css">
+  
+   <link rel="stylesheet" href="styles/formulaire.css">
 </head>
  <body>
  
 <div style="text-align:center;">
   <form action="" method="POST">
   <h1>Consultation externe - CHIC des Andaines</h1>
-  <img src="image/logo chic.png" width="300"/>
-  <h2>Connexion</h2>
+  <img src="image/logo chic.png" width="200"/>
   
-        
+  <h2>Connexion</h2>      
     <input placeholder="Login" id="login" name="login" type="text" required/>
-    <br><br>
     <input placeholder="Mot de passe" id="mdp" name="mdp" type="password" required/>
-    <br><br>
     <div class="button">
         <button type="submit" name="submit">Se connecter</button>
       <button type="reset" >Annuler</button>
     </div>
  </form>
  </div>
+ </body>
 </html>
