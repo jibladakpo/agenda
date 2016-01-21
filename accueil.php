@@ -12,12 +12,16 @@ require_once ('includes/header.php');
 <DIV ALIGN="CENTER">
 
 <?php 
+
 $select = $db->query ("SELECT * FROM `agenda_praticien` WHERE id_praticien=1");
 $s = $select->fetch ( PDO::FETCH_OBJ ) 
 ?>
 <?php
-$list_dispo=array($s->jour_presence);//Liste pour les jours disponibles; 
 
+require_once ('includes/condition_jour.php');
+?>
+
+<?php 
 $list_indispo=array();//Liste pour les jours indisponibles; 
 $list_vac=array();//Liste pour les jours de vacances; 
 $list_spe=array();//Mettez vos dates des evenements ; NB format(annee-m-j)
