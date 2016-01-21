@@ -38,7 +38,17 @@ require_once ('includes/header.php');
 	</tr>
 	<tr align="center">
 		<td>Jours de présences:</td>
-		<td><input type="text" name="jour_presence" id="jour_presence" value=""  size="20"placeholder="" class=""></td>
+		<td><FORM>
+	
+<INPUT type="checkbox" name="jour_presence" id="jour_presence" value="lundi"> lundi
+<INPUT type="checkbox" name="jour_presence" id="jour_presence" value="mardi"> mardi
+<INPUT type="checkbox" name="jour_presence" id="jour_presence" value="mercredi"> mercredi
+<INPUT type="checkbox" name="jour_presence" id="jour_presence" value="jeudi"> jeudi
+<INPUT type="checkbox" name="jour_presence" id="jour_presence" value="vendredi"> vendredi
+<INPUT type="checkbox" name="jour_presence" id="jour_presence" value="samedi"> samedi
+<INPUT type="checkbox" name="jour_presence" id="jour_presence" value="dimanche"> dimanche
+
+				</FORM></td>
 	</tr>
 	
 	<tr align="center">

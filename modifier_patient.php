@@ -90,8 +90,13 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		</tr>
 		
 		<tr align="center">
-			<td>Dossier(LFM/ailleurs/aucun):</td>
-			<td><input type="text" name="dossier" id="dossier"  placeholder="" value="<?php echo "$s->dossier"; ?>"size=""></td>
+			<td>Dossier:</td>
+			<td><FORM>
+<INPUT type="checkbox" name="dossier" id="dossier" value="LFM"<?php if(strstr($s->dossier, "LFM")){echo" checked";}else{echo"";}?>> LFM
+<INPUT type="checkbox" name="dossier" id="dossier" value="ailleurs"<?php if(strstr($s->dossier, "ailleurs")){echo "checked";}else{echo"";}?>> ailleurs
+<INPUT type="checkbox" name="dossier" id="dossier" value="aucun"<?php if(strstr($s->dossier, "aucun")) {echo"checked";}else{echo"";}?>> aucun
+
+				</FORM></td>
 	
 		<tr align="center">
 			<td>Etablissement à contacter (si ailleurs):</td>
