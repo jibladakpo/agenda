@@ -18,18 +18,18 @@ require_once ('includes/header.php');
 
 
 <?php
-if($_GET['action']=='afficher'){
-$id=$_GET['id_praticien'];
-}
+
+$id=$_GET['id'];
 $d=$_GET['dt'];
 
-$select = $db->query ("SELECT nom, date_heure_debut, heure_debut, heure_fin,agenda_praticien.id_praticien ,duree_rdv , observation, nom_medecin FROM `agenda_rdv`,`agenda_praticien`,`agenda_patient` 
-						WHERE agenda_praticien.id_praticien = agenda_rdv.id_praticien AND agenda_rdv.id_patient = agenda_patient.id_patient 
-						AND agenda_praticien.id_praticien = 1");
+$select = $db->query ("SELECT *
+						FROM `agenda_praticien`
+						WHERE agenda_praticien.id_praticien = $id");
 
-$s = $select->fetch ( PDO::FETCH_OBJ )
+$s = $select->fetch ( PDO::FETCH_OBJ );
 
 ?>
+
 
 
 <?php
@@ -71,7 +71,8 @@ return $horaire;
 		?>
 <tr>
 	<td width="300"> <?php echo $valeur ?></td>
-<td width="700"><a href="recherche_patient.php?action=afficher&amp;id=<?php echo $s->id_rdv;?>"><img src="image/plus.jpg" width="30"/></a></td>
+
+<td width="700"> <a href='recherche_patient.php?action=afficher&amp;id_praticien=<?php echo $s->id_praticien;?> ;'><img src='image/plus.jpg' width='30'/></a></td>
 </tr>
 <?php }?>
 

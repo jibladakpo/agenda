@@ -58,9 +58,9 @@ else{
 	
 			
  			 	<tr > 
- 			 	<td width=300> <a href="fiche_patient.php?action=afficher&amp;id=<?php echo $s->id_patient;?>"><img src="image/fiche.png" width="30"/></a></td>       
-      				 <td width=300> <?php echo $s->nom;?> <?php echo $s->prenom;?></td> 
-      				 <td width=300> <?php echo $s->date_naissance;?> </td> 
+ 			 	<td > <a href="fiche_patient.php?action=afficher&amp;id=<?php echo $s->id_patient;?>"><img src="image/fiche.png" width="30"/></a></td>       
+      				 <td width=400> <?php echo $s->nom;?> <?php echo $s->prenom;?></td> 
+      				 <td width=400> <?php echo $s->date_naissance;?> </td> 
       				 <td width=100><a href="modifier_patient.php?action=modifier&amp;id=<?php echo $s->id_patient;?>"> <img src="image/modifier.jpg" width="30"/></a> </td>
       				<td width=100> <a href="supprimer_patient.php?action=supprimer&amp;id=<?php echo $s->id_patient;?>"> <img src="image/croix.jpg" width="30"/></a> </td>
       				  

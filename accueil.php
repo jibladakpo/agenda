@@ -51,7 +51,7 @@ if(isset($_GET['id_praticien']) && isset($_GET['mois']) && isset($_GET['annee'])
 }
 else
 {
-	$id_praticien=("p");
+	$id_praticien=("1");
 	$mois=date("n");
 	$annee=date("Y");
 }
@@ -67,7 +67,7 @@ $titre=$mois_fr[$mois]." : ".$annee;
 <!-- selection du médecin, mois et année -->
 <form name="dt" method="get" action="">
 <select name="id_praticien" id="id_praticien" onChange="change()" class="liste">
-				<?php $select = $db->query ("SELECT * FROM `agenda_praticien` ORDER BY nom_medecin ASC");
+				<?php $select = $db->query ("SELECT * FROM `agenda_praticien`");
 				while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
 				?>
 				<option value="<?php echo $s->id_praticien;?>" <?php if($s->id_praticien==$id_praticien)echo'selected';else'';?> ><?php echo $s->nom_medecin;?></option>
@@ -102,13 +102,7 @@ $titre=$mois_fr[$mois]." : ".$annee;
 <tr><th>Lun</th><th>Mar</th><th>Mer</th><th>Jeu</th><th>Ven</th><th>Sam</th><th>Dim</th></tr>
 <tr>
 
-<?php
 
- $select = $db->query ("SELECT * FROM `agenda_praticien` ORDER BY nom_medecin ASC");
-
- ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) 
- 
-	?>
 <?php
 
 //echo $y;
@@ -123,9 +117,9 @@ for($i=1;$i<($l_day+1);$i++)
 {
 	$f=$y=date("N", mktime(0, 0, 0, $mois,$i , $annee));
 	$da=$i."/".$mois."/".$annee;
-	$id_praticien= "$s->id_praticien";
+	$id= "$id_praticien";
 	$lien=$lien_redir;
-	$lien.="?action=afficher&amp;id_praticien=$id_praticien&amp;dt=".$da;
+	$lien.="?action=afficher&amp;id=$id&amp;dt=".$da;
 	echo "<td";
 	if(in_array($da, $list_spe))
 	{

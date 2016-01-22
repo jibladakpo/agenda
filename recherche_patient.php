@@ -16,7 +16,7 @@ if($nb_resultats != 0) // si le nombre de résultats est supérieur à 0, on contin
 // maintenant, on va afficher les résultats et la page qui les donne ainsi que leur nombre, avec un peu de code HTML pour faciliter la tâche.
 ?>
 <div id="corps">
-<h3>Résultats de votre recherche.</h3>
+<h1>Résultats de votre recherche</h1>
 <p>Nous avons trouvé  <?php echo  $nb_resultats; // on affiche le nombre de résultats 
 if($nb_resultats > 1) { echo ' résultats '; } else { echo ' résultat '; } // on vérifie le nombre de résultats pour orthographier correctement. 
 ?>
@@ -26,7 +26,11 @@ if($nb_resultats > 1) { echo ' résultats '; } else { echo ' résultat '; } // on 
 while($donnees = mysql_fetch_array($query)) // on fait un while pour afficher la liste des fonctions trouvées, ainsi que l'id qui permettra de faire le lien vers la page de la fonction
 {
 ?>
-<p><a href="fiche_patient.php?action=afficher&amp;id=<?php echo $donnees['id_patient']; ?>"><?php echo $donnees['nom']; ?> <?php echo $donnees['prenom']; ?></a><a href="ajouter_rdv.php?action=ajouter&amp;id=<?php echo $donnees['id_patient']; ?>"> 
+<?php 
+	$id=$_GET['id_praticien'];
+	
+?>
+<p><a href="fiche_patient.php?action=afficher&amp;id_praticien=&amp;id=<?php echo $donnees['id_patient']; ?>"><?php echo $donnees['nom']; ?> <?php echo $donnees['prenom']; ?>  <?php echo $donnees['date_naissance']; ?></a><a href="ajouter_rdv.php?action=ajouter&amp;id=<?php echo $donnees['id_patient']; ?>"> 
 	<input type="button" value="Prendre rendez-vous"
 	name="ajouter_rdv">
 </a></p>
@@ -52,18 +56,20 @@ mysql_close(); // on ferme mysql
 else
 { 
 ?>
+<?php $id=$_GET['id_praticien']; ?>
 </div>
-<div id="corps">
-<h2>Recherche patient</h2>
+<div style="text-align:center;">
+<h1>Recherche patient</h1>
  Saisir nom ou prénom du patient
  <br>
  <br>
- <form action="recherche_patient.php" method="Post">
+ <form action="recherche_patient.php?id_praticien=$id" method="Post">
 <input type="text" name="requete" size="20">
 <input type="submit" value="Ok">
 </form>
 <p><a href="ajouter_patient.php">Ajouter un nouveau patient</a></p>
 </div>
+
 <?php
 }
 // et voilà, c'est fini !

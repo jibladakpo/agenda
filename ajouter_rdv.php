@@ -52,22 +52,39 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		<td>Prénom du patient:</td>
 		<td><input type="text" name="prenom" id="id_patient" value="<?php echo "$s->prenom"; ?>" size="20"placeholder="" class=""></td>
 	</tr>
-<?php }?>
+
+<?php 	 
+	$select = $db->query ("SELECT * FROM `agenda_praticien` WHERE id_praticien=1");
+$s = $select->fetch ( PDO::FETCH_OBJ )
+
+?>
 	<tr align="center">
+	
 	<td>Nom du médecin:</td>
-	<td><input type="text" name="nom_medecin" id="nom_medecin" value="" size="20"placeholder="" class=""></td>
+	<td><input type="text" name="nom_medecin" id="nom_medecin" value="<?php echo "$s->nom_medecin"; ?>" size="20"placeholder="" class=""></td>
+	</tr>
+
+	<tr align="center">
+		<td>Date du rendez-vous:</td>
+		<td><input type="text" name="date_heure_debut" id="date_heure_debut" value="" size="20" placeholder="" class=""></td>
 	</tr>
 	<tr align="center">
-		<td>Date/heure du rendez-vous:</td>
+		<td>Heure du rendez-vous:</td>
 		<td><input type="text" name="date_heure_debut" id="date_heure_debut" value="" size="20" placeholder="" class=""></td>
 	</tr>
 	<tr align="center">
 		<td>Observartion:</td>
 		<td><textarea name="observation" id="observation"  placeholder="" class=""></textarea></td>
 	</tr>
+	<?php 	 
+	$select = $db->query ("SELECT * FROM `agenda_patient` WHERE id_patient=$id");
+$s = $select->fetch ( PDO::FETCH_OBJ )
+
+?>
+	
 	<tr align="center">
 		<td>Dossier:</td>
-		<td><input type="text" name="dossier" id="dossier" value=""  size="20"placeholder="" class=""></td>
+		<td><input type="text" name="dossier" id="dossier" value="<?php echo $s->dossier;?>"  size="20"placeholder="" class=""></td>
 	</tr>
 	
 	<tr align="center">
@@ -97,3 +114,4 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 </div>
 
 </html>
+<?php }?>

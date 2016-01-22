@@ -4,9 +4,8 @@ echo'<!DOCTYPE html>
 <html>
 
    <LINK rel="stylesheet" href="styles/General.css" /> 
-		<LINK rel="stylesheet" href="styles/calendrier.css" /> 
-
-  
+   <LINK rel="stylesheet" href="styles/calendrier.css" /> 
+ 
     <div id="header">
       <p><a href="accueil.php">Consultation externe - CHIC des Andaines</a></p>
     </div>
