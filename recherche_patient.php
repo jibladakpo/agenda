@@ -28,9 +28,12 @@ while($donnees = mysql_fetch_array($query)) // on fait un while pour afficher la
 ?>
 <?php 
 	$id=$_GET['id_praticien'];
+	$id=$_GET['id_praticien'];
+	$d=$_GET['dt'];
+	$h=$_GET['h'];
 	
 ?>
-<p><a href="fiche_patient.php?action=afficher&amp;id_praticien=&amp;id=<?php echo $donnees['id_patient']; ?>"><?php echo $donnees['nom']; ?> <?php echo $donnees['prenom']; ?>  <?php echo $donnees['date_naissance']; ?></a><a href="ajouter_rdv.php?action=ajouter&amp;id=<?php echo $donnees['id_patient']; ?>"> 
+<p><a href="fiche_patient.php?action=afficher&amp;id_praticien=&amp;id_patient=<?php echo $donnees['id_patient']; ?>"><?php echo $donnees['nom']; ?> <?php echo $donnees['prenom']; ?>  <?php echo $donnees['date_naissance']; ?></a><a href="ajouter_rdv.php?action=ajouter&amp;id=<?php echo $donnees['id_patient']; ?>&amp;id_praticien=<?php echo $id;?>&amp;h=<?php echo $h;?>&amp;dt=<?php echo $d;?>"> 
 	<input type="button" value="Prendre rendez-vous"
 	name="ajouter_rdv">
 </a></p>
@@ -56,14 +59,17 @@ mysql_close(); // on ferme mysql
 else
 { 
 ?>
-<?php $id=$_GET['id_praticien']; ?>
+<?php $id=$_GET['id_praticien'];
+$d=$_GET['dt'];
+$h=$_GET['h'];
+?>
 </div>
 <div style="text-align:center;">
 <h1>Recherche patient</h1>
  Saisir nom ou prénom du patient
  <br>
  <br>
- <form action="recherche_patient.php?id_praticien=$id" method="Post">
+ <form action="recherche_patient.php?id_praticien=<?php echo $id;?>&amp;h=<?php echo $h;?>&amp;dt=<?php echo $d;?>" method="Post">
 <input type="text" name="requete" size="20">
 <input type="submit" value="Ok">
 </form>

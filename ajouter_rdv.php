@@ -5,6 +5,10 @@ require_once ('includes/header.php');
 <?php 
 if($_GET['action']=='ajouter'){
 	$id=$_GET['id'];
+	$id_praticien=$_GET['id_praticien'];
+	$d=$_GET['dt'];
+	$h=$_GET['h'];
+	
 	
 ?>
 <?php if (isset ( $_POST ['submit'] )) {
@@ -22,10 +26,10 @@ if($_GET['action']=='ajouter'){
 	$examen = ($_POST ['examen']);
 	
 		
-		$db->query ( "INSERT INTO agenda_rdv VALUES ('','" . $id_praticien . "','" . $id_patient . "','" . $date_heure_debut . "','" . $observation . "','" . $id_utilisateur . "','" . $date_creation . "','" . $date_modif . "','" . $dossier . "','" . $dossier_lieu . "','" . $modif . "','" . $examen . "')" );
+		$db->query ( "INSERT INTO agenda_rdv VALUES ('','" . $id_praticien .  "', '" . $id_patient . "','" . $date_heure_debut . "','" . $observation . "','" . $id_utilisateur . "','" . $date_creation . "','" . $date_modif . "','" . $dossier . "','" . $dossier_lieu . "','" . $modif . "','" . $examen . "')" );
 		
 		echo '<script>alert("rendez-vous pris")</script>';
-		header ( 'location: calendrier.php' );
+		header ( 'location: accueil.php' );
 		}
 	
 ?>
@@ -38,39 +42,45 @@ if($_GET['action']=='ajouter'){
 <div id="corps">
 	<h1>Prendre rendez-vous</h1>
 	<form action="" method="POST">
+	
+	
 	 <table >
 <?php 	 
+
 	$select = $db->query ("SELECT * FROM `agenda_patient` WHERE id_patient=$id");
 $s = $select->fetch ( PDO::FETCH_OBJ )
 
 ?>
 	<tr align="center">
 		<td>Nom du patient:</td>
-		<td><input type="text" name="nom" id="id_patient" value="<?php echo "$s->nom"; ?>" size="20"placeholder="" class=""></td>
+		<td><input type="hidden" name="id_patient" id=id_patient value="<?php echo $s->id_patient;?>"><input type="text" name="nom_patient" id="nom_patient" value="<?php echo "$s->nom"; ?>" size="20"placeholder="" class=""></td>
 	</tr>
 	<tr align="center">
 		<td>Prénom du patient:</td>
-		<td><input type="text" name="prenom" id="id_patient" value="<?php echo "$s->prenom"; ?>" size="20"placeholder="" class=""></td>
+		<td><input type="text" name="prenom_patient" id="prenom_patient" value="<?php echo "$s->prenom"; ?>" size="20"placeholder="" class=""></td>
 	</tr>
 
 <?php 	 
-	$select = $db->query ("SELECT * FROM `agenda_praticien` WHERE id_praticien=1");
+
+
+	$select = $db->query ("SELECT * FROM `agenda_praticien` WHERE id_praticien=$id_praticien");
 $s = $select->fetch ( PDO::FETCH_OBJ )
 
 ?>
+
 	<tr align="center">
 	
 	<td>Nom du médecin:</td>
-	<td><input type="text" name="nom_medecin" id="nom_medecin" value="<?php echo "$s->nom_medecin"; ?>" size="20"placeholder="" class=""></td>
+	<td><input type="hidden" name="id_praticien" id=id_praticien value="<?php echo $s->id_praticien;?>"><input type="text" name="nom_praticien" id="nom_praticien" value="<?php echo "$s->nom_medecin"; ?>" size="20"placeholder="" class=""></td>
 	</tr>
 
 	<tr align="center">
 		<td>Date du rendez-vous:</td>
-		<td><input type="text" name="date_heure_debut" id="date_heure_debut" value="" size="20" placeholder="" class=""></td>
+		<td><input type="text" name="date_heure_debut" id="date_heure_debut" value="<?php echo $d;?>" size="20" placeholder="" class=""></td>
 	</tr>
 	<tr align="center">
 		<td>Heure du rendez-vous:</td>
-		<td><input type="text" name="date_heure_debut" id="date_heure_debut" value="" size="20" placeholder="" class=""></td>
+		<td><input type="text" name="date_heure_debut" id="date_heure_debut" value="<?php echo $h;?>" size="20" placeholder="" class=""></td>
 	</tr>
 	<tr align="center">
 		<td>Observartion:</td>

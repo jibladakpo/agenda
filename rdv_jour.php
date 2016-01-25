@@ -72,7 +72,7 @@ return $horaire;
 <tr>
 	<td width="300"> <?php echo $valeur ?></td>
 
-<td width="700"> <a href='recherche_patient.php?action=afficher&amp;id_praticien=<?php echo $s->id_praticien;?> ;'><img src='image/plus.jpg' width='30'/></a></td>
+<td width="700"> <a href='recherche_patient.php?action=afficher&amp;id_praticien=<?php echo $s->id_praticien;?>&amp;h=<?php echo $valeur;?>&amp;dt=<?php echo $d;?>'><img src='image/plus.jpg' width='30'/></a></td>
 </tr>
 <?php }?>
 
