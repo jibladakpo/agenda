@@ -4,6 +4,7 @@ require_once ('includes/header.php');
 ?>
 
 <head>
+<!-- partie calendrier -->
 <title>Agenda en PHP</title>
 
 <link href="styles/calendrier.css" rel="stylesheet" type="text/css" />
@@ -181,6 +182,32 @@ function go_lien(a)
 	top.document.location=a;
 }
 </script>
+<!-- partie légende -->
+<br>
+<table>
+<tr>
+<td colspan="2"><b>Légende</b></td>
+</tr>
+
+
+<tr>
+<td  bgcolor="#9cbdfb" width=50 ></td>
+<td width=300>disponible</td>
+</tr>
+
+<tr>
+
+<td  bgcolor="#ff6c6c"  ></td>
+<td width=300>réservé</td>
+</tr>
+
+<tr>
+<td  bgcolor="#ff9933"  ></td>
+<td width=300>vacance</td>
+</tr>
+</table>
 </DIV>
+
+
 
 </body>

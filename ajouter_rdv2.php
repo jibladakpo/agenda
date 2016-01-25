@@ -4,7 +4,7 @@ require_once ('includes/header.php');
 ?>
 <?php 
 if($_GET['action']=='ajouter'){
-	$id=$_GET['id'];
+	$id_patient=$_GET['id_patient'];
 	$id_praticien=$_GET['id_praticien'];
 	$d=$_GET['dt'];
 	$h=$_GET['h'];
@@ -45,7 +45,7 @@ if($_GET['action']=='ajouter'){
 	 <table >
 <?php 	 
 
-	$select = $db->query ("SELECT * FROM `agenda_patient` WHERE id_patient=$id");
+	$select = $db->query ("SELECT * FROM `agenda_patient` WHERE id_patient=$id_patient");
 $s = $select->fetch ( PDO::FETCH_OBJ )
 
 ?>

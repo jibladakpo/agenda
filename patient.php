@@ -71,7 +71,7 @@ else{
 
 	<?php } ?>
 </table>
-
+<br>
 
 	<?php for ($i=1;$i<=$nbPage;$i++){
 	if($i==$cPage){

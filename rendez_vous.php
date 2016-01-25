@@ -17,14 +17,21 @@ require_once ('includes/header.php');
 				WHERE agenda_patient.id_patient = agenda_rdv.id_patient 
 				AND agenda_praticien.id_praticien = agenda_rdv.id_praticien 
 				AND agenda_rdv.id_praticien = 1
-				ORDER BY date_heure_debut ASC ");
+				ORDER BY date_debut ASC ");
 
 		while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
 	?>
-
+<tr align="center">
+		<td>Nom du patient:</td>
+		<td><input type="hidden" name="id_patient" id=id_patient value="<?php echo $s->id_patient;?>"><input type="text" name="nom_patient" id="nom_patient" value="<?php echo "$s->nom"; ?>" size="20"placeholder="" class=""></td>
+	</tr>
+	<tr align="center">
+		<td>Prénom du patient:</td>
+		<td><input type="text" name="prenom_patient" id="prenom_patient" value="<?php echo "$s->prenom"; ?>" size="20"placeholder="" class=""></td>
+	</tr>
 <tr>
-<td width=100><?php echo date('d/m/Y', $s->date_heure_debut); ?></td>
-<td width=100><?php echo date('H\hi', $s->date_heure_debut); ?></td>
+<td width=100><?php echo  $s->date_debut; ?></td>
+<td width=100><?php echo $s->heure_debut; ?></td>
 <td width=700><?php echo $s->nom;?> <?php echo $s->prenom;?><br>
 				<?php echo $s->nom_medecin?><br>
 				 <?php echo $s->observation;?>

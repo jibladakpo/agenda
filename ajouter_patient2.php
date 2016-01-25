@@ -2,6 +2,13 @@
 require_once ('includes/connexion_bdd.php');
 require_once ('includes/header.php');
 ?>
+
+<?php 
+
+	$id=$_GET['id_praticien'];
+	$d=$_GET['dt'];
+	$h=$_GET['h'];	
+?>
 <?php if (isset ( $_POST ['submit'] )) {
 
 	$nom = ($_POST ['nom']);
@@ -18,9 +25,7 @@ require_once ('includes/header.php');
 	
 		$db->query ( "INSERT INTO agenda_patient VALUES ('','" . $nom . "','" . $prenom . "','" . $date_naissance . "','" . $tel_fixe . "','" . $adresse . "','" . $cp . "','" . $ville . "','". $medecin_traitant ."','". $dossier ."','" . etablissement .  "')" );
 		
-		echo 
-		header ( 'location: patient.php' );
-		'<script type="text/javascript">alert("patient ajouté")</script>';
+	
 		}
 	
 ?>
@@ -32,7 +37,7 @@ require_once ('includes/header.php');
 </head>
 <div id="corps">
 	<h1>Ajouter un nouveau patient</h1>
-	<form action="" method="POST">
+	<form action="ajouter_rdv2.php?action=ajouter&amp;id_praticien=<?php echo $id;?>&amp;h=<?php echo $h;?>&amp;dt=<?php echo $d;?>" method="POST">
 		<table>
 		<tr align="center">
 			<td>Nom:</td>

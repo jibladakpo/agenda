@@ -27,11 +27,10 @@ while($donnees = mysql_fetch_array($query)) // on fait un while pour afficher la
 {
 ?>
 <?php 
-	$id=$_GET['id_praticien'];
+
 	$id=$_GET['id_praticien'];
 	$d=$_GET['dt'];
-	$h=$_GET['h'];
-	
+	$h=$_GET['h'];	
 ?>
 <p><a href="fiche_patient.php?action=afficher&amp;id_praticien=&amp;id_patient=<?php echo $donnees['id_patient']; ?>"><?php echo $donnees['nom']; ?> <?php echo $donnees['prenom']; ?>  <?php echo $donnees['date_naissance']; ?></a><a href="ajouter_rdv.php?action=ajouter&amp;id=<?php echo $donnees['id_patient']; ?>&amp;id_praticien=<?php echo $id;?>&amp;h=<?php echo $h;?>&amp;dt=<?php echo $d;?>"> 
 	<input type="button" value="Prendre rendez-vous"
@@ -51,7 +50,7 @@ else
 <div id="corps">
 <h1>Pas de résultats</h1>
 <p>Nous n'avons trouvé aucun résultat pour votre requête. <a href="recherche_patient.php">Réessayez</a> avec autre chose.</p>
-<p><a href="ajouter_patient">Ajouter un nouveau patient</a></p>
+<p><a href="ajouter_patient2.php?id_praticien=<?php echo $id;?>&amp;h=<?php echo $h;?>&amp;dt=<?php echo $d;?>">Ajouter un nouveau patient</a></p>
 <?php
 }// Fini d'afficher l'erreur ^^
 mysql_close(); // on ferme mysql
@@ -73,7 +72,7 @@ $h=$_GET['h'];
 <input type="text" name="requete" size="20">
 <input type="submit" value="Ok">
 </form>
-<p><a href="ajouter_patient.php">Ajouter un nouveau patient</a></p>
+<p><a href="ajouter_patient2.php?id_praticien=<?php echo $id;?>&amp;h=<?php echo $h;?>&amp;dt=<?php echo $d;?>">Ajouter un nouveau patient</a></p>
 </div>
 
 <?php
