@@ -3,7 +3,7 @@ require_once ('includes/connexion_bdd.php');
 require_once ('includes/header.php');
 ?>
 <?php if (isset ( $_POST ['submit'] )) {
-
+	
 	$nom = ($_POST ['nom']);
 	$prenom = ($_POST ['prenom']);
 	$date_naissance = ($_POST ['date_naissance']);
@@ -20,7 +20,7 @@ require_once ('includes/header.php');
 		
 		echo 
 		header ( 'location: patient.php' );
-		'<script type="text/javascript">alert("patient ajouté")</script>';
+		'<script LANGUAGE="JavaScript">alert("patient enregistré")</script>';
 		}
 	
 ?>
