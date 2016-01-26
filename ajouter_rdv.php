@@ -16,7 +16,7 @@ if($_GET['action']=='ajouter'){
 	$id_praticien = ($_POST ['id_praticien']);
 	$id_patient = ($_POST ['id_patient']);
 	$date_debut = ($_POST ['date_debut']);
-	$heure_debut = ($_POST ['heure_debut']);
+	$heure_deb = ($_POST ['heure_deb']);
 	$observation = ($_POST ['observation']);
 	$dossier = ($_POST ['dossier']);
 	$dossier_lieu = ($_POST ['dossier_lieu']);
@@ -24,7 +24,7 @@ if($_GET['action']=='ajouter'){
 	$examen = ($_POST ['examen']);
 	
 		
-		$db->query ( "INSERT INTO agenda_rdv VALUES ('','" . $id_praticien .  "', '" . $id_patient . "','" . $date_debut . "','" . $heure_debut . "','" . $observation . "','" . $dossier . "','" . $dossier_lieu . "','" . $motif . "','" . $examen . "')" );
+		$db->query ( "INSERT INTO agenda_rdv VALUES ('','" . $id_praticien .  "', '" . $id_patient . "','" . $date_debut . "','" . $heure_deb . "','" . $observation . "','" . $dossier . "','" . $dossier_lieu . "','" . $motif . "','" . $examen . "')" );
 		
 		echo '<script>alert("rendez-vous pris")</script>';
 		header ( 'location: accueil.php' );
@@ -78,7 +78,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 	</tr>
 	<tr align="center">
 		<td>Heure du rendez-vous:</td>
-		<td><input type="text" name="heure_debut" id="heure_debut" value="<?php echo $h;?>" size="20" placeholder="" class=""></td>
+		<td><input type="text" name="heure_deb" id="heure_deb" value="<?php echo $h;?>" size="20" placeholder="" class=""></td>
 	</tr>
 	<tr align="center">
 		<td>Observartion:</td>

@@ -21,7 +21,11 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 	
 		<p>Nom: <?php echo "$s->nom_medecin"; ?></p>
 		
-		<p>Date/heure début: <?php echo "$s->date_heure_debut"; ?></p>
+		<p>Datedébut: <?php echo "$s->date_debut"; ?></p>
+		
+		<p>Heure début: <?php echo "$s->heure_debut"; ?></p>
+		
+		<p>Observation: <?php echo "$s->observation"; ?></p>
 		
 		<p>Dossier: <?php echo "$s->dossier"; ?></p>
 		

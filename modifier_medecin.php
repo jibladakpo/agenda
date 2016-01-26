@@ -21,19 +21,19 @@ $s = $select->fetch ( PDO::FETCH_OBJ );
 	$heure_fin = ($_POST ['heure_fin']);
 	$duree_rdv = ($_POST ['duree_rdv']);
 	
-		
+	foreach($_POST ['jour_presence'] as $chkb){	
 		$update = $db->prepare ("UPDATE agenda_praticien 
 					SET nom_medecin = '".$nom_medecin."',
 				specialite  = '".$specialite."', 
-				jour_presence = '".$jour_presence."', 
+				jour_presence = '".$chkb."', 
 				heure_debut = '".$heure_debut."', 
 				heure_fin = '".$heure_fin."', 
 				duree_rdv = '".$duree_rdv."'
 				WHERE id_praticien=$id");
 		$update->execute ();
-		
+	}
 		echo '<script>alert("informations modifié")</script>';
-		header ( 'location: docteur.php' );
+		header ( 'location: medecin.php' );
 		}
 	
 ?>
@@ -59,13 +59,13 @@ $s = $select->fetch ( PDO::FETCH_OBJ );
 			<td>Jours de présences:</td>
 			<td><FORM>
 	
-<INPUT type="checkbox" name="jour_presence" id="jour_presence" value="lundi"<?php if(strstr($s->jour_presence, "lundi")){echo" checked";}else{echo"";}?>> lundi
-<INPUT type="checkbox" name="jour_presence" id="jour_presence" value="mardi"<?php if(strstr($s->jour_presence, "mardi")){echo "checked";}else{echo"";}?>> mardi
-<INPUT type="checkbox" name="jour_presence" id="jour_presence" value="mercredi"<?php if(strstr($s->jour_presence, "mercredi")) {echo"checked";}else{echo"";}?>> mercredi
-<INPUT type="checkbox" name="jour_presence" id="jour_presence" value="jeudi"<?php if(strstr($s->jour_presence, "jeudi")){echo"checked";}else{echo"";}?>> jeudi
-<INPUT type="checkbox" name="jour_presence" id="jour_presence" value="vendredi"<?php if(strstr($s->jour_presence, "vendredi")){echo"checked";}else{echo"";}?>> vendredi
-<INPUT type="checkbox" name="jour_presence" id="jour_presence" value="samedi"<?php if(strstr($s->jour_presence, "samedi"))echo"checked";}else{echo"";}?>> samedi
-<INPUT type="checkbox" name="jour_presence" id="jour_presence" value="dimanche"<?php if(strstr($s->jour_presence, "dimanche")){echo"checked";}else{echo"";}?>> dimanche
+<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="lundi"<?php if(strstr($s->jour_presence, "lundi")){echo" checked";}else{echo"";}?>> lundi
+<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="mardi"<?php if(strstr($s->jour_presence, "mardi")){echo "checked";}else{echo"";}?>> mardi
+<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="mercredi"<?php if(strstr($s->jour_presence, "mercredi")) {echo"checked";}else{echo"";}?>> mercredi
+<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="jeudi"<?php if(strstr($s->jour_presence, "jeudi")){echo"checked";}else{echo"";}?>> jeudi
+<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="vendredi"<?php if(strstr($s->jour_presence, "vendredi")){echo"checked";}else{echo"";}?>> vendredi
+<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="samedi"<?php if(strstr($s->jour_presence, "samedi"))echo"checked";}else{echo"";}?>> samedi
+<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="dimanche"<?php if(strstr($s->jour_presence, "dimanche")){echo"checked";}else{echo"";}?>> dimanche
 
 				</FORM></td>
 				

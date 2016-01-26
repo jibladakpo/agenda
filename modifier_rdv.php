@@ -16,7 +16,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 	$id_praticien = ($_POST ['id_praticien']);
 	$id_patient = ($_POST ['id_patient']);
 	$date_debut = ($_POST ['date_debut']);
-	$heure_debut = ($_POST ['heure_debut']);
+	$heure_debut = ($_POST ['heure_deb']);
 	$observation = ($_POST ['observation']);
 	$dossier = ($_POST ['dossier']);
 	$motif = ($_POST ['motif']);
@@ -26,10 +26,10 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 					SET id_patient = '".$id_patient."',
 				id_praticien  = '".$id_praticien."', 
 				date_debut = '".$date_debut."', 
-				heure_debut = '".$heure_debut."', 
+				heure_deb = '".$heure_deb."', 
 				observation = '".$observation."', 
 				dossier = '".$dossier."',
-				motif = '".$modif."',
+				motif = '".$motif."',
 				examen = '".$examen."'
 				WHERE id_rdv=$id");
 		$update->execute ();
@@ -87,7 +87,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 	
 	<tr align="center">
 		<td>Heure du rendez-vous:</td>
-		<td><input type="text" name="heure_debut" id="heure_debut" value="<?php echo $s->heure_debut;?>" size="20" placeholder="" class=""></td>
+		<td><input type="text" name="heure_deb" id="heure_deb" value="<?php echo $s->heure_deb;?>" size="20" placeholder="" class=""></td>
 	</tr>
 
 	<tr align="center">
