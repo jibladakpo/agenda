@@ -58,7 +58,7 @@ return $horaire;
 		$select = $db->query ("SELECT * FROM `agenda_rdv`,`agenda_patient`, `agenda_praticien` 
 				WHERE agenda_patient.id_patient = agenda_rdv.id_patient 
 				AND agenda_praticien.id_praticien = agenda_rdv.id_praticien 
-				AND agenda_rdv.id_praticien = 1 
+				AND agenda_rdv.id_praticien = $id
 				");
 
 		while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {

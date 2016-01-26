@@ -63,22 +63,44 @@ return $horaire;
 <table>
 
 <tr>
-	<td colspan="2"><a href="fiche_medecin.php?action=afficher&amp;id=<?php echo$s->id_praticien;?>"><?php echo $s->nom_medecin?></a><br>
+	<td colspan="3"><a href="fiche_medecin.php?action=afficher&amp;id=<?php echo$s->id_praticien;?>"><?php echo $s->nom_medecin?></a><br>
 	Date: <?php echo $d;?></td>
 	
 </tr>
 
+
+
 <?php
+			
 			$h = horaire("$s->heure_debut", "$s->heure_fin", "$minute"); 
 			foreach($h as $valeur) {
 		?>
 <tr>
-	<td width="300"> <?php echo $valeur ?></td>
-	
-<td width="700"> <a href='recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $s->id_praticien;?>&amp;h=<?php echo $valeur;?>&amp;dt=<?php echo $d;?>'><img src='image/plus.jpg' width='30'/></a></td>
+<td width='100'> <?php echo $valeur ?></td>
+		<?php 
+		$select = $db->query ("SELECT * FROM `agenda_rdv`,`agenda_patient`, `agenda_praticien` 
+				WHERE agenda_patient.id_patient = agenda_rdv.id_patient 
+				AND agenda_praticien.id_praticien = agenda_rdv.id_praticien 
+				AND agenda_rdv.id_praticien = $id
+				AND agenda_rdv.date_debut = '$d'
+				");
+
+		while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
+	?>
+
+		<?php 		
+	if($s->heure_deb == $valeur){
+	?>	
+<td width="500"><a href=""><?php echo $s->nom?> <?php echo $s->prenom?><br><?php echo $s->observation?></a></td>
+<?php }}?>
+
+<?php if($valeur){?>
+<td colspan=2 width="500"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id;?>&amp;dt=<?php echo $d;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='30'/></a></td>
+<?php }?>
+<?php }?>
+
 
 </tr>
-<?php }?>
 </table>
 
 </DIV>
