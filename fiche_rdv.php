@@ -4,7 +4,10 @@ require_once ('includes/header.php');
 
 if($_GET['action']=='afficher'){
 	$id=$_GET['id'];
-$select = $db->query ("SELECT * FROM `agenda_rdv`,`agenda_patient`, `agenda_praticien` WHERE agenda_patient.id_patient = agenda_rdv.id_patient AND agenda_praticien.id_praticien = agenda_rdv.id_praticien AND agenda_rdv.id_rdv=$id ");
+$select = $db->query ("SELECT * FROM `agenda_rdv`,`agenda_patient`, `agenda_praticien` 
+						WHERE agenda_patient.id_patient = agenda_rdv.id_patient 
+						AND agenda_praticien.id_praticien = agenda_rdv.id_praticien 
+						AND agenda_rdv.id_rdv=$id ");
 $s = $select->fetch ( PDO::FETCH_OBJ )
 ?>
 <html>
@@ -23,7 +26,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		
 		<p>Datedébut: <?php echo "$s->date_debut"; ?></p>
 		
-		<p>Heure début: <?php echo "$s->heure_debut"; ?></p>
+		<p>Heure déb: <?php echo "$s->heure_deb"; ?></p>
 		
 		<p>Observation: <?php echo "$s->observation"; ?></p>
 		

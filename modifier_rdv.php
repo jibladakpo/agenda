@@ -16,7 +16,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 	$id_praticien = ($_POST ['id_praticien']);
 	$id_patient = ($_POST ['id_patient']);
 	$date_debut = ($_POST ['date_debut']);
-	$heure_debut = ($_POST ['heure_deb']);
+	$heure_deb = ($_POST ['heure_deb']);
 	$observation = ($_POST ['observation']);
 	$dossier = ($_POST ['dossier']);
 	$motif = ($_POST ['motif']);
@@ -59,26 +59,13 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		<td><input type="text" name="prenom_patient" id="prenom_patient" value="<?php echo "$s->prenom"; ?>" size="20"placeholder="" class=""></td>
 	</tr>
 	
-	<?php 	 
 
-
-	$select = $db->query ("SELECT * FROM `agenda_praticien`");
-$s = $select->fetch ( PDO::FETCH_OBJ )
-
-?>
 
 	<tr align="center">
 	
 	<td>Nom du médecin:</td>
 	<td><input type="hidden" name="id_praticien" id=id_praticien value="<?php echo $s->id_praticien;?>"><input type="text" name="nom_praticien" id="nom_praticien" value="<?php echo "$s->nom_medecin"; ?>" size="20"placeholder="" class=""></td>
 	</tr>
-		<?php 	 
-
-
-	$select = $db->query ("SELECT * FROM `agenda_rdv`");
-$s = $select->fetch ( PDO::FETCH_OBJ )
-
-?>
 	
 	<tr align="center">
 		<td>Date du rendez-vous:</td>
