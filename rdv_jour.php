@@ -8,6 +8,7 @@ require_once ('includes/header.php');
 <link href="styles/calendrier2.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+<div id="corps">
 <DIV ALIGN="CENTER">
 
 <!--  ========Partie calendrier======== -->
@@ -62,8 +63,8 @@ return $horaire;
 
 <table>
 
-<tr>
-	<td colspan="3"><a href="fiche_medecin.php?action=afficher&amp;id=<?php echo$s->id_praticien;?>"><?php echo $s->nom_medecin?></a><br>
+<tr bgcolor="#b3b3ff">
+	<td colspan="3"><a href="fiche_medecin.php?action=afficher&amp;id=<?php echo$s->id_praticien;?>"  style="font-size:25px"><b><?php echo $s->nom_medecin?></b></a><br>
 	Date: <?php echo $d;?></td>
 	
 </tr>
@@ -76,7 +77,7 @@ return $horaire;
 			foreach($h as $valeur) {
 		?>
 <tr>
-<td width='100'> <?php echo $valeur ?></td>
+<td width='100' bgcolor="#dddddd"> <?php echo $valeur ?></td>
 		<?php 
 		$select = $db->query ("SELECT * FROM `agenda_rdv`,`agenda_patient`, `agenda_praticien` 
 				WHERE agenda_patient.id_patient = agenda_rdv.id_patient 
@@ -91,11 +92,11 @@ return $horaire;
 		<?php 		
 	if($s->heure_deb == $valeur){
 	?>	
-<td width="500"><a href=""><?php echo $s->nom?> <?php echo $s->prenom?><br><?php echo $s->observation?></a></td>
+<td width="500" bgcolor="#c1ffc1"><a href="fiche_rdv.php?action=afficher&amp;id=<?php echo $s->id_rdv?>"><?php echo $s->nom?> <?php echo $s->prenom?><br><?php echo $s->observation?></a></td>
 <?php }}?>
 
 <?php if($valeur){?>
-<td colspan=2 width="500"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id;?>&amp;dt=<?php echo $d;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='30'/></a></td>
+<td colspan=2 width="500"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id;?>&amp;dt=<?php echo $d;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='20'/></a></td>
 <?php }?>
 <?php }?>
 
@@ -104,6 +105,7 @@ return $horaire;
 </table>
 
 </DIV>
+</div>
 </body>
 
 

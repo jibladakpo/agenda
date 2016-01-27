@@ -22,16 +22,19 @@ $s = $select->fetch ( PDO::FETCH_OBJ );
 	$duree_rdv = ($_POST ['duree_rdv']);
 	
 	foreach($_POST ['jour_presence'] as $chkb){	
+		
+		$chk .= $chkb." ";
+	}
 		$update = $db->prepare ("UPDATE agenda_praticien 
 					SET nom_medecin = '".$nom_medecin."',
 				specialite  = '".$specialite."', 
-				jour_presence = '".$chkb."', 
+				jour_presence = '".$chk ."', 
 				heure_debut = '".$heure_debut."', 
 				heure_fin = '".$heure_fin."', 
 				duree_rdv = '".$duree_rdv."'
 				WHERE id_praticien=$id");
 		$update->execute ();
-	}
+	
 		echo '<script>alert("informations modifié")</script>';
 		header ( 'location: medecin.php' );
 		}
@@ -57,7 +60,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ );
 		</tr>
 		<tr align="center">
 			<td>Jours de présences:</td>
-			<td><FORM>
+			<td>
 	
 <INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="lundi"<?php if(strstr($s->jour_presence, "lundi")){echo" checked";}else{echo"";}?>> lundi
 <INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="mardi"<?php if(strstr($s->jour_presence, "mardi")){echo "checked";}else{echo"";}?>> mardi
@@ -67,7 +70,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ );
 <INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="samedi"<?php if(strstr($s->jour_presence, "samedi"))echo"checked";}else{echo"";}?>> samedi
 <INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="dimanche"<?php if(strstr($s->jour_presence, "dimanche")){echo"checked";}else{echo"";}?>> dimanche
 
-				</FORM></td>
+				</td>
 				
 				<?php
 			

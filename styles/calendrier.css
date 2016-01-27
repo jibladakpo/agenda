@@ -21,11 +21,11 @@ cursor:default;
 .tableau caption
 {
 text-align:center;
-background-color:#000;
+background-color:#008040;
 font-family:"Trebuchet MS",Verdana,Helvetica,sans-serif;
 font-weight:bold;
 font-size:20pt;
-color:#999900;
+color:#ffffff;
 padding:25px;
 margin-top:3px;
 }

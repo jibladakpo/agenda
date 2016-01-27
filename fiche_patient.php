@@ -43,7 +43,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		<div>Etablissement à contacter(si dossier ailleurs): <?php echo "$s->etablissement"; ?></div>
 		<br>
 		
-<?php }?>	<a href="ajouter_rdv.php?action=ajouter&amp;id=<?php echo $s->id_patient; ?>"><input type="button" value="Prendre rendez-vous" name="ajouter_rdv"></a>
+<?php }?>	
 			<a href="modifier_patient.php?action=modifier&amp;id=<?php echo $s->id_patient;?>"><input type="button" value="Modifier"
 	name="modifier patient"></a>
 			<a href="supprimer_patient.php?action=supprimer&amp;id=<?php echo $s->id_patient;?>"><input type="button" value="Supprimer"

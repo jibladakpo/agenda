@@ -12,14 +12,12 @@ require_once ('includes/header.php');
 	
 <div id="corps">
 <h1>Rendez-vous</h1>
-<p><a href="recherche_patient.php?action=ajouter&amp;"> =>Prendre rendez-vous</a></p>
-
 
 <table>
 			<tr>
 			<th>Fiche rdv</th>
-			<th>Nom du patient</th>
 			<th>Nom du médecin</th>
+			<th>Nom du patient</th>
 			<th>Date de naissance</th>
 			<th>Date rdv</th>
 			<th>Heure rdv</th>

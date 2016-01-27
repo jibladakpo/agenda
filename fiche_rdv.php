@@ -24,9 +24,9 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 	
 		<p>Nom: <?php echo "$s->nom_medecin"; ?></p>
 		
-		<p>Datedébut: <?php echo "$s->date_debut"; ?></p>
+		<p>Date: <?php echo "$s->date_debut"; ?></p>
 		
-		<p>Heure déb: <?php echo "$s->heure_deb"; ?></p>
+		<p>Heure : <?php echo "$s->heure_deb"; ?></p>
 		
 		<p>Observation: <?php echo "$s->observation"; ?></p>
 		
@@ -41,7 +41,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		
 		 <a href="modifier_rdv.php?action=modifier&amp;id=<?php echo $s->id_rdv;?>"><input type="button" value="Modifier"
 	name="modifier rdv"></a>
-			<a href="supprimer_rdv.php?action=supprimer&amp;id=<?php echo $s->id;?>"><input type="button" value="Supprimer"
+			<a href="supprimer_rdv.php?action=supprimer&amp;id=<?php echo $s->id_rdv;?>"><input type="button" value="Supprimer"
 	name="supprimer_rdv"></a>
 	</div>
 

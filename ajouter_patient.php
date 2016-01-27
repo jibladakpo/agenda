@@ -69,14 +69,13 @@ require_once ('includes/header.php');
 		
 		<tr align="center">
 			<td>Dossier (LFM, ailleurs, aucun):</td>
-			<td><FORM>
+			<td>
 	
 <INPUT type="checkbox" name="dossier" id="dossier" value="LFM"> LFM
 <INPUT type="checkbox" name="dossier" id="dossier" value="ailleurs"> ailleurs
 <INPUT type="checkbox" name="dossier" id="dossier" value="aucun"> aucun
-
-
-				</FORM></td>
+			
+			</td>
    	    </tr>	
 	
 		<tr align="center">

@@ -68,12 +68,12 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 	</tr>
 	
 	<tr align="center">
-		<td>Date du rendez-vous:</td>
+		<td>Date :</td>
 		<td><input type="text" name="date_debut" id="date_debut" value="<?php echo $s->date_debut;?>" size="20" placeholder="" class=""></td>
 	</tr>
 	
 	<tr align="center">
-		<td>Heure du rendez-vous:</td>
+		<td>Heure :</td>
 		<td><input type="text" name="heure_deb" id="heure_deb" value="<?php echo $s->heure_deb;?>" size="20" placeholder="" class=""></td>
 	</tr>
 
@@ -82,13 +82,18 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		<td><textarea name="observation" id="observation"  placeholder="" class=""><?php echo $s->observation;?></textarea></td>
 	</tr>
 	<tr align="center">
-		<td>Dossier:</td>
-		<td><input type="text" name="dossier" id="dossier" value="<?php echo $s->dossier;?>"  size="20"placeholder="" class=""></td>
-	</tr>
+			<td>Dossier (LFM, ailleurs, aucun):</td>
+			<td>
+	
+<INPUT type="checkbox" name="dossier" id="dossier" value="LFM"<?php if(strstr($s->dossier, "LFM")){echo" checked";}else{echo"";}?>> LFM
+<INPUT type="checkbox" name="dossier" id="dossier" value="ailleurs"<?php if(strstr($s->dossier, "ailleurs")){echo" checked";}else{echo"";}?>> ailleurs
+<INPUT type="checkbox" name="dossier" id="dossier" value="aucun"<?php if(strstr($s->dossier, "aucun")){echo" checked";}else{echo"";}?>> aucun
+			
+			</td>
 	
 	<tr align="center">
 		<td>Lieu du dossier:</td>
-		<td><input type="text" name="dossier_lieu" id="dossier_lieu" value="<?php echo $s->dossier_lieu;?>" size="20" placeholder="" class=""></td>
+		<td><input type="text" name="dossier_lieu" id="dossier_lieu" value="<?php echo $s->dossier_lieu;?>" size="20" placeholder="" class="" ></td>
 	</tr>
 	
 	<tr align="center">
