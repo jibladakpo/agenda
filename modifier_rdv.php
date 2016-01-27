@@ -88,26 +88,42 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		<INPUT type="checkbox" name="dossier" id="dossier" value="ailleurs"<?php if(strstr($s->dossier, "ailleurs")){echo" checked";}else{echo"";}?>> ailleurs
 		<INPUT type="checkbox" name="dossier" id="dossier" value="aucun"<?php if(strstr($s->dossier, "aucun")){echo" checked";}else{echo"";}?>> aucun
 	</div>		
-			<?php if($s->id_praticien == 2){?> <!-- modifier l'id selon les praticiens -->
+		
+	<div>
+	<label>Lieu du dossier:</label>
+	<input type="text" name="dossier_lieu" id="dossier_lieu" value="<?php echo $s->dossier_lieu;?>" size="20" placeholder="" class="" >
+	</div>
+		<?php if($s->id_praticien == 2){?> <!-- modifier l'id selon les praticiens -->
+				<div>
+				<label>Examen:</label>
+		<INPUT type="checkbox" name="examen" id="examen" value="scanner"<?php if(strstr($s->examen, "scanner")){echo" checked";}else{echo"";}?>> Scanner
+		<INPUT type="checkbox" name="examen" id="examen" value="irm"<?php if(strstr($s->examen, "irm")){echo" checked";}else{echo"";}?>> IRM
+		<INPUT type="checkbox" name="examen" id="examen" value="radio"<?php if(strstr($s->examen, "radio")){echo" checked";}else{echo"";}?>> Radio	
+				
+				</div>
+				
+				
 				<div>
 					<label>Articulation concerné:</label>
 					<textarea name="articulation" id="articulation"  placeholder="" class=""></textarea>
 				</div>
 			<?php }?>
-	<div>
-	<label>Lieu du dossier:</label>
-	<input type="text" name="dossier_lieu" id="dossier_lieu" value="<?php echo $s->dossier_lieu;?>" size="20" placeholder="" class="" >
-	</div>
-	
+			
+			<?php if($s->id_praticien == 9){?> <!-- modifier l'id selon les praticiens -->
+				<div>
+				<label>Raison:</label>
+		<INPUT type="checkbox" name="raison" id="raison" value="nez"<?php if(strstr($s->raison, "nez")){echo" checked";}else{echo"";}?>> Nez
+		<INPUT type="checkbox" name="raison" id="raison" value="gorge"<?php if(strstr($s->raison, "gorge")){echo" checked";}else{echo"";}?>> Gorge
+		<INPUT type="checkbox" name="raison" id="raison" value="oreille"<?php if(strstr($s->raison, "oreille")){echo" checked";}else{echo"";}?>> Oreille	
+				
+				</div>
+				
+			<?php }?>
 	<div>
 	<label>Motif:</label>
 	<textarea name="motif" id="motif"  placeholder="" class=""><?php echo $s->motif;?></textarea>
 	</div>
 	
-	<div>
-	<label>Examen:</label>
-	<textarea name="examen" id="examen"  placeholder="" class=""><?php echo $s->examen;?></textarea>
-	</div>
    	    	
 <?php }?>   	    
 		
