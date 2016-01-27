@@ -22,8 +22,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 	$ville = ($_POST ['ville']);
 	$cp = ($_POST ['cp']);
 	$medecin_traitant = ($_POST ['medecin_traitant']);
-	$dossier = ($_POST ['dossier']);
-	$etablissement =($_POST ['etablissement']);
+	
 	
 	
 		$update = $db->prepare ("UPDATE agenda_patient 
@@ -49,76 +48,63 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 <html>
 
 <head>
-	<link rel="stylesheet" href="">
+	<link rel="stylesheet" href="styles/formulaire.css">
 	<title></title>
 </head>
+<body>
+<DIV ALIGN="CENTER">
 <div id="corps">
-	<h1>Modifier les informations concernant le patient</h1>
+	<h1>Modifier fiche patient</h1>
 	<form action="" method="POST">
-		<table>
-		<tr align="center">
-			<td>Nom:</td>
-			<td><input type="text" name="nom" id="nom" placeholder="" value="<?php echo "$s->nom"; ?>" class=""></td>
-		</tr>
-		<tr align="center">
-			<td>Prénom:</td>
-			<td><input type="text" name="prenom" id="prenom"placeholder=""value="<?php echo "$s->prenom"; ?> " class=""></td>
-		</tr>
-		<tr align="center">
-			<td>Date de naissance (écrire jour/mois/année):</td>
-			<td><input type="text" name="date_naissance" id="date_naissance" size="20" placeholder="" value="<?php echo "$s->date_naissance"; ?> " class=""></td>
-		</tr>
-		<tr align="center">
-			<td>Téléphone:</td>
-			<td><input type="text" name="tel_fixe" id="tel_fixe"  placeholder="" placeholder=">"value="<?php echo "$s->tel_fixe"; ?> " class=""></td>
-		</tr>
-		<tr align="center">
-			<td>Mail:</td>
-			<td><input type="text" name="mail" id="mail"  placeholder="" placeholder=">"value="<?php echo "$s->mail"; ?> " class=""></td>
-		</tr>
-		<tr align="center">
-			<td>Adresse:</td>
-			<td><input type="text" name="adresse" id="adresse" placeholder=""  value="<?php echo "$s->adresse"; ?> " class=""></td>
-		</tr>
-		<tr align="center">
-			<td>Ville:</td>
-			<td><input type="text" name="ville" id="ville"  placeholder="" value="<?php echo "$s->ville"; ?>"size=""></td>
-		</tr>
-		<tr align="center">
-			<td>Code Postal:</td>
-			<td><input type="text" name="cp" id="cp"  placeholder="" value="<?php echo "$s->cp"; ?>"size=""></td>
+		<div>
+			<label>Nom:</label>
+			<input type="text" name="nom" id="nom" placeholder="" value="<?php echo "$s->nom"; ?>" class="">
+		</div>
+		<div>
+			<label>Prénom:</label>
+			<input type="text" name="prenom" id="prenom"placeholder=""value="<?php echo "$s->prenom"; ?> " class="">
+		</div>
+		<div>
+			<label>Date de naissance:</label>
+			<input type="text" name="date_naissance" id="date_naissance" size="20" placeholder="" value="<?php echo "$s->date_naissance"; ?> " class="">
+		</div>
+		<div>
+			<label>Téléphone:</label>
+			<input type="text" name="tel_fixe" id="tel_fixe"  placeholder="" placeholder=">"value="<?php echo "$s->tel_fixe"; ?> " class="">
+		</div>
+		<div>
+			<label>Mail:</label>
+			<input type="text" name="mail" id="mail"  placeholder="" placeholder=">"value="<?php echo "$s->mail"; ?> " class="">
+		</div>
+		<div>
+			<label>Adresse:</label>
+			<input type="text" name="adresse" id="adresse" placeholder=""  value="<?php echo "$s->adresse"; ?> " class="">
+		</div>
+		<div>
+			<label>Ville:</label>
+			<input type="text" name="ville" id="ville"  placeholder="" value="<?php echo "$s->ville"; ?>"size="">
+		</div>
+		<div>
+			<label>Code Postal:</label>
+			<input type="text" name="cp" id="cp"  placeholder="" value="<?php echo "$s->cp"; ?>"size="">
+		</div>
+		<div>
+			<label>Médecin Traitant:</label>
+			<input type="text" name="medecin_traitant" id="medecin_traitant" placeholder="" value="<?php echo "$s->medecin_traitant"; ?>" size="">
+		</div>
 		
-		</tr>
-		<tr align="center">
-			<td>Médecin Traitant:</td>
-			<td><input type="text" name="medecin_traitant" id="medecin_traitant" placeholder="" value="<?php echo "$s->medecin_traitant"; ?>" size=""></td>
-		</tr>
 		
-		<tr align="center">
-			<td>Dossier:</td>
-			<td>
-<INPUT type="checkbox" name="dossier" id="dossier" value="LFM"<?php if(strstr($s->dossier, "LFM")){echo" checked";}else{echo"";}?>> LFM
-<INPUT type="checkbox" name="dossier" id="dossier" value="ailleurs"<?php if(strstr($s->dossier, "ailleurs")){echo "checked";}else{echo"";}?>> ailleurs
-<INPUT type="checkbox" name="dossier" id="dossier" value="aucun"<?php if(strstr($s->dossier, "aucun")) {echo"checked";}else{echo"";}?>> aucun
-			</td>
-	
-		<tr align="center">
-			<td>Etablissement à contacter (si ailleurs):</td>
-			<td><input type="text" name="etablissement" id="etablissement" placeholder="" value="<?php echo "$s->etablissement"; ?>" size=""></td>
 <?php }?>   	
-   	    </tr>	
-		<tr align="center">
-			<td></td>
-				<td>
-					<div class="button">
-       			 		<button type="submit" name="submit">Valider</button>
-     					<button type="reset" name="annuler">Annuler</button>
-    				</div>
-    			</td>
-    	</tr>
-		</table>
+   	   
+		
+		<div class="button">
+       		<button type="submit" name="submit">Valider</button>
+     		<button type="reset" name="annuler">Annuler</button>
+    	</div>
+    		
 	</form>
 </div>
-
+</DIV>
+</body>
 </html>
 

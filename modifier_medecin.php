@@ -43,68 +43,60 @@ $s = $select->fetch ( PDO::FETCH_OBJ );
 <html>
 
 <head>
-	<link rel="stylesheet" href="">
+	<link rel="stylesheet" href="styles/formulaire.css">
 	<title></title>
 </head>
+<body>
+<DIV ALIGN="CENTER">
 <div id="corps">
-	<h1>Modifier les informations concernant le médecin</h1>
-	<form action="" method="POST">
-		<table>
-		<tr align="center">
-			<td>Nom:</td>
-			<td><input type="text" name="nom_medecin" size="80" id="nom_medecin" placeholder="" value="<?php echo "$s->nom_medecin"; ?>" class=""></td>
-		</tr>
-		<tr align="center">
-			<td>Spécialité:</td>
-			<td><input type="text" name="specialite"size="80" id="specialite"placeholder=""value="<?php echo "$s->specialite"; ?> " class=""></td>
-		</tr>
-		<tr align="center">
-			<td>Jours de présences:</td>
-			<td>
-	
-<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="lundi"<?php if(strstr($s->jour_presence, "lundi")){echo" checked";}else{echo"";}?>> lundi
-<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="mardi"<?php if(strstr($s->jour_presence, "mardi")){echo "checked";}else{echo"";}?>> mardi
-<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="mercredi"<?php if(strstr($s->jour_presence, "mercredi")) {echo"checked";}else{echo"";}?>> mercredi
-<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="jeudi"<?php if(strstr($s->jour_presence, "jeudi")){echo"checked";}else{echo"";}?>> jeudi
-<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="vendredi"<?php if(strstr($s->jour_presence, "vendredi")){echo"checked";}else{echo"";}?>> vendredi
-<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="samedi"<?php if(strstr($s->jour_presence, "samedi"))echo"checked";}else{echo"";}?>> samedi
-<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="dimanche"<?php if(strstr($s->jour_presence, "dimanche")){echo"checked";}else{echo"";}?>> dimanche
 
-				</td>
-				
-				<?php
-			
-				
-				
-?>
-		</tr>
-		<tr align="center">
-			<td>Heure du début de rendez-vous(heure:minute):</td>
-			<td><input type="text" name="heure_debut" size="80" id="heure_debut"  placeholder="" placeholder=">"value="<?php echo "$s->heure_debut"; ?> " class=""></td>
-		</tr>
-		<tr align="center">
-			<td>Heure du fin de rendez-vous(heure:minute:</td>
-			<td><input type="text" name="heure_fin" size="80" id="heure_fin" placeholder=""  value="<?php echo "$s->heure_fin"; ?> " class=""></td>
-		</tr>
-		<tr align="center">
-			<td>Durée du rendez-vous(en seconde):</td>
-			<td><input type="text" name="duree_rdv" size="80" id="duree_rdv"  placeholder="" value="<?php echo "$s->duree_rdv"; ?>"size=""></td>
-		</tr>
+	<h1>Modifier fiche médecin</h1>
+	<form action="" method="POST">
+		
+	<div>
+	<label>Nom:</label>
+		<input type="text" name="nom_medecin" size="80" id="nom_medecin" placeholder="" value="<?php echo "$s->nom_medecin"; ?>" class="">
+	</div>	
+	<div>	
+	<label>Spécialité:</label>
+		<input type="text" name="specialite"size="80" id="specialite"placeholder=""value="<?php echo "$s->specialite"; ?> " class="">
+	</div>	
+		
+	<div>	
+	<label>Jours de présences:</label>
+			<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="lundi"<?php if(strstr($s->jour_presence, "lundi")){echo" checked";}else{echo"";}?>> lundi
+			<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="mardi"<?php if(strstr($s->jour_presence, "mardi")){echo "checked";}else{echo"";}?>> mardi
+			<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="mercredi"<?php if(strstr($s->jour_presence, "mercredi")) {echo"checked";}else{echo"";}?>> mercredi
+			<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="jeudi"<?php if(strstr($s->jour_presence, "jeudi")){echo"checked";}else{echo"";}?>> jeudi
+			<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="vendredi"<?php if(strstr($s->jour_presence, "vendredi")){echo"checked";}else{echo"";}?>> vendredi
+			<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="samedi"<?php if(strstr($s->jour_presence, "samedi"))echo"checked";}else{echo"";}?>> samedi
+			<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="dimanche"<?php if(strstr($s->jour_presence, "dimanche")){echo"checked";}else{echo"";}?>> dimanche
+	</div>
 	
-   	    	
-   	    
-		<tr align="center">
-			<td></td>
-				<td>
-					<div class="button">
-       			 		<button type="submit" name="submit">Valider</button>
-     					<button type="reset" name="annuler">Annuler</button>
-    				</div>
-    			</td>
-    	</tr>
-		</table>
+	<div>	
+	<label>Durée du rendez-vous:</label>
+		<input type="text" name="duree_rdv" size="80" id="duree_rdv"  placeholder="" value="<?php echo "$s->duree_rdv"; ?>"size="">
+	</div>	
+	<div>	
+	<label>Heure début <br>(heure:minute):</label>
+		<input type="text" name="heure_debut" size="80" id="heure_debut"  placeholder="" placeholder=">"value="<?php echo "$s->heure_debut"; ?> " class="">
+	</div>
+		
+	<div>	
+	<label>Heure fin <br>(heure:minute):</label>
+		<input type="text" name="heure_fin" size="80" id="heure_fin" placeholder=""  value="<?php echo "$s->heure_fin"; ?> " class="">
+	</div>	
+		
+		   
+	<div class="button">
+       	<button type="submit" name="submit">Valider</button>
+     	<button type="reset" name="annuler">Annuler</button>
+    </div>
+    			
+    	
 	</form>
 </div>
-
+</DIV>
+</body>
 </html>
 
