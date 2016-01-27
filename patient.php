@@ -34,10 +34,10 @@ else{
 	
 <div id="corps">
 	<h1>Patients</h1>	
-	<a href="recherche_patient.php">=>Rechercher un patient</a>
+	<a href="recherche_patient.php"><img src='image/fleche.png' width='20'/> Rechercher un patient</a>
 	<br>
 	<br>
-	<a href="ajouter_patient.php">=>Ajouter un nouveau patient</a>
+	<a href="ajouter_patient.php"><img src='image/fleche.png' width='20'/> Ajouter un nouveau patient</a>
 	<br>
 	<br>
 	

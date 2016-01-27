@@ -38,7 +38,7 @@ while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
 </table>
 	<br>
 
-<a href="ajouter_medecin.php">=>Ajouter un nouveau médecin</a>
+<a href="ajouter_medecin.php"> <img src='image/fleche.png' width='20'/> Ajouter un nouveau médecin</a>
 </div>
 </html>	
 

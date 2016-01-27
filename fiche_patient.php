@@ -30,6 +30,8 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		<br>
 		<div>Téléphone:<?php echo "$s->tel_fixe"; ?></div>
 		<br>
+		<div>Adresse mail:<?php echo "$s->mail"; ?></div>
+		<br>
 		<div>Adresse:<?php echo "$s->adresse"; ?></div>
 		<br>
 		<div>Ville:<?php echo "$s->ville"; ?></div>
@@ -37,10 +39,6 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		<div>Code Postal:<?php echo "$s->cp"; ?></div>
 		<br>
 		<div>Médecin traitant:<?php echo "$s->medecin_traitant"; ?></div>
-		<br>
-		<div>Dossier: <?php echo "$s->dossier"; ?></div>
-		<br>
-		<div>Etablissement à contacter(si dossier ailleurs): <?php echo "$s->etablissement"; ?></div>
 		<br>
 		
 <?php }?>	

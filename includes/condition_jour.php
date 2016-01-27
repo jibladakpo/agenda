@@ -1,7 +1,7 @@
 <!-- conditions jour de présence  -->
 <!-- faire attention aux espace dans la base de donnée -->
 <?php
-if ($s->jour_presence == "lundi"){
+if ($s->jour_presence == "lundi "){
 	$list_dispo=array(1);
 }
 else if ($s->jour_presence == "mardi "){

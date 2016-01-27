@@ -59,8 +59,6 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		<td><input type="text" name="prenom_patient" id="prenom_patient" value="<?php echo "$s->prenom"; ?>" size="20"placeholder="" class=""></td>
 	</tr>
 	
-
-
 	<tr align="center">
 	
 	<td>Nom du médecin:</td>
@@ -90,7 +88,13 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 <INPUT type="checkbox" name="dossier" id="dossier" value="aucun"<?php if(strstr($s->dossier, "aucun")){echo" checked";}else{echo"";}?>> aucun
 			
 			</td>
-	
+			
+			<?php if($s->id_praticien == 2){?>
+			<tr align="center">
+			<td>Articulation concerné:</td>
+		<td><textarea name="articulation" id="articulation"  placeholder="" class=""></textarea></td>
+	</tr>
+	<?php }?>
 	<tr align="center">
 		<td>Lieu du dossier:</td>
 		<td><input type="text" name="dossier_lieu" id="dossier_lieu" value="<?php echo $s->dossier_lieu;?>" size="20" placeholder="" class="" ></td>

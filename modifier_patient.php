@@ -17,6 +17,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 	$prenom = ($_POST ['prenom']);
 	$date_naissance = ($_POST ['date_naissance']);
 	$tel_fixe = ($_POST ['tel_fixe']);
+	$mail = ($_POST ['mail']);
 	$adresse = ($_POST ['adresse']);
 	$ville = ($_POST ['ville']);
 	$cp = ($_POST ['cp']);
@@ -29,13 +30,13 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 					SET nom = '".$nom."',
 				prenom  = '".$prenom."', 
 				date_naissance = '".$date_naissance."', 
-				tel_fixe = '".$tel_fixe."', 
+				tel_fixe = '".$tel_fixe."',
+				mail = '".$mail."',
 				adresse = '".$adresse."', 
 				cp = '".$cp."', 
 				ville = '".$ville."', 
 				medecin_traitant = '".$medecin_traitant."',
-				dossier = '".$dossier."',
-				etablissement = '".$etablissement."'
+				
 				
 				WHERE id_patient=$id");
 		$update->execute ();
@@ -72,6 +73,10 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 			<td><input type="text" name="tel_fixe" id="tel_fixe"  placeholder="" placeholder=">"value="<?php echo "$s->tel_fixe"; ?> " class=""></td>
 		</tr>
 		<tr align="center">
+			<td>Mail:</td>
+			<td><input type="text" name="mail" id="mail"  placeholder="" placeholder=">"value="<?php echo "$s->mail"; ?> " class=""></td>
+		</tr>
+		<tr align="center">
 			<td>Adresse:</td>
 			<td><input type="text" name="adresse" id="adresse" placeholder=""  value="<?php echo "$s->adresse"; ?> " class=""></td>
 		</tr>
@@ -91,12 +96,11 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		
 		<tr align="center">
 			<td>Dossier:</td>
-			<td><FORM>
+			<td>
 <INPUT type="checkbox" name="dossier" id="dossier" value="LFM"<?php if(strstr($s->dossier, "LFM")){echo" checked";}else{echo"";}?>> LFM
 <INPUT type="checkbox" name="dossier" id="dossier" value="ailleurs"<?php if(strstr($s->dossier, "ailleurs")){echo "checked";}else{echo"";}?>> ailleurs
 <INPUT type="checkbox" name="dossier" id="dossier" value="aucun"<?php if(strstr($s->dossier, "aucun")) {echo"checked";}else{echo"";}?>> aucun
-
-				</FORM></td>
+			</td>
 	
 		<tr align="center">
 			<td>Etablissement à contacter (si ailleurs):</td>
