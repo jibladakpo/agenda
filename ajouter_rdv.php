@@ -8,8 +8,7 @@ if($_GET['action']=='ajouter'){
 	$id_praticien=$_GET['id_praticien'];
 	$d=$_GET['dt'];
 	$h=$_GET['h'];
-	
-	
+		
 ?>
 <?php if (isset ( $_POST ['submit'] )) {
 
@@ -27,7 +26,7 @@ if($_GET['action']=='ajouter'){
 		$db->query ( "INSERT INTO agenda_rdv VALUES ('','" . $id_praticien .  "', '" . $id_patient . "','" . $date_debut . "','" . $heure_deb . "','" . $observation . "','" . $dossier . "','" . $dossier_lieu . "','" . $motif . "','" . $examen . "')" );
 		
 		echo '<script>alert("rendez-vous pris")</script>';
-		header ( 'location: rdv_jour.php?action=afficher&;id_praticien='.$id_praticien.'&amp;dt='.$d.'');
+		header ( 'location: accueil.php');
 		}
 	
 ?>

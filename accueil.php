@@ -162,7 +162,7 @@ if($y!=7)
 
 
 <script type="text/javascript">
-function change()
+function change()//fonction qui change les cases selon les critères (médecins,mois, années)
 {
 	document.dt.submit();
 }

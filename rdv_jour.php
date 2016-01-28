@@ -19,7 +19,7 @@ require_once ('includes/header.php');
 
 
 <?php
-//recupération des variables id_praticien et date
+//recupération des variables id_praticien et date sur l'url
 $id_praticien=$_GET['id_praticien'];
 $d=$_GET['dt'];
 
