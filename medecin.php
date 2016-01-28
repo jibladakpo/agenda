@@ -26,9 +26,9 @@ while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
 	
   	 
    	<tr>      
-   	<td width=300> <a href="fiche_medecin.php?action=afficher&amp;id=<?php echo $s->id_praticien;?>"><img src="image/fiche.png" width="30"/></a></td>   
-       <td width=300> <?php echo $s->nom_medecin;?> </td>
-       <td width=300> <?php echo $s->specialite;?></td>
+   	<td> <a href="fiche_medecin.php?action=afficher&amp;id=<?php echo $s->id_praticien;?>"><img src="image/fiche.png" width="30"/></a></td>   
+       <td width=400> <?php echo $s->nom_medecin;?> </td>
+       <td width=400> <?php echo $s->specialite;?></td>
       <td width=100><a href="modifier_medecin.php?action=modifier&amp;id=<?php echo $s->id_praticien;?>"> <img src="image/modifier.jpg" width="30"/></a> </td>
        <td width=100> <a href="supprimer_medecin.php?action=supprimer&amp;id=<?php echo $s->id_praticien;?>"> <img src="image/croix.jpg" width="30"/></a> </td>
        	

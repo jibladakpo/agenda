@@ -20,13 +20,13 @@ require_once ('includes/header.php');
 
 <?php
 //recupération des variables id_praticien et date
-$id=$_GET['id'];
+$id_praticien=$_GET['id_praticien'];
 $d=$_GET['dt'];
 
 //rqt sql
 $select = $db->query ("SELECT *
 						FROM `agenda_praticien`
-						WHERE agenda_praticien.id_praticien = $id");
+						WHERE agenda_praticien.id_praticien = $id_praticien");
 
 $s = $select->fetch ( PDO::FETCH_OBJ );
 
@@ -64,7 +64,7 @@ return $horaire;
 <table>
 
 <tr bgcolor="#b3b3ff">
-	<td colspan="3"><a href="fiche_medecin.php?action=afficher&amp;id=<?php echo$s->id_praticien;?>"  style="font-size:25px"><b><?php echo $s->nom_medecin?></b></a><br>
+	<td colspan="5"><a href="fiche_medecin.php?action=afficher&amp;id_praticien=<?php echo$s->id_praticien;?>"  style="font-size:25px"><b><?php echo $s->nom_medecin?></b></a><br>
 	Date: <?php echo $d;?></td>
 	
 </tr>
@@ -82,7 +82,7 @@ return $horaire;
 		$select = $db->query ("SELECT * FROM `agenda_rdv`,`agenda_patient`, `agenda_praticien` 
 				WHERE agenda_patient.id_patient = agenda_rdv.id_patient 
 				AND agenda_praticien.id_praticien = agenda_rdv.id_praticien 
-				AND agenda_rdv.id_praticien = $id
+				AND agenda_rdv.id_praticien = $id_praticien
 				AND agenda_rdv.date_debut = '$d'
 				");
 
@@ -96,7 +96,7 @@ return $horaire;
 <?php }}?>
 
 <?php if($valeur){?>
-<td colspan=2 width="500"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id;?>&amp;dt=<?php echo $d;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='20'/></a></td>
+<td colspan=2 width="500"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $d;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='20'/></a></td>
 <?php }?>
 <?php }?>
 

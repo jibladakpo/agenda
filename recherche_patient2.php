@@ -28,11 +28,11 @@ while($donnees = mysql_fetch_array($query)) // on fait un while pour afficher la
 ?>
 <?php 
 
-	$id=$_GET['id_praticien'];
+	$id_praticien=$_GET['id_praticien'];
 	$d=$_GET['dt'];
 	$h=$_GET['h'];	
 ?>
-<p><a href="fiche_patient.php?action=afficher&amp;id_praticien=&amp;id_patient=<?php echo $donnees['id_patient']; ?>"><?php echo $donnees['nom']; ?> <?php echo $donnees['prenom']; ?>  <?php echo $donnees['date_naissance']; ?></a><a href="ajouter_rdv.php?action=ajouter&amp;id=<?php echo $donnees['id_patient']; ?>&amp;id_praticien=<?php echo $id;?>&amp;h=<?php echo $h;?>&amp;dt=<?php echo $d;?>"> 
+<p><a href="fiche_patient.php?action=afficher&amp;id_praticien=&amp;id_patient=<?php echo $donnees['id_patient']; ?>"><?php echo $donnees['nom']; ?> <?php echo $donnees['prenom']; ?>  <?php echo $donnees['date_naissance']; ?></a><a href="ajouter_rdv.php?action=ajouter&amp;id=<?php echo $donnees['id_patient']; ?>&amp;id_praticien=<?php echo $id_praticien;?>&amp;h=<?php echo $h;?>&amp;dt=<?php echo $d;?>"> 
 	<input type="button" value="Prendre rendez-vous"
 	name="ajouter_rdv">
 </a></p>

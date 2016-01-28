@@ -120,7 +120,7 @@ for($i=1;$i<($l_day+1);$i++)
 	$da=$i."/".$mois."/".$annee;
 	$id= "$id_praticien";
 	$lien=$lien_redir;
-	$lien.="?action=afficher&amp;id=$id&amp;dt=".$da;
+	$lien.="?action=afficher&amp;id_praticien=$id&amp;dt=".$da;
 	echo "<td";
 	if(in_array($da, $list_spe))
 	{
@@ -182,7 +182,10 @@ function go_lien(a)
 	top.document.location=a;
 }
 </script>
+
+
 <!-- partie légende -->
+<!--  
 <br>
 <table>
 <tr>
@@ -206,8 +209,8 @@ function go_lien(a)
 <td width=300>vacance</td>
 </tr>
 </table>
+
+-->
 </DIV>
-
-
 
 </body>

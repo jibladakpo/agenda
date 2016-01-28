@@ -27,7 +27,7 @@ if($_GET['action']=='ajouter'){
 		$db->query ( "INSERT INTO agenda_rdv VALUES ('','" . $id_praticien .  "', '" . $id_patient . "','" . $date_debut . "','" . $heure_deb . "','" . $observation . "','" . $dossier . "','" . $dossier_lieu . "','" . $motif . "','" . $examen . "')" );
 		
 		echo '<script>alert("rendez-vous pris")</script>';
-		header ( 'location: accueil.php' );
+		header ( 'location: rdv_jour.php?action=afficher&;id_praticien='.$id_praticien.'&amp;dt='.$d.'');
 		}
 	
 ?>
@@ -101,19 +101,41 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		<label>Lieu du dossier:</label>
 		<input type="text" name="dossier_lieu" id="dossier_lieu" value="" size="20" placeholder="" class="">
 	</div>
-	
-	<div>
-		<label>Motif:</label>
-		<textarea name="motif" id="motif"  placeholder="" class=""></textarea>
-	</div>
-	<div>
-		<label>Examen:</label>
-		<textarea name="examen" id="examen"  placeholder="" class=""></textarea>
-	</div>
+<?php 	 
+
+	$select = $db->query ("SELECT * FROM `agenda_praticien` WHERE id_praticien=$id_praticien");
+$s = $select->fetch ( PDO::FETCH_OBJ )
+
+?>	
+	<?php if($s->id_praticien == 2){?> <!-- modifier l'id selon les praticiens -->
+				<div>
+				<label>Examen:</label>
+		<INPUT type="checkbox" name="examen" id="examen" value="scanner">Scanner
+		<INPUT type="checkbox" name="examen" id="examen" value="irm"> IRM
+		<INPUT type="checkbox" name="examen" id="examen" value="radio"> Radio	
+				
+				</div>
+						
+				<div>
+					<label>Articulation concerné:</label>
+					<textarea name="articulation" id="articulation"  placeholder="" class=""></textarea>
+				</div>
+			<?php }?>
+			
+			<?php if($s->id_praticien == 9){?> <!-- modifier l'id selon les praticiens -->
+				<div>
+				<label>Raison:</label>
+		<INPUT type="checkbox" name="raison" id="raison" value="nez"> Nez
+		<INPUT type="checkbox" name="raison" id="raison" value="gorge"> Gorge
+		<INPUT type="checkbox" name="raison" id="raison" value="oreille"> Oreille	
+				
+				</div>
+				
+			<?php }?>
 	
 	<div class="button">
         <button type="submit" name="submit">Valider</button>
-        <button type="reset" >Annuler</button>
+        
     </div>
     
     
