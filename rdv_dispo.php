@@ -151,12 +151,13 @@ while ($s = $select->fetch ( PDO::FETCH_OBJ ) ){
 <tr>
 
 <td width='50' bgcolor="#dddddd"> <?php echo $valeur ?></td>
+<?php if ($jours_fr[$f] == 'lundi' || $jours_fr[$f] == 'mardi' || $jours_fr[$f] == 'mercredi' || $jours_fr[$f] == 'jeudi' || $jours_fr[$f] == 'vendredi'){?>
 <td colspan=2 width="100"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $d;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='20'/></a></td>
-
-<?php }}?>
+<?php } else {echo "<td colspan=2 width='100'><img src='image/croix.jpg' width='20'/></td> ";}?>
+<?php }?>
 </tr>
 <?php 	
-}
+}}
 ?>
 </table>
 <br>
