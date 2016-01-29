@@ -85,3 +85,8 @@ td
 th,td {
     text-align: center;
 }
+
+#planning{
+	 display: inline-block;
+	 
+}

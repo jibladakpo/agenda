@@ -97,8 +97,9 @@ $titre=$mois_fr[$mois]." : ".$annee;
 ?>
 </select>
 
-
 </form>
+
+<!-- calendrier -->
 <table class="tableau"><caption><?php echo $titre ;?></caption>
 <tr><th>Lun</th><th>Mar</th><th>Mer</th><th>Jeu</th><th>Ven</th><th>Sam</th><th>Dim</th></tr>
 <tr>
