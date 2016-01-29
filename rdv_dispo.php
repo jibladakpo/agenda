@@ -27,6 +27,10 @@ else
 }
 ?>
 
+<?php
+require_once ('includes/condition_jour.php');
+?>
+
 <?php 
 
 $jours_fr = Array("", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche");
@@ -42,6 +46,7 @@ else
 	$id_praticien=("1");
 	$mois=date("n");
 	$annee=date("Y");
+	
 }
 
 ?>
@@ -67,6 +72,9 @@ else
 		
 		<select name="annee" id="annee" onChange="change()" class="liste">
 <?php
+$l_day=date("t",mktime(0,0,0,$mois,1,$annee));
+$x=date("N", mktime(0, 0, 0, $mois,1 , $annee));
+$y=date("N", mktime(0, 0, 0, $mois,$l_day , $annee));
 	for($i=1950;$i<2200;$i++) // l'année va de 1950 à 2500
 	{
 		echo '<option value="'.$i.'"';
@@ -79,14 +87,7 @@ else
 </select>
 		</form>
 <!-- créneaux horaires -->		
-<!--  		
-<?php 
-for($i=1;$i<32;$i++) 
-{
-	echo '<p>'.$i.'</p>';
-}
-?>
--->
+
 <?php 
 $select = $db->query ("SELECT *
 						FROM `agenda_praticien`
@@ -106,26 +107,6 @@ $seconde = $total;
 
 ?> 
 
-<table>
-
-<?php 
-$select = $db->query ("SELECT * FROM `agenda_praticien` WHERE id_praticien = $id_praticien");
-while ($s = $select->fetch ( PDO::FETCH_OBJ ) ){
-	?>
-<tr>	
-<td><?php echo $s->jour_presence?></td>
-<tr>
-<?php
-	$h = horaire("$s->heure_debut", "$s->heure_fin", "$minute"); 
-	foreach($h as $valeur) {
-?>
-<tr>
-
-<td width='100' bgcolor="#dddddd"> <?php echo $valeur ?></td>
-
-<?php }}?>
-</tr>
-</table>
 
 <?php 
 //fonction qui ajoute des minutes entre le debut et la fin d'heure
@@ -141,7 +122,44 @@ return $horaire;
 //Appel 
 
 ?>
+<table class="tab">
 
+<tr>
+<?php 
+$select = $db->query ("SELECT * FROM `agenda_praticien` WHERE id_praticien = $id_praticien");
+$s = $select->fetch ( PDO::FETCH_OBJ )
+	?>
+	
+<?php 
+for($i=1;$i<($l_day+1);$i++)
+
+{
+	$f=$y=date("N", mktime(0, 0, 0, $mois,$i , $annee));
+
+?>
+<td width= 1000 colspan= 2 bgcolor="#88c4ff"><?php echo $jours_fr[$f]?> <?php echo $i?> <?php echo $mois_fr[$mois]?> <?php echo $annee?></td>
+</tr>
+<?php 
+$select = $db->query ("SELECT * FROM `agenda_praticien` WHERE id_praticien = $id_praticien");
+while ($s = $select->fetch ( PDO::FETCH_OBJ ) ){
+	?>
+
+<?php
+	$h = horaire("$s->heure_debut", "$s->heure_fin", "$minute"); 
+	foreach($h as $valeur) {
+?>
+<tr>
+
+<td width='50' bgcolor="#dddddd"> <?php echo $valeur ?></td>
+<td colspan=2 width="100"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $d;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='20'/></a></td>
+
+<?php }}?>
+</tr>
+<?php 	
+}
+?>
+</table>
+<br>
 <!-- fonction  -->
 		<script type="text/javascript">
 function change()
