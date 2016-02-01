@@ -29,15 +29,17 @@ else{
 <html>
 <head>
  	<link rel="stylesheet" href="">
-	<title>Patient</title>
+	<title>CHIC Patient</title>
 </head>
 	
 <div id="corps">
+<DIV ALIGN="CENTER">
 	<h1>Patients</h1>	
-	<a href="recherche_patient.php"><img src='image/fleche.png' width='20'/> Rechercher un patient</a>
-	<br>
-	<br>
-	<a href="ajouter_patient.php"><img src='image/fleche.png' width='20'/> Ajouter un nouveau patient</a>
+</DIV>
+</div>
+	<?php include_once('recherche_patient.php')?>
+<div id="corps">
+<DIV ALIGN="CENTER">	
 	<br>
 	<br>
 	
@@ -85,5 +87,6 @@ else{
 }
 }
 ?>	
+</DIV>
 </div>
 </html>

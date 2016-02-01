@@ -21,7 +21,12 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 	$dossier = ($_POST ['dossier']);
 	$motif = ($_POST ['motif']);
 	$examen = ($_POST ['examen']);
-		
+	$articulation = ($_POST ['articulation']);
+	
+	foreach($_POST ['examen'] as $chkb){
+	
+		$chk .= $chkb." ";
+	}
 		$update = $db->prepare ("UPDATE agenda_rdv 
 					SET id_patient = '".$id_patient."',
 				id_praticien  = '".$id_praticien."', 
@@ -30,7 +35,8 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 				observation = '".$observation."', 
 				dossier = '".$dossier."',
 				motif = '".$motif."',
-				examen = '".$examen."'
+				examen = '".$chk."',
+				articulation = '".$articulation."'
 				WHERE id_rdv=$id");
 		$update->execute ();
 		
@@ -96,9 +102,9 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		<?php if($s->id_praticien == 2){?> <!-- modifier l'id selon les praticiens -->
 				<div>
 				<label>Examen:</label>
-		<INPUT type="checkbox" name="examen" id="examen" value="scanner"<?php if(strstr($s->examen, "scanner")){echo" checked";}else{echo"";}?>> Scanner
-		<INPUT type="checkbox" name="examen" id="examen" value="irm"<?php if(strstr($s->examen, "irm")){echo" checked";}else{echo"";}?>> IRM
-		<INPUT type="checkbox" name="examen" id="examen" value="radio"<?php if(strstr($s->examen, "radio")){echo" checked";}else{echo"";}?>> Radio	
+		<INPUT type="checkbox" name="examen[]" id="examen" value="scanner"<?php if(strstr($s->examen, "scanner")){echo" checked";}else{echo"";}?>> Scanner
+		<INPUT type="checkbox" name="examen[]" id="examen" value="irm"<?php if(strstr($s->examen, "irm")){echo" checked";}else{echo"";}?>> IRM
+		<INPUT type="checkbox" name="examen[]" id="examen" value="radio"<?php if(strstr($s->examen, "radio")){echo" checked";}else{echo"";}?>> Radio	
 				
 				</div>
 				

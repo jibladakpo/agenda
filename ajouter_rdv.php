@@ -21,9 +21,13 @@ if($_GET['action']=='ajouter'){
 	$dossier_lieu = ($_POST ['dossier_lieu']);
 	$motif = ($_POST ['motif']);
 	$examen = ($_POST ['examen']);
+	$articulation = ($_POST ['articulation']);
 	
-		
-		$db->query ( "INSERT INTO agenda_rdv VALUES ('','" . $id_praticien .  "', '" . $id_patient . "','" . $date_debut . "','" . $heure_deb . "','" . $observation . "','" . $dossier . "','" . $dossier_lieu . "','" . $motif . "','" . $examen . "')" );
+	foreach($_POST ['examen'] as $chkb){
+	
+		$chk .= $chkb." ";
+	}	
+		$db->query ( "INSERT INTO agenda_rdv VALUES ('','" . $id_praticien .  "', '" . $id_patient . "','" . $date_debut . "','" . $heure_deb . "','" . $observation . "','" . $dossier . "','" . $dossier_lieu . "','" . $motif . "','" . $chk . "','" . $articulation . "')" );
 		
 		echo '<script>alert("rendez-vous pris")</script>';
 		header ( 'location: accueil.php');
@@ -109,9 +113,9 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 	<?php if($s->id_praticien == 2){?> <!-- modifier l'id selon les praticiens -->
 				<div>
 				<label>Examen:</label>
-		<INPUT type="checkbox" name="examen" id="examen" value="scanner">Scanner
-		<INPUT type="checkbox" name="examen" id="examen" value="irm"> IRM
-		<INPUT type="checkbox" name="examen" id="examen" value="radio"> Radio	
+		<INPUT type="checkbox" name="examen[]" id="examen" value="scanner">Scanner
+		<INPUT type="checkbox" name="examen[]" id="examen" value="irm"> IRM
+		<INPUT type="checkbox" name="examen[]" id="examen" value="radio"> Radio	
 				
 				</div>
 						

@@ -92,7 +92,12 @@ return $horaire;
 		<?php 		
 	if($s->heure_deb == $valeur){
 	?>	
-<td width="500" bgcolor="#c1ffc1"><a href="fiche_rdv.php?action=afficher&amp;id=<?php echo $s->id_rdv?>"><?php echo $s->nom?> <?php echo $s->prenom?><br><?php echo $s->observation?></a></td>
+<td width="500" bgcolor="#c1ffc1"><a href="fiche_rdv.php?action=afficher&amp;id=<?php echo $s->id_rdv?>">
+									<?php echo $s->nom?> <?php echo $s->prenom?>
+									<?php if(strstr($s->examen, "irm")){echo" <img src='image/irm.jpg' width='30'/>";}?>
+									<?php if(strstr($s->examen, "radio")){echo" <img src='image/radio.png' width='30'/>";}?>
+									<br><?php echo $s->observation?></a>
+</td>
 <?php }}?>
 
 <?php if($valeur){?>

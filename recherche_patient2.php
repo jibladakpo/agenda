@@ -2,20 +2,26 @@
 require_once ('includes/connexion_bdd.php');
 require_once ('includes/header.php');
 ?>
+<head>
 
+<title>CHIC Recherche</title>
+
+</head>
 <?php
-if(isset($_POST['requete']) && $_POST['requete'] != NULL) // on vérifie d'abord l'existence du POST et aussi si la requete n'est pas vide.
+if(isset($_POST['requete']) && $_POST['requete'] != NULL  || isset($_POST['requete2']) && $_POST['requete2'] != NULL ) // on vérifie d'abord l'existence du POST et aussi si la requete n'est pas vide.
 {
 mysql_connect('localhost','root','');
 mysql_select_db('agenda'); // on se connecte à MySQL. Je vous laisse remplacer les différentes informations pour adapter ce code à votre site.
 $requete = htmlspecialchars($_POST['requete']); // on crée une variable $requete pour faciliter l'écriture de la requête SQL, mais aussi pour empêcher les éventuels malins qui utiliseraient du PHP ou du JS, avec la fonction htmlspecialchars().
-$query = mysql_query("SELECT * FROM agenda_patient WHERE nom LIKE '%$requete%'OR prenom LIKE '%$requete%'  ORDER BY id_patient DESC") or die (mysql_error()); // la requête, que vous devez maintenant comprendre ;)
+$requete2 = htmlspecialchars($_POST['requete2']);
+$query = mysql_query("SELECT * FROM agenda_patient WHERE nom LIKE '%$requete%' AND date_naissance LIKE '%$requete2%'OR prenom LIKE '%$requete%' AND date_naissance LIKE '%$requete2%' ORDER BY id_patient DESC") or die (mysql_error()); // la requête, que vous devez maintenant comprendre ;)
 $nb_resultats = mysql_num_rows($query); // on utilise la fonction mysql_num_rows pour compter les résultats pour vérifier par après
 if($nb_resultats != 0) // si le nombre de résultats est supérieur à 0, on continue
 {
 // maintenant, on va afficher les résultats et la page qui les donne ainsi que leur nombre, avec un peu de code HTML pour faciliter la tâche.
 ?>
 <div id="corps">
+<DIV ALIGN="CENTER">
 <h1>Résultats de votre recherche</h1>
 <p>Nous avons trouvé  <?php echo  $nb_resultats; // on affiche le nombre de résultats 
 if($nb_resultats > 1) { echo ' résultats '; } else { echo ' résultat '; } // on vérifie le nombre de résultats pour orthographier correctement. 
@@ -43,6 +49,7 @@ while($donnees = mysql_fetch_array($query)) // on fait un while pour afficher la
 <br/>
 <p><a href="recherche_patient2.php?&amp;id_praticien=<?php echo $id_praticien;?>&amp;h=<?php echo $h;?>&amp;dt=<?php echo $d;?>">Faire une nouvelle recherche</a></p>
 </div>
+</div>
 <?php
 }
 else
@@ -64,21 +71,22 @@ $d=$_GET['dt'];
 $h=$_GET['h'];
 ?>
 </div>
+<div id="corps">
 <div style="text-align:center;">
 <h1>Recherche patient</h1>
- Saisir nom ou prénom du patient
- <br>
- <br>
+
  <form action="recherche_patient2.php?id_praticien=<?php echo $id;?>&amp;h=<?php echo $h;?>&amp;dt=<?php echo $d;?>" method="Post">
-<input type="text" name="requete" size="20">
+Nom ou Prénom<input type="text" name="requete" size="20"> Date de naissance  <input type="text" name="requete2" size="20">
 <input type="submit" value="Ok">
 </form>
 <p><a href="ajouter_patient2.php?id_praticien=<?php echo $id;?>&amp;h=<?php echo $h;?>&amp;dt=<?php echo $d;?>">Ajouter un nouveau patient</a></p>
+
 </div>
 
 <?php
 }
 // et voilà, c'est fini !
 ?>
+</div>
 
 

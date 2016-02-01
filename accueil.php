@@ -2,15 +2,12 @@
 require_once ('includes/connexion_bdd.php');
 require_once ('includes/header.php');
 ?>
-
+<html>
 <head>
 <!-- partie calendrier -->
-<title>Agenda en PHP</title>
+<title>CHIC Agenda</title>
 
-<link href="styles/calendrier.css" rel="stylesheet" type="text/css" />
 </head>
-<body>
-<DIV ALIGN="CENTER">
 
 <?php 
 if(isset($_GET['id_praticien']) && isset($_GET['mois']) && isset($_GET['annee']))
@@ -64,7 +61,10 @@ $titre=$mois_fr[$mois]." : ".$annee;
 //echo $l_day;
 ?>
 
+<div id="corps">
+<DIV ALIGN="CENTER">
 
+<h1>Calendrier</h1>
 <!-- selection du médecin, mois et année -->
 <form name="dt" method="get" action="">
 <select name="id_praticien" id="id_praticien" onChange="change()" class="liste">
@@ -212,5 +212,5 @@ function go_lien(a)
 
 -->
 </DIV>
+</div>
 
-</body>

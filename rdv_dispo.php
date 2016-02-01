@@ -3,7 +3,7 @@ require_once ('includes/connexion_bdd.php');
 require_once ('includes/header.php');
 ?>
 <head>
-<title>Planning rendez-vous disponible</title>
+<title>CHIC rdv dipo</title>
 
 <link href="" rel="stylesheet" type="text/css" />
 </head>

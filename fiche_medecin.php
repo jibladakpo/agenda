@@ -10,8 +10,8 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 <html>
 
 	<head>
-	 	<link rel="stylesheet" href="">
-		<title>Fiche du médecin</title>
+	 	
+		<title>CHIC Fiche du médecin</title>
 	</head>
 	
 <div id="corps">

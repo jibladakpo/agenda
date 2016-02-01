@@ -2,16 +2,49 @@
 require_once ('includes/connexion_bdd.php');
 require_once ('includes/header.php');
 ?>
+<?php 
 
+ mysql_connect("localhost", "root","");
+mysql_select_db("agenda");
+$select = $db->query ("SELECT * FROM `agenda_rdv`,`agenda_patient`, `agenda_praticien` 
+				WHERE agenda_patient.id_patient = agenda_rdv.id_patient 
+				AND agenda_praticien.id_praticien = agenda_rdv.id_praticien ");
+$e = $select->fetch ( PDO::FETCH_OBJ );
+$sql = "SELECT COUNT(id_rdv) As nbRdv FROM `agenda_rdv`,`agenda_patient`, `agenda_praticien` 
+				WHERE agenda_patient.id_patient = agenda_rdv.id_patient 
+				AND agenda_praticien.id_praticien = agenda_rdv.id_praticien
+						ORDER BY nom ASC";
+$req=mysql_query($sql) or die (mysql_error());
+$data=mysql_fetch_assoc($req);
+
+$nbRdv = $data['nbRdv'];
+$perPage = 30;
+$nbPage = ceil($nbRdv/$perPage);
+
+if(isset($_GET['p']) && $_GET['p']>0 && $_GET['p']<=$nbPage){
+	$cPage = $_GET['p'];
+	
+}
+else{
+	$cPage=1;
+}
+
+?>	
 
 <html>
 <head>
  	<link rel="stylesheet" href="">
-	<title>Patient</title>
+	<title>CHIC Rendez-vous</title>
 </head>
 	
 <div id="corps">
+<DIV ALIGN="CENTER">
 <h1>Rendez-vous</h1>
+</DIV>
+</div>
+<?php include_once ('recherche_rdv.php')?>
+<div id="corps">
+<DIV ALIGN="CENTER">
 
 <table>
 			<tr>
@@ -28,7 +61,8 @@ require_once ('includes/header.php');
 		$select = $db->query ("SELECT * FROM `agenda_rdv`,`agenda_patient`, `agenda_praticien` 
 				WHERE agenda_patient.id_patient = agenda_rdv.id_patient 
 				AND agenda_praticien.id_praticien = agenda_rdv.id_praticien 
-				ORDER BY date_debut ASC ");
+				ORDER BY date_debut ASC 
+				LIMIT ".(($cPage-1)*$perPage)." ,$perPage");
 
 		while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
 	?>
@@ -46,6 +80,20 @@ require_once ('includes/header.php');
 		
 	<?php } ?>
 </table>
+<?php for ($i=1;$i<=$nbPage;$i++){
+	if($i==$cPage){
+		echo "<style>.page{position:relative;}</style> <div class='page'>$i /</div>";
+		
+	}
+	else{
+		$select = $db->query ("SELECT * FROM `agenda_rdv`,`agenda_patient`, `agenda_praticien` 
+				WHERE agenda_patient.id_patient = agenda_rdv.id_patient 
+				AND agenda_praticien.id_praticien = agenda_rdv.id_praticien ");
+		$e = $select->fetch ( PDO::FETCH_OBJ );
+	echo "<style>.page{position:relative;display:inline-block;}</style> <div class='page'> <a href=\"rdv.php?action=afficher&amp;id=$i&amp;p=$i\">$i </a>/</div>";
+}
+}
+?>	
+</DIV>
 </div>
-
 </html>
