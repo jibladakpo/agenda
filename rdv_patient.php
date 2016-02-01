@@ -7,7 +7,7 @@ require_once ('includes/header.php');
 
 	<head>
 		
-		<title>CHIC Rdv patient</title>
+		<title>CHIC LFM Rdv patient</title>
 	</head>
 
 	<div id="corps">

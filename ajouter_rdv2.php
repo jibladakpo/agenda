@@ -33,7 +33,7 @@ if($_GET['action']=='ajouter'){
 ?>
 <html>
 <link rel="stylesheet" href="">
-<title></title>
+<title>CHIC LFM Ajouter RDV</title>
 <head>
 
 </head>

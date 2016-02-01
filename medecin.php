@@ -5,11 +5,11 @@ require_once ('includes/header.php');
 	
 <html>
 	<head>
-		<title>Médecin</title>
+		<title>CHIC LFM Médecin</title>
 	</head>
 
 	  <div id="corps">
-    
+    <DIV ALIGN="CENTER">
 <h1>Médecins</h1>
 <table>
 <tr>
@@ -39,6 +39,7 @@ while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
 	<br>
 
 <a href="ajouter_medecin.php"> <img src='image/fleche.png' width='20'/> Ajouter un nouveau médecin</a>
+</DIV>
 </div>
 </html>	
 

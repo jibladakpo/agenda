@@ -35,7 +35,7 @@ require_once ('includes/header.php');
 
 <head>
 	<link rel="stylesheet" href="styles/formulaire.css">
-	<title></title>
+	<title>CHIC Ajouter Patient</title>
 </head>
 <body>
 <DIV ALIGN="CENTER">

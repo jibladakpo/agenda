@@ -21,7 +21,7 @@ require_once ('includes/header.php');
 <html>
 <head>
 	<link rel="stylesheet" href="styles/formulaire.css">
-	<title></title>
+	<title>CHIC Ajouter Medecin</title>
 </head>
 <body>
 <DIV ALIGN="CENTER">

@@ -3,7 +3,7 @@ require_once ('includes/connexion_bdd.php');
 require_once ('includes/header.php');
 ?>
 <head>
-<title>CHIC rdv dipo</title>
+<title>CHIC LFM rdv dipo</title>
 
 <link href="" rel="stylesheet" type="text/css" />
 </head>
@@ -122,7 +122,7 @@ return $horaire;
 //Appel 
 
 ?>
-<table class="tab">
+<table style="display:inline-table" class="tab">
 
 <tr>
 <?php 
@@ -135,9 +135,20 @@ for($i=1;$i<($l_day+1);$i++)
 
 {
 	$f=$y=date("N", mktime(0, 0, 0, $mois,$i , $annee));
+	if($i<10)
+		$i="0".$i;
+		else
+			$i=$i;
+			if($mois<10)
+				$mm="0".$mois;
+				else
+					$mm=$mois;
+	$da=$i."/".$mm."/".$annee;
 
 ?>
-<td width= 1000 colspan= 2 bgcolor="#88c4ff"><?php echo $jours_fr[$f]?> <?php echo $i?> <?php echo $mois_fr[$mois]?> <?php echo $annee?></td>
+
+<td width= 100  colspan= 2 bgcolor="#88c4ff"><input type="hidden" name="id_patient" value="<?php echo $da?>"><?php echo $jours_fr[$f]?> <?php echo $i?> <?php echo $mois_fr[$mois]?> <?php echo $annee?></td>
+
 </tr>
 <?php 
 $select = $db->query ("SELECT * FROM `agenda_praticien` WHERE id_praticien = $id_praticien");
@@ -152,8 +163,8 @@ while ($s = $select->fetch ( PDO::FETCH_OBJ ) ){
 
 <td width='50' bgcolor="#dddddd"> <?php echo $valeur ?></td>
 <?php if ($jours_fr[$f] == 'lundi' || $jours_fr[$f] == 'mardi' || $jours_fr[$f] == 'mercredi' || $jours_fr[$f] == 'jeudi' || $jours_fr[$f] == 'vendredi'){?>
-<td colspan=2 width="100"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $d;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='20'/></a></td>
-<?php } else {echo "<td colspan=2 width='100'><img src='image/croix.jpg' width='20'/></td> ";}?>
+<td colspan=2 width="10"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $da;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='20'/></a></td>
+<?php } else {echo "<td colspan=2 width='10'><img src='image/croix.jpg' width='20'/></td> ";}?>
 <?php }?>
 </tr>
 <?php 	

@@ -44,7 +44,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ );
 
 <head>
 	<link rel="stylesheet" href="styles/formulaire.css">
-	<title></title>
+	<title>CHIC LFM Modifier Médecin</title>
 </head>
 <body>
 <DIV ALIGN="CENTER">

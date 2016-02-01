@@ -34,7 +34,7 @@ else{
 <html>
 <head>
  	<link rel="stylesheet" href="">
-	<title>CHIC Rendez-vous</title>
+	<title>CHIC LFM Rendez-vous</title>
 </head>
 	
 <div id="corps">

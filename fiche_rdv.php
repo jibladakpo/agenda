@@ -14,7 +14,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 
 	<head>
 	 	<link rel="stylesheet" href="">
-		<title>Fiche rendez-vous</title>
+		<title>CHIC LFM Fiche RDV</title>
 	</head>
 	
 <div id="corps">

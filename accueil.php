@@ -5,7 +5,7 @@ require_once ('includes/header.php');
 <html>
 <head>
 <!-- partie calendrier -->
-<title>CHIC Agenda</title>
+<title>CHIC LFM Agenda</title>
 
 </head>
 
@@ -34,13 +34,17 @@ require_once ('includes/condition_jour.php');
 
 $list_indispo=array();//Liste pour les jours indisponibles; 
 $list_vac=array();//Liste pour les jours de vacances; 
+$date_jour= array(date('d/m/y'));//problème date du jour sur le calendrier
 $list_spe=array();//Mettez vos dates des evenements ; NB format(annee-m-j)
 $lien_redir="rdv_jour.php";//Lien de redirection apres un clic sur une date, NB la date selectionner va etre ajouter Ã  ce lien afin de la rÃ©cuperer ultÃ©rieurement 
 $clic=1;//1==>Activer les clic sur tous les dates; 2==>Activer les clic uniquement sur les dates speciaux; 3==>Désactiver les clics sur tous les dates
 $col1="#d6f21a";//couleur au passage du souris pour les dates normales
 $col2="#8af5b5";//couleur au passage du souris pour les dates speciaux
 $col3="#6a92db";//couleur au passage du souris pour les dates disponibles
+$jours_fr = Array("", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche");
 $mois_fr = Array("", "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août","Septembre", "Octobre", "Novembre", "Décembre");
+
+
 if(isset($_GET['id_praticien']) && isset($_GET['mois']) && isset($_GET['annee']))
 {
 	$id_praticien=$_GET['id_praticien'];
@@ -117,12 +121,23 @@ if($x>1)
 for($i=1;$i<($l_day+1);$i++)
 {
 	$f=$y=date("N", mktime(0, 0, 0, $mois,$i , $annee));
-	$da=$i."/".$mois."/".$annee;
+	if($i<10)
+		$i="0".$i;
+		else
+			$i=$i;
+			if($mois<10)
+				$mm="0".$mois;
+				else
+					$mm=$mois;
+		
+	
+	$da=$i."/".$mm."/".$annee;
+	$date = "date('d/m/Y')";
 	$id= "$id_praticien";
 	$lien=$lien_redir;
 	$lien.="?action=afficher&amp;id_praticien=$id&amp;dt=".$da;
 	echo "<td";
-	if(in_array($da, $list_spe))
+	if(in_array($date, $list_spe))
 	{
 		echo " class='special' onmouseover='over(this,1,2)'";
 		if($clic==1||$clic==2)
@@ -131,6 +146,12 @@ for($i=1;$i<($l_day+1);$i++)
 	else if(in_array($f, $list_dispo))
 	{
 		echo " class='dispo' onmouseover='over(this,2,2)'";
+		if($clic==1||$clic==2)
+			echo " onclick='go_lien(\"$lien\")' ";
+	}
+	else if(in_array($date,$date_jour)) //condition à revoir
+	{
+		echo " class='date_jour' onmouseover='over(this,2,2)'"; 
 		if($clic==1||$clic==2)
 			echo " onclick='go_lien(\"$lien\")' ";
 	}
@@ -183,34 +204,89 @@ function go_lien(a)
 }
 </script>
 
+<!-- agenda du jour -->
+<?php
 
-<!-- partie légende -->
-<!--  
-<br>
+//rqt sql
+$select = $db->query ("SELECT *
+						FROM `agenda_praticien`
+						WHERE agenda_praticien.id_praticien = $id_praticien");
+
+$s = $select->fetch ( PDO::FETCH_OBJ );
+
+?>
+
+
+
+<?php
+//converti les secondes en minutes
+$total = $s->duree_rdv; //ton nombre de secondes 
+$heure = intval(abs($total / 3600)); 
+$total = $total - ($heure * 3600); 
+$minute = intval(abs($total / 60)); 
+$total = $total - ($minute * 60); 
+$seconde = $total; 
+
+?> 
+
+<?php 
+//fonction qui ajoute des minutes entre le debut et la fin d'heure
+function horaire($heure_debut="00:00", $heure_fin="00:00", $pas=60){ 
+$horaire = array(); 
+$d = new DateTime($heure_debut); 
+while ($d->format('H:i') <= $heure_fin) { 
+$horaire[] = $d->format('H\hi'); 
+$d->modify("+{$pas}min"); 
+} 
+return $horaire; 
+} 
+
+$da=$i."/".$mois."/".$annee;
+?>
+
+<h1>Planning du jour</h1>
 <table>
-<tr>
-<td colspan="2"><b>Légende</b></td>
-</tr>
 
-
-<tr>
-<td  bgcolor="#9cbdfb" width=50 ></td>
-<td width=300>disponible</td>
+<tr bgcolor="#b3b3ff">
+	<td colspan="5"><a href="fiche_medecin.php?action=afficher&amp;id_praticien=<?php echo$s->id_praticien;?>"  style="font-size:25px"><b><?php echo $s->nom_medecin?></b></a><br>
+	 <h2><?php echo $date = date('d/m/Y'); ?></h2></td>
+	
 </tr>
 
 <tr>
 
-<td  bgcolor="#ff6c6c"  ></td>
-<td width=300>réservé</td>
-</tr>
+		<?php 
+		$select = $db->query ("SELECT * FROM `agenda_rdv`,`agenda_patient`, `agenda_praticien` 
+				WHERE agenda_patient.id_patient = agenda_rdv.id_patient 
+				AND agenda_praticien.id_praticien = agenda_rdv.id_praticien 
+				AND agenda_rdv.id_praticien = $id_praticien
+				AND agenda_rdv.date_debut LIKE '$date'
+				ORDER BY heure_deb ASC
+				");
 
-<tr>
-<td  bgcolor="#ff9933"  ></td>
-<td width=300>vacance</td>
+		while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
+	?>
+
+		<?php 		
+
+	?>	
+	<td width='100' bgcolor="#dddddd"> <?php echo $s->heure_deb ?></td>
+<td width="500" bgcolor="#c1ffc1"><a href="fiche_rdv.php?action=afficher&amp;id=<?php echo $s->id_rdv?>">
+									<?php echo $s->nom?> <?php echo $s->prenom?>
+									<?php if(strstr($s->examen, "irm")){echo" <img src='image/irm.jpg' width='30'/>";}?>
+									<?php if(strstr($s->examen, "radio")){echo" <img src='image/radio.png' width='30'/>";}?>
+									<br><?php echo $s->observation?></a>
+</td>
+<?php }?>
+
+
+
+
 </tr>
 </table>
 
--->
+
+
 </DIV>
 </div>
 

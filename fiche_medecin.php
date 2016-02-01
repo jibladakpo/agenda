@@ -11,7 +11,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 
 	<head>
 	 	
-		<title>CHIC Fiche du médecin</title>
+		<title>CHIC LFM Fiche du médecin</title>
 	</head>
 	
 <div id="corps">

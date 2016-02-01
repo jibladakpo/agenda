@@ -1,3 +1,6 @@
+body {
+  background-color: #008040;
+}
 h1, input::-webkit-input-placeholder, button {
   font-family: 'roboto', sans-serif;
   -webkit-transition: all 0.3s ease-in-out;
@@ -23,7 +26,7 @@ h1 {
 
 form {
   box-sizing: border-box;
-  
+  background-color: #ffffff;
   width: 600px;
   margin: 50px auto 0;
   box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);

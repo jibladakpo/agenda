@@ -4,7 +4,7 @@ require_once ('includes/header.php');
 ?>
 <head>
 
-<title>CHIC Recherche</title>
+<title>CHIC LFM Recherche</title>
 
 </head>
 <?php

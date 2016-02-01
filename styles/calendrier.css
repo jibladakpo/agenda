@@ -63,6 +63,10 @@ td.indispo
 background-color:#ff6c6c;
 }
 
+td.date_jour
+{
+background-color:#ff9933;
+}
 td.vacance
 {
 background-color:#ff9933;
@@ -73,6 +77,8 @@ background-color:#16f26e;
 color:#990000;
 text-decoration:blink;
 }
+
+
 #notif
 {
 	padding:5px 10px;

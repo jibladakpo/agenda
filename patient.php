@@ -29,7 +29,7 @@ else{
 <html>
 <head>
  	<link rel="stylesheet" href="">
-	<title>CHIC Patient</title>
+	<title>CHIC LFM Patient</title>
 </head>
 	
 <div id="corps">

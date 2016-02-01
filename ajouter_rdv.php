@@ -38,7 +38,7 @@ if($_GET['action']=='ajouter'){
 <link rel="stylesheet" href="">
 <head>
 	<link rel="stylesheet" href="styles/formulaire.css">
-	<title></title>
+	<title>CHIC LFM Ajouter RDV</title>
 </head>
 <body>
 <DIV ALIGN="CENTER">

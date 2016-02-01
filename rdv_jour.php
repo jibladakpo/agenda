@@ -3,7 +3,7 @@ require_once ('includes/connexion_bdd.php');
 require_once ('includes/header.php');
 ?>
 <head>
-<title>Agenda en PHP</title>
+<title>CHIC LFM Planning Agenda</title>
 
 <link href="styles/calendrier2.css" rel="stylesheet" type="text/css" />
 </head>

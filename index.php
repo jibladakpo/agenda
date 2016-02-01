@@ -50,7 +50,7 @@ if(isset($_SESSION['admin_id'])){
 <!-- formulaire de connexion au site -->
 <html>
 <head>
-  
+  <title>CHIC LFM Connexion</title>
    <link rel="stylesheet" href="styles/connexion.css">
 </head>
  <body>
