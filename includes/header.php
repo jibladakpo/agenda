@@ -2,7 +2,7 @@
 if (isset ( $_SESSION ['admin_id'] )) {
 echo'<!DOCTYPE html>
 <html>
-
+	<link rel="icon" type="image/png" href="image/logo chic.png" />
    <LINK rel="stylesheet" href="styles/General.css" /> 
    <LINK rel="stylesheet" href="styles/calendrier.css" /> 
  

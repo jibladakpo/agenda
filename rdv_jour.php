@@ -96,6 +96,12 @@ return $horaire;
 									<?php echo $s->nom?> <?php echo $s->prenom?>
 									<?php if(strstr($s->examen, "irm")){echo" <img src='image/irm.jpg' width='30'/>";}?>
 									<?php if(strstr($s->examen, "radio")){echo" <img src='image/radio.png' width='30'/>";}?>
+									<?php if(strstr($s->dossier, "LFM")){echo" <img src='image/hopital.png' width='30'/>";}?>
+									<?php if(strstr($s->dossier, "ailleurs")){echo" <img src='image/ailleurs.png' width='30'/>";}?>
+									<?php if(strstr($s->dossier, "aucun")){echo" <img src='image/aucun.png' width='30'/>";}?>
+									<?php if(strstr($s->raison, "nez")){echo" <img src='image/nez.png' width='30'/>";}?>
+									<?php if(strstr($s->raison, "gorge")){echo" <img src='image/gorge.png' width='30'/>";}?>
+									<?php if(strstr($s->raison, "oreille")){echo" <img src='image/oreille.png' width='30'/>";}?>
 									<br><?php echo $s->observation?></a>
 </td>
 <?php }}?>

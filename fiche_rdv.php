@@ -22,7 +22,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 
 		<p>Nom  et prénom du patient: <?php echo "$s->nom"; ?> <?php echo "$s->prenom"; ?></p>
 	
-		<p>Nom: <?php echo "$s->nom_medecin"; ?></p>
+		<input type="hidden" name="id_praticien" id=id_praticien value="<?php echo $s->id_praticien;?>"><p>Nom: <?php echo "$s->nom_medecin"; ?></p>
 		
 		<p>Date: <?php echo "$s->date_debut"; ?></p>
 		
@@ -35,8 +35,13 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		<p>Lieu du dossier: <?php echo "$s->dossier_lieu"; ?></p>
 		
 		<p>Motif: <?php echo "$s->motif"; ?></p>
-		
+		<?php if($s->id_praticien == 2){?> 
 		<p>Examen: <?php echo "$s->examen"; ?></p>
+		<?php }?>
+		
+		<?php if($s->id_praticien == 1){?> 
+		<p>Raison: <?php echo "$s->raison"; ?></p>
+		<?php }?>
 <?php }?>
 		
 		 <a href="modifier_rdv.php?action=modifier&amp;id=<?php echo $s->id_rdv;?>"><input type="button" value="Modifier"

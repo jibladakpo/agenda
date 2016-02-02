@@ -22,12 +22,18 @@ if($_GET['action']=='ajouter'){
 	$motif = ($_POST ['motif']);
 	$examen = ($_POST ['examen']);
 	$articulation = ($_POST ['articulation']);
+	$articulation = ($_POST ['raison']);
 	
 	foreach($_POST ['examen'] as $chkb){
 	
 		$chk .= $chkb." ";
-	}	
-		$db->query ( "INSERT INTO agenda_rdv VALUES ('','" . $id_praticien .  "', '" . $id_patient . "','" . $date_debut . "','" . $heure_deb . "','" . $observation . "','" . $dossier . "','" . $dossier_lieu . "','" . $motif . "','" . $chk . "','" . $articulation . "')" );
+	}
+	
+	foreach($_POST ['raison'] as $chkb2){
+	
+		$chk2 .= $chkb2." ";
+	}
+		$db->query ( "INSERT INTO agenda_rdv VALUES ('','" . $id_praticien .  "', '" . $id_patient . "','" . $date_debut . "','" . $heure_deb . "','" . $observation . "','" . $dossier . "','" . $dossier_lieu . "','" . $motif . "','" . $chk . "','" . $articulation . "','" . $chk2 . "')" );
 		
 		echo '<script>alert("rendez-vous pris")</script>';
 		header ( 'location: accueil.php');
@@ -125,12 +131,12 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 				</div>
 			<?php }?>
 			
-			<?php if($s->id_praticien == 9){?> <!-- modifier l'id selon les praticiens -->
+			<?php if($s->id_praticien == 1){?> <!-- modifier l'id selon les praticiens -->
 				<div>
 				<label>Raison:</label>
-		<INPUT type="checkbox" name="raison" id="raison" value="nez"> Nez
-		<INPUT type="checkbox" name="raison" id="raison" value="gorge"> Gorge
-		<INPUT type="checkbox" name="raison" id="raison" value="oreille"> Oreille	
+		<INPUT type="checkbox" name="raison[]" id="raison" value="nez"> Nez
+		<INPUT type="checkbox" name="raison[]" id="raison" value="gorge"> Gorge
+		<INPUT type="checkbox" name="raison[]" id="raison" value="oreille"> Oreille	
 				
 				</div>
 				

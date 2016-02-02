@@ -27,6 +27,11 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 	
 		$chk .= $chkb." ";
 	}
+	
+	foreach($_POST ['raison'] as $chkb2){
+	
+		$chk2 .= $chkb2." ";
+	}
 		$update = $db->prepare ("UPDATE agenda_rdv 
 					SET id_patient = '".$id_patient."',
 				id_praticien  = '".$id_praticien."', 
@@ -36,7 +41,8 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 				dossier = '".$dossier."',
 				motif = '".$motif."',
 				examen = '".$chk."',
-				articulation = '".$articulation."'
+				articulation = '".$articulation."',
+				raison = '".$chk2."'
 				WHERE id_rdv=$id");
 		$update->execute ();
 		
@@ -115,12 +121,12 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 				</div>
 			<?php }?>
 			
-			<?php if($s->id_praticien == 9){?> <!-- modifier l'id selon les praticiens -->
+			<?php if($s->id_praticien == 1){?> <!-- modifier l'id selon les praticiens -->
 				<div>
 				<label>Raison:</label>
-		<INPUT type="checkbox" name="raison" id="raison" value="nez"<?php if(strstr($s->raison, "nez")){echo" checked";}else{echo"";}?>> Nez
-		<INPUT type="checkbox" name="raison" id="raison" value="gorge"<?php if(strstr($s->raison, "gorge")){echo" checked";}else{echo"";}?>> Gorge
-		<INPUT type="checkbox" name="raison" id="raison" value="oreille"<?php if(strstr($s->raison, "oreille")){echo" checked";}else{echo"";}?>> Oreille	
+		<INPUT type="checkbox" name="raison[]" id="raison" value="nez"<?php if(strstr($s->raison, "nez")){echo" checked";}else{echo"";}?>> Nez
+		<INPUT type="checkbox" name="raison[]" id="raison" value="gorge"<?php if(strstr($s->raison, "gorge")){echo" checked";}else{echo"";}?>> Gorge
+		<INPUT type="checkbox" name="raison[]" id="raison" value="oreille"<?php if(strstr($s->raison, "oreille")){echo" checked";}else{echo"";}?>> Oreille	
 				
 				</div>
 				

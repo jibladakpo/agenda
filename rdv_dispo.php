@@ -52,7 +52,7 @@ else
 ?>
 <!-- liste déroulante -->
 <form name="dt" method="get" action="">
-<select name="id_praticien" id="id_praticien" onChange="change()" class="liste">
+<select name="id_praticien" id="id_praticien" onChange="change()" class="liste2">
 				<?php $select = $db->query ("SELECT * FROM `agenda_praticien`");
 				while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
 				?>
@@ -183,7 +183,7 @@ $select = $db->query ("SELECT * FROM `agenda_praticien` WHERE id_praticien = $id
 <?php }?>
 
 <?php }else{?>
-<td bgcolor="#dddddd"><?php echo $valeur;?></td><td colspan=2 width="50"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $da;?>&amp;h=<?php echo $valeur;?>"><img src='image/croix.jpg' width='20'/></a></td>
+<td bgcolor="#dddddd"><?php echo $valeur;?></td><td colspan=2 width="50"><img src='image/croix.jpg' width='20'/></td>
 <?php }?>
 </tr>
 <?php }//fin de la boucle des heures?>
