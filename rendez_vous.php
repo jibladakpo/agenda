@@ -54,50 +54,30 @@ return $horaire;
 		?>
 <tr>
 
-		<td width='100' bgcolor="#dddddd"> <?php echo $valeur ?></td>
+		
 		<?php 
 		$select = $db->query ("SELECT * FROM `agenda_rdv`,`agenda_patient`, `agenda_praticien` 
 				WHERE agenda_patient.id_patient = agenda_rdv.id_patient 
 				AND agenda_praticien.id_praticien = agenda_rdv.id_praticien 
 				AND agenda_rdv.id_praticien = 1
-				
+				AND agenda_rdv.date_debut = '02/02/2016'
+				AND heure_deb = '$valeur'
 				");
 
-		while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
+		 $s = $select->fetch ( PDO::FETCH_OBJ )
 	?>
+<?php if(isset($s->heure_deb)){ ?>
 
-		<?php 		
-	if($s->heure_deb == $valeur){
-	?>	
-<td width="500" bgcolor="#c1ffc1"><a href="fiche_rdv.php?action=afficher&amp;id=<?php echo $s->id_rdv?>"><?php echo $s->nom?> <?php echo $s->prenom?><br><?php echo $s->observation?></a></td>
-<?php }}?>
 
-<?php if($valeur){?>
-<td colspan=2 width="500"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $d;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='20'/></a></td>
+<?php }else{?>
+<td width='100' bgcolor="#dddddd"> <?php echo $valeur ?></td><td colspan=2 width="10"><img src='image/plus.jpg' width='20'/></td>
 <?php }?>
 <?php }?>
-
-
 
 </tr>
 
 </table>
-<?php 
-		$select = $db->query ("SELECT * FROM `agenda_rdv`,`agenda_patient`, `agenda_praticien` 
-				WHERE agenda_patient.id_patient = agenda_rdv.id_patient 
-				AND agenda_praticien.id_praticien = agenda_rdv.id_praticien 
-				AND agenda_rdv.id_praticien = 1
-				
-				
-				");
-while($s = $select->fetch ( PDO::FETCH_OBJ )){
-	
-	 $hpris = array($s->heure_deb);
-}
-	?>
-<?php foreach($hpris as $pris){?>
 
-<?php echo $pris;}?>
 	
 </div>
 </body>

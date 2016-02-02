@@ -147,13 +147,13 @@ for($i=1;$i<($l_day+1);$i++)
 <table style="display:inline-table" class="tab">
 
 <tr>
-<td width= 125  colspan= 2 bgcolor="#88c4ff"><input type="hidden" name="id_patient" value="<?php echo $da?>"><?php echo $jours_fr[$f]?> <?php echo $i?> <?php echo $mois_fr[$mois]?> <?php echo $annee?></td>
+<td width= 120  colspan= 2 bgcolor="#88c4ff"><input type="hidden" name="id_patient" value="<?php echo $da?>"><?php echo $jours_fr[$f]?> <?php echo $i?> <br><?php echo $mois_fr[$mois]?> <?php echo $annee?></td>
 
 </tr>
 <?php 
 $select = $db->query ("SELECT * FROM `agenda_praticien` WHERE id_praticien = $id_praticien");
-while ($s = $select->fetch ( PDO::FETCH_OBJ ) ){
-	?>
+ $s = $select->fetch ( PDO::FETCH_OBJ );
+?>	
 
 <?php
 	$h = horaire("$s->heure_debut", "$s->heure_fin", "$minute"); 
@@ -161,16 +161,37 @@ while ($s = $select->fetch ( PDO::FETCH_OBJ ) ){
 ?>
 <tr>
 
-<td width='50' bgcolor="#dddddd"> <?php echo $valeur ?></td>
-<?php if ($jours_fr[$f] == 'lundi' || $jours_fr[$f] == 'mardi' || $jours_fr[$f] == 'mercredi' || $jours_fr[$f] == 'jeudi' || $jours_fr[$f] == 'vendredi'){?>
-<td colspan=2 width="10"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $da;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='20'/></a></td>
-<?php } else {echo "<td colspan=2 width='10'><img src='image/croix.jpg' width='20'/></td> ";}?>
+		
+		<?php 
+		$select = $db->query ("SELECT * FROM `agenda_rdv`,`agenda_patient`, `agenda_praticien` 
+				WHERE agenda_patient.id_patient = agenda_rdv.id_patient 
+				AND agenda_praticien.id_praticien = agenda_rdv.id_praticien 
+				AND agenda_rdv.id_praticien = $id_praticien
+				AND agenda_rdv.date_debut = '$da'
+				AND heure_deb = '$valeur'
+				");
+
+		 $s = $select->fetch ( PDO::FETCH_OBJ )
+	?>
+	<?php if($jours_fr[$f] == 'lundi'|| $jours_fr[$f] == 'mardi' || $jours_fr[$f] == 'mercredi' || $jours_fr[$f] == 'jeudi' || $jours_fr[$f] == 'vendredi' ){?>
+<?php if(isset($s->heure_deb)){ ?>
+
+<!--vide -->
+
+<?php }else{?>
+<td bgcolor="#dddddd"><?php echo $valeur;?></td><td colspan=2 width="50"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $da;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='20'/></a></td>
+<?php }?>
+
+<?php }else{?>
+<td bgcolor="#dddddd"><?php echo $valeur;?></td><td colspan=2 width="50"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $da;?>&amp;h=<?php echo $valeur;?>"><img src='image/croix.jpg' width='20'/></a></td>
 <?php }?>
 </tr>
+<?php }//fin de la boucle des heures?>
+
+
+
 </table>
-<?php 	
-}}
-?>
+<?php }//fin de la boucle des jours?>
 
 <br>
 <!-- fonction  -->
