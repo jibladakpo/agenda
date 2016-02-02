@@ -64,10 +64,9 @@ $y=date("N", mktime(0, 0, 0, $mois,$l_day , $annee));
 $titre=$mois_fr[$mois]." : ".$annee;
 //echo $l_day;
 ?>
-
+<br>
 <div id="corps">
-<DIV ALIGN="CENTER">
-
+<div class="wrapper_liste">
 <h1>Calendrier</h1>
 <!-- selection du médecin, mois et année -->
 <form name="dt" method="get" action="">
@@ -203,7 +202,7 @@ function go_lien(a)
 	top.document.location=a;
 }
 </script>
-
+</div>
 <!-- agenda du jour -->
 <?php
 
@@ -244,12 +243,14 @@ return $horaire;
 $da=$i."/".$mois."/".$annee;
 ?>
 
+<div class="wrapper_liste">
 <h1>Planning du jour</h1>
-<table>
+
+<table style="width:560px">
 
 <tr bgcolor="#b3b3ff">
 	<td colspan="5"><a href="fiche_medecin.php?action=afficher&amp;id_praticien=<?php echo$s->id_praticien;?>"  style="font-size:25px"><b><?php echo $s->nom_medecin?></b></a><br>
-	 <h2><?php echo $date = date('d/m/Y'); ?></h2></td>
+	 <h2><input type="hidden" name="id_patient" value="<?php echo $date = date('d/m/Y');?>"> <?php setlocale(LC_TIME, 'fra_fra'); echo strftime('%A %d %B %Y'); ?></h2></td>
 	
 </tr>
 
@@ -277,16 +278,17 @@ $da=$i."/".$mois."/".$annee;
 									<?php if(strstr($s->examen, "radio")){echo" <img src='image/radio.png' width='30'/>";}?>
 									<br><?php echo $s->observation?></a>
 </td>
+</tr>
 <?php }?>
 
 
 
 
-</tr>
+
 </table>
 
 
 
-</DIV>
+</div>
 </div>
 

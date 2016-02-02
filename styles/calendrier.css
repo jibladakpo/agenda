@@ -1,7 +1,6 @@
 .liste{
-width:250px;
+width:112px;
 margin-bottom:3px;
-margin-top:30px;
 background-color:#008040;
 color:#ffffff;
 border: 3px solid #008080;
@@ -10,13 +9,23 @@ border: 3px solid #008080;
 .tab{
 	
 }
+
+.wrapper_liste{
+	
+	position:relative;
+	left:10px;
+	 display:inline-block;
+	margin-left:20px;
+	 vertical-align:top;
+ 
+}
 .tableau {
 margin-top:0px;
 border: medium solid #000;
 border-collapse: collapse;
-margin-left:auto;
-margin-right:auto;
-width:1000px;
+<!--margin-left:auto;
+margin-right:auto;-->
+width:800px;
 height:100px;
 text-align:left;
 cursor:default;
@@ -45,7 +54,7 @@ text-align:center;
 .tableau td {
 font-family:Verdana, Arial, Helvetica,serif;
 border: thin solid #999999;
-padding: 10px;
+padding: 5px;
 font-weight:bold;
 cursor:pointer;
 }

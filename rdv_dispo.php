@@ -122,9 +122,7 @@ return $horaire;
 //Appel 
 
 ?>
-<table style="display:inline-table" class="tab">
 
-<tr>
 <?php 
 $select = $db->query ("SELECT * FROM `agenda_praticien` WHERE id_praticien = $id_praticien");
 $s = $select->fetch ( PDO::FETCH_OBJ )
@@ -146,8 +144,10 @@ for($i=1;$i<($l_day+1);$i++)
 	$da=$i."/".$mm."/".$annee;
 
 ?>
+<table style="display:inline-table" class="tab">
 
-<td width= 100  colspan= 2 bgcolor="#88c4ff"><input type="hidden" name="id_patient" value="<?php echo $da?>"><?php echo $jours_fr[$f]?> <?php echo $i?> <?php echo $mois_fr[$mois]?> <?php echo $annee?></td>
+<tr>
+<td width= 125  colspan= 2 bgcolor="#88c4ff"><input type="hidden" name="id_patient" value="<?php echo $da?>"><?php echo $jours_fr[$f]?> <?php echo $i?> <?php echo $mois_fr[$mois]?> <?php echo $annee?></td>
 
 </tr>
 <?php 
@@ -167,10 +167,11 @@ while ($s = $select->fetch ( PDO::FETCH_OBJ ) ){
 <?php } else {echo "<td colspan=2 width='10'><img src='image/croix.jpg' width='20'/></td> ";}?>
 <?php }?>
 </tr>
+</table>
 <?php 	
 }}
 ?>
-</table>
+
 <br>
 <!-- fonction  -->
 		<script type="text/javascript">

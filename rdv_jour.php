@@ -56,10 +56,10 @@ $d->modify("+{$pas}min");
 } 
 return $horaire; 
 } 
-//Appel 
+
 
 ?>
-<h1>Horaires disponibles</h1>
+<h1>Horaires disponibles</h1> <!-- problème à corriger avec le tableau lors de l'ajout d'un nouveau rdv sur une même heure -->
 
 <table>
 
