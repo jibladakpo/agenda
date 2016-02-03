@@ -32,14 +32,14 @@ require_once ('includes/condition_jour.php');
 
 <?php 
 
-$list_indispo=array();//Liste pour les jours indisponibles; 
-$list_vac=array();//Liste pour les jours de vacances; 
-$date_jour= array(date('d/m/y'));//problème date du jour sur le calendrier
-$list_spe=array();//Mettez vos dates des evenements ; NB format(annee-m-j)
+$list_indispo=array();//Liste pour les jours indisponibles;  ==>NON DEVELLOPPER!
+$list_vac=array();//Liste pour les jours de vacances; ==>NON DEVELLOPPER!
+$date_jour= array(date('d/m/y'));//date du jour  ==>NON DEVELLOPPER!
+$list_spe=array();//Mettez vos dates des evenements ; NB format(annee-m-j) ==>NON DEVELLOPPER!
 $lien_redir="rdv_jour.php";//Lien de redirection apres un clic sur une date, NB la date selectionner va etre ajouter Ã  ce lien afin de la rÃ©cuperer ultÃ©rieurement 
 $clic=1;//1==>Activer les clic sur tous les dates; 2==>Activer les clic uniquement sur les dates speciaux; 3==>Désactiver les clics sur tous les dates
-$col1="#d6f21a";//couleur au passage du souris pour les dates normales
-$col2="#8af5b5";//couleur au passage du souris pour les dates speciaux
+$col1="#d6f21a";//couleur au passage du souris pour les dates normales ==>NON DEVELLOPPER!
+$col2="#8af5b5";//couleur au passage du souris pour les dates speciaux ==>NON DEVELLOPPER!
 $col3="#6a92db";//couleur au passage du souris pour les dates disponibles
 $jours_fr = Array("", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche");
 $mois_fr = Array("", "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août","Septembre", "Octobre", "Novembre", "Décembre");
@@ -276,11 +276,11 @@ $da=$i."/".$mois."/".$annee;
 									<?php echo $s->nom?> <?php echo $s->prenom?>
 									<?php if(strstr($s->examen, "irm")){echo" <img src='image/irm.jpg' width='30'/>";}?>
 									<?php if(strstr($s->examen, "radio")){echo" <img src='image/radio.png' width='30'/>";}?>
-									<?php if(strstr($s->dossier, "LFM")){echo" <img src='image/hopital.png' width='18'/>";}?>
+									<?php if(strstr($s->dossier, "LFM")){echo" <img src='image/logo chic.png' width='25'/>";}?>
 									<?php if(strstr($s->dossier, "ailleurs")){echo" <img src='image/ailleurs.png' width='30'/>";}?>
 									<?php if(strstr($s->dossier, "aucun")){echo" <img src='image/aucun.png' width='30'/>";}?>
 									<?php if(strstr($s->raison, "nez")){echo" <img src='image/nez.png' width='30'/>";}?>
-									<?php if(strstr($s->raison, "gorge")){echo" <img src='image/gorge.png' width='30'/>";}?>
+									<?php if(strstr($s->raison, "gorge")){echo" <img src='image/gorge.jpg' width='25'/>";}?>
 									<?php if(strstr($s->raison, "oreille")){echo" <img src='image/oreille.png' width='30'/>";}?>
 									<br><?php echo $s->observation?></a>
 </td>
