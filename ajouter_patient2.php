@@ -26,7 +26,7 @@ require_once ('includes/header.php');
 		$db->query ( "INSERT INTO agenda_patient VALUES ('','" . $nom . "','" . $prenom . "','" . $date_naissance . "','" . $tel_fixe . "','" . $mail . "','" . $adresse . "','" . $cp . "','" . $ville . "','". $medecin_traitant ."')" );
 		
 		echo 
-		header ( 'location: patient.php' );
+		header ( 'location: rdv_dispo.php' );
 		'<script LANGUAGE="JavaScript">alert("patient enregistré")</script>';
 		}
 	

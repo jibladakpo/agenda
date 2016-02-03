@@ -76,7 +76,7 @@ $h=$_GET['h'];
 <h1>Recherche patient</h1>
 
  <form action="recherche_patient2.php?id_praticien=<?php echo $id;?>&amp;h=<?php echo $h;?>&amp;dt=<?php echo $d;?>" method="Post">
-Nom ou Prénom<input type="text" name="requete" size="20"> Date de naissance  <input type="text" name="requete2" size="20">
+Nom ou Prénom: <input type="text" name="requete" size="20"> Date de naissance:  <input type="text" name="requete2" size="20">
 <input type="submit" value="Ok">
 </form>
 <p><a href="ajouter_patient2.php?id_praticien=<?php echo $id;?>&amp;h=<?php echo $h;?>&amp;dt=<?php echo $d;?>">Ajouter un nouveau patient</a></p>

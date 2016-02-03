@@ -127,7 +127,8 @@ return $horaire;
 $select = $db->query ("SELECT * FROM `agenda_praticien` WHERE id_praticien = $id_praticien");
 $s = $select->fetch ( PDO::FETCH_OBJ )
 	?>
-	
+
+<div><h2>Jours de présence: <?php echo $s->jour_presence;?></h2></div>	
 <?php 
 for($i=1;$i<($l_day+1);$i++)
 
@@ -144,6 +145,7 @@ for($i=1;$i<($l_day+1);$i++)
 	$da=$i."/".$mm."/".$annee;
 
 ?>
+
 <table style="display:inline-table" class="tab">
 
 <tr>
