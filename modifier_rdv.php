@@ -6,9 +6,13 @@ require_once ('includes/header.php');
 <?php 
 if($_GET['action']=='modifier'){
 	$id=$_GET['id'];
-$select = $db->query ("SELECT * FROM `agenda_rdv`,`agenda_patient`, `agenda_praticien` WHERE agenda_patient.id_patient = agenda_rdv.id_patient AND agenda_praticien.id_praticien = agenda_rdv.id_praticien AND agenda_rdv.id_rdv=$id ");
-$s = $select->fetch ( PDO::FETCH_OBJ )
-
+	
+$select = $db->query ("SELECT * FROM `agenda_rdv`,`agenda_patient`, `agenda_praticien` 
+						WHERE agenda_patient.id_patient = agenda_rdv.id_patient 
+						AND agenda_praticien.id_praticien = agenda_rdv.id_praticien
+						AND agenda_rdv.id_rdv=$id ");
+$s = $select->fetch ( PDO::FETCH_OBJ );
+$id_praticien=$s->id_praticien;
 ?>
 
 <?php if (isset ( $_POST ['submit'] )) {
@@ -71,9 +75,21 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 	
 	<div>
 	<label>Nom du médecin:</label>
-	<input type="hidden" name="id_praticien" id=id_praticien value="<?php echo $s->id_praticien;?>"><input type="text" name="nom_praticien" id="nom_praticien" value="<?php echo "$s->nom_medecin"; ?>" size="20"placeholder="" class="">
+	<select name="id_praticien" id="id_praticien">
+	<?php $select = $db->query ("SELECT * FROM `agenda_praticien` ");
+	while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
+		
+	?>
+	<option value="<?php echo $s->id_praticien;?>" <?php  if($s->id_praticien==$id_praticien)echo'selected';else'';?> ><?php echo $s->nom_medecin?><option/>
+	<?php }?>
+	</select>
 	</div>
-	
+<?php $select = $db->query ("SELECT * FROM `agenda_rdv`,`agenda_patient`, `agenda_praticien` 
+		WHERE agenda_patient.id_patient = agenda_rdv.id_patient 
+		AND agenda_praticien.id_praticien = agenda_rdv.id_praticien 
+		AND agenda_rdv.id_rdv=$id ");
+$s = $select->fetch ( PDO::FETCH_OBJ )	
+?>
 	<div>
 	<label>Date :</label>
 	<input type="text" name="date_debut" id="date_debut" value="<?php echo $s->date_debut;?>" size="20" placeholder="" class="">

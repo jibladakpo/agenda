@@ -59,7 +59,7 @@ else
 <div id="corps2">
 <DIV ALIGN="CENTER">
 
-<h1>Recherche</h1>
+<h1>Recherche Patient</h1>
  <form action="recherche_patient.php?" method="Post">
  	 nom ou prénom  <input type="text" name="requete" size="20"> Date de naissance  <input type="text" name="requete2" size="20">
 	<input type="submit" value="Ok">

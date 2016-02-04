@@ -19,6 +19,11 @@ label {
     text-align: right;
 }
 
+select{
+	width: 300px;
+	text-align: right;
+}
+
 input[type='text'], textarea {
     /* Afin de s'assurer que tous les champs textuels utilisent la même police
        Par défaut, textarea utilise une police à espacement constant */
