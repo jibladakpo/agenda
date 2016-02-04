@@ -23,10 +23,6 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 	$examen = ($_POST ['examen']);
 	$articulation = ($_POST ['articulation']);
 	
-	foreach($_POST ['examen'] as $chkb){
-	
-		$chk .= $chkb." ";
-	}
 	
 	foreach($_POST ['raison'] as $chkb2){
 	
@@ -40,7 +36,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 				observation = '".$observation."', 
 				dossier = '".$dossier."',
 				motif = '".$motif."',
-				examen = '".$chk."',
+				examen = '".$examen."',
 				articulation = '".$articulation."',
 				raison = '".$chk2."'
 				WHERE id_rdv=$id");
@@ -89,7 +85,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 	</div>
 	
 	<div>
-	<label>Observartion:</label>
+	<label>Observation:</label>
 	<textarea name="observation" id="observation"  placeholder="" class=""><?php echo $s->observation;?></textarea>
 	</div>
 	
@@ -108,9 +104,9 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		<?php if($s->id_praticien == 2){?> <!-- modifier l'id selon les praticiens -->
 				<div>
 				<label>Examen:</label>
-		<INPUT type="checkbox" name="examen[]" id="examen" value="scanner"<?php if(strstr($s->examen, "scanner")){echo" checked";}else{echo"";}?>> Scanner
-		<INPUT type="checkbox" name="examen[]" id="examen" value="irm"<?php if(strstr($s->examen, "irm")){echo" checked";}else{echo"";}?>> IRM
-		<INPUT type="checkbox" name="examen[]" id="examen" value="radio"<?php if(strstr($s->examen, "radio")){echo" checked";}else{echo"";}?>> Radio	
+		<INPUT type="checkbox" name="examen" id="examen" value="Déjà réalisé"<?php if(strstr($s->examen, "Déjà réalisé")){echo" checked";}else{echo"";}?>> Déjà réalisé
+		<INPUT type="checkbox" name="examen" id="examen" value="A prévoir"<?php if(strstr($s->examen, "A prévoir")){echo" checked";}else{echo"";}?>> A prévoir
+		
 				
 				</div>
 				

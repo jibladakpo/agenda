@@ -37,6 +37,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		<p>Motif: <?php echo "$s->motif"; ?></p>
 		<?php if($s->id_praticien == 2){?> 
 		<p>Examen: <?php echo "$s->examen"; ?></p>
+		<p>Articulation concernée: <?php echo "$s->articulation"; ?></p>
 		<?php }?>
 		
 		<?php if($s->id_praticien == 1){?> 

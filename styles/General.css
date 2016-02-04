@@ -16,14 +16,13 @@ body {
 }
 
 
-.wrapper{
+.wrapper_liste{
 	
 	position:relative;
 	left:10px;
 	 display:inline-block;
 	margin-left:20px;
 	 vertical-align:top;
- 
 }
 #header {
   background-color: #009d4f;

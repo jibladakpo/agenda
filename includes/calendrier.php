@@ -1,17 +1,3 @@
-<?php
-require_once ('includes/connexion_bdd.php');
-require_once ('includes/header.php');
-?>
-<head>
-<title>CHIC LFM Planning Agenda</title>
-
-</head>
-<body>
-<div id="corps">
-<DIV ALIGN="CENTER">
-<h1>Horaires disponibles</h1> 
-
-<!--  ========Partie calendrier======== -->
 <?php 
 if(isset($_GET['id_praticien']) && isset($_GET['mois']) && isset($_GET['annee']))
 {
@@ -103,7 +89,7 @@ $titre=$mois_fr[$mois]." : ".$annee;
 
 </form>
 
-<table class="tableau2"><caption><?php echo $titre ;?></caption>
+<table class="tableau"><caption><?php echo $titre ;?></caption>
 <tr><th>Lun</th><th>Mar</th><th>Mer</th><th>Jeu</th><th>Ven</th><th>Sam</th><th>Dim</th></tr>
 <tr>
 
@@ -203,111 +189,3 @@ function go_lien(a)
 	top.document.location=a;
 }
 </script>
-
-<br>
-<!--  ========Partie agenda======== -->
-
-
-<?php
-//recupération des variables id_praticien et date sur l'url
-$id_praticien=$_GET['id_praticien'];
-$d=$_GET['dt'];
-
-//rqt sql
-$select = $db->query ("SELECT *
-						FROM `agenda_praticien`
-						WHERE agenda_praticien.id_praticien = $id_praticien");
-
-$s = $select->fetch ( PDO::FETCH_OBJ );
-
-?>
-
-
-
-<?php
-//converti les secondes en minutes
-$total = $s->duree_rdv; //ton nombre de secondes 
-$heure = intval(abs($total / 3600)); 
-$total = $total - ($heure * 3600); 
-$minute = intval(abs($total / 60)); 
-$total = $total - ($minute * 60); 
-$seconde = $total; 
-
-?> 
-
-<?php 
-//fonction qui ajoute des minutes entre le debut et la fin d'heure
-function horaire($heure_debut="00:00", $heure_fin="00:00", $pas=60){ 
-$horaire = array(); 
-$d = new DateTime($heure_debut); 
-while ($d->format('H:i') <= $heure_fin) { 
-$horaire[] = $d->format('H\hi'); 
-$d->modify("+{$pas}min"); 
-} 
-return $horaire; 
-} 
-
-
-?>
-<!-- problème à corriger avec le tableau lors de l'ajout d'un nouveau rdv sur une même heure -->
-
-<table>
-
-<tr bgcolor="#b3b3ff">
-	<td colspan="5"><a href="fiche_medecin.php?action=afficher&amp;id_praticien=<?php echo$s->id_praticien;?>"  style="font-size:25px"><b><?php echo $s->nom_medecin?></b></a><br>
-	Date: <?php echo $d;?></td>
-	
-</tr>
-
-
-
-<?php
-			
-			$h = horaire("$s->heure_debut", "$s->heure_fin", "$minute"); 
-			foreach($h as $valeur) {
-		?>
-<tr>
-<td width='100' bgcolor="#dddddd"> <?php echo $valeur ?></td>
-		<?php 
-		$select = $db->query ("SELECT * FROM `agenda_rdv`,`agenda_patient`, `agenda_praticien` 
-				WHERE agenda_patient.id_patient = agenda_rdv.id_patient 
-				AND agenda_praticien.id_praticien = agenda_rdv.id_praticien 
-				AND agenda_rdv.id_praticien = $id_praticien
-				AND agenda_rdv.date_debut = '$d'
-				");
-
-		while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
-	?>
-
-		<?php 		
-	if($s->heure_deb == $valeur){
-	?>	
-<td width="500" bgcolor="#c1ffc1"><a href="fiche_rdv.php?action=afficher&amp;id=<?php echo $s->id_rdv?>">
-									<?php echo $s->nom?> <?php echo $s->prenom?></a>
-									<a href="" title="Examen déjà réalisé"><?php if(strstr($s->examen, "Déjà réalisé")){echo" <img src='image/radio_faite.gif' width='25'/>";}?></a>
-									<a href="" title="Examen à prévoir"><?php if(strstr($s->examen, "A prévoir")){echo" <img src='image/radio a faire.jpg' width='25'/>";}?></a>
-									<a href="" title="dossier à LFM"><?php if(strstr($s->dossier, "LFM")){echo" <img src='image/logo_chic_lfm.gif' width='25'/>";}?></a>
-									<a href="" title="dossier à <?php echo $s->dossier_lieu;?>"><?php if(strstr($s->dossier, "ailleurs")){echo" <img src='image/ailleurs.jpg' width='25'/>";}?></a>
-									<a href="" title="aucun"><?php if(strstr($s->dossier, "aucun")){echo" <img src='image/aucun dossier.gif' width='30'/>";}?></a>
-									<a href="" title="nez"><?php if(strstr($s->raison, "nez")){echo" <img src='image/nez.gif' width='25'/>";}?></a>
-									<a href="" title="gorge"><?php if(strstr($s->raison, "gorge")){echo" <img src='image/gorge.gif' width='25'/>";}?></a>
-									<a href="" title="oreille"><?php if(strstr($s->raison, "oreille")){echo" <img src='image/oreille1.gif' width='25'/>";}?></a>
-									<a href="" title="<?php echo $s->articulation;?>"><?php if($s->articulation == ""){echo"";}else{echo" <img src='image/os.png' width='25'/>";}?></a>
-									<br><?php echo $s->observation?>
-</td>
-<?php }}?>
-
-<?php if($valeur){?>
-<td colspan=2 width="500"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $d;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='20'/></a></td>
-<?php }?>
-<?php }?>
-
-
-</tr>
-</table>
-
-</DIV>
-</div>
-</body>
-
-
