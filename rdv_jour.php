@@ -1,7 +1,10 @@
 <?php
 require_once ('includes/connexion_bdd.php');
 require_once ('includes/header.php');
+
 ?>
+
+<?php error_reporting(0); ?>
 <head>
 <title>CHIC LFM Planning Agenda</title>
 
@@ -53,6 +56,7 @@ if(isset($_GET['id_praticien']) && isset($_GET['mois']) && isset($_GET['annee'])
 	$id_praticien=$_GET['id_praticien'];
 	$mois=$_GET['mois'];
 	$annee=$_GET['annee'];
+	
 }
 else
 {
@@ -210,6 +214,7 @@ function go_lien(a)
 
 <?php
 //recupération des variables id_praticien et date sur l'url
+
 $id_praticien=$_GET['id_praticien'];
 $d=$_GET['dt'];
 

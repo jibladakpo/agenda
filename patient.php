@@ -32,61 +32,6 @@ else{
 	<title>CHIC LFM Patient</title>
 </head>
 	
-<div id="corps">
-<DIV ALIGN="CENTER">
-	<h1>Patients</h1>	
-</DIV>
-</div>
+
 	<?php include_once('recherche_patient.php')?>
-<div id="corps">
-<DIV ALIGN="CENTER">	
-	<br>
-	<br>
-	
-	<table>
-			
-			<tr>
-			<th>Fiche patient</th>
-			<th>Nom du Patient</th>
-			<th>Date de naissance </th>
-			<th>Modifier</th>
-			<th>Supprimer</th>
-			</tr>
-	<?php 
-		$select = $db->query ("SELECT nom, prenom, date_naissance,id_patient FROM `agenda_patient` ORDER BY nom ASC LIMIT ".(($cPage-1)*$perPage)." ,$perPage");
 
-		while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
-	?>
-	
-			
- 			 	<tr > 
- 			 	<td > <a href="fiche_patient.php?action=afficher&amp;id=<?php echo $s->id_patient;?>"><img src="image/fiche.png" width="30"/></a></td>       
-      				 <td width=400> <?php echo $s->nom;?> <?php echo $s->prenom;?></td> 
-      				 <td width=400> <?php echo $s->date_naissance;?> </td> 
-      				 <td width=100><a href="modifier_patient.php?action=modifier&amp;id=<?php echo $s->id_patient;?>"> <img src="image/modifier.jpg" width="30"/></a> </td>
-      				<td width=100> <a href="supprimer_patient.php?action=supprimer&amp;id=<?php echo $s->id_patient;?>"> <img src="image/croix.jpg" width="30"/></a> </td>
-      				  
-  				</tr>
-			
-	
-	
-
-	<?php } ?>
-</table>
-<br>
-
-	<?php for ($i=1;$i<=$nbPage;$i++){
-	if($i==$cPage){
-		echo "<style>.page{position:relative;}</style> <div class='page'>$i /</div>";
-		
-	}
-	else{
-		$select = $db->query ("select * from agenda_patient ");
-		$e = $select->fetch ( PDO::FETCH_OBJ );
-	echo "<style>.page{position:relative;display:inline-block;}</style> <div class='page'> <a href=\"patient.php?action=afficher&amp;id=$i&amp;p=$i\">$i </a>/</div>";
-}
-}
-?>	
-</DIV>
-</div>
-</html>
