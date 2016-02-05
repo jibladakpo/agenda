@@ -70,16 +70,31 @@ else
 $d=$_GET['dt'];
 $h=$_GET['h'];
 ?>
+</DIV>
 </div>
+<head>
+	<link rel="stylesheet" href="styles/recherche.css">
+</head>
 <div id="corps">
-<div style="text-align:center;">
-<h1>Recherche patient</h1>
+<DIV ALIGN="CENTER">
+	<h1><img src='image/loupe.jpg' width='25'/> Recherche Patient</h1>
+</DIV>
 
- <form action="recherche_patient2.php?id_praticien=<?php echo $id;?>&amp;h=<?php echo $h;?>&amp;dt=<?php echo $d;?>" method="Post">
-Nom ou Prénom: <input type="text" name="requete" size="20"> Date de naissance:  <input type="text" name="requete2" size="20">
-<input type="submit" value="Ok">
+ <form action="recherche_rdv.php" method="Post">
+ <div>
+ <label>Nom ou prénom </label>
+ <input type="text" name="requete" size="20">
+</div> 
+
+<div>
+<label>Date de naissance </label> 
+ <input type="text" name="requete2" size="20">
+</div>   
+
+<div class="button">
+	<input type="submit" value="Rechercher">
+</div> 
 </form>
-<p><a href="ajouter_patient2.php?id_praticien=<?php echo $id;?>&amp;h=<?php echo $h;?>&amp;dt=<?php echo $d;?>">Ajouter un nouveau patient</a></p>
 
 </div>
 
@@ -87,6 +102,4 @@ Nom ou Prénom: <input type="text" name="requete" size="20"> Date de naissance:  
 }
 // et voilà, c'est fini !
 ?>
-</div>
-
 

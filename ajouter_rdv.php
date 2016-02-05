@@ -33,7 +33,7 @@ if($_GET['action']=='ajouter'){
 		$db->query ( "INSERT INTO agenda_rdv VALUES ('','" . $id_praticien .  "', '" . $id_patient . "','" . $date_debut . "','" . $heure_deb . "','" . $observation . "','" . $dossier . "','" . $dossier_lieu . "','" . $motif . "','" . $examen . "','" . $articulation . "','" . $chk2 . "')" );
 		
 		echo '<script>alert("rendez-vous pris")</script>';
-		header ( 'location: accueil.php');
+		header ( 'location: rdv_jour.php?id_praticien='.$id_praticien.'&dt='.$d.'');
 		}
 	
 ?>

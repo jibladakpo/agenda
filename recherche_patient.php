@@ -29,7 +29,7 @@ while($donnees = mysql_fetch_array($query)) // on fait un while pour afficher la
 {
 ?>
 
-<p><a href="fiche_patient.php?action=afficher&amp;id_praticien=&amp;id_patient=<?php echo $donnees['id_patient']; ?>"><?php echo $donnees['nom']; ?> <?php echo $donnees['prenom']; ?>  <?php echo $donnees['date_naissance']; ?></a></p>
+<p><a href="fiche_patient.php?action=afficher&amp;id_patient=<?php echo $donnees['id_patient']; ?>"><?php echo $donnees['nom']; ?> <?php echo $donnees['prenom']; ?>  <?php echo $donnees['date_naissance']; ?></a></p>
 <?php
 } // fin de la boucle
 ?><br/>
@@ -56,18 +56,32 @@ else
 ?>
 </DIV>
 </div>
-<div id="corps2">
+<head>
+	<link rel="stylesheet" href="styles/recherche.css">
+</head>
+<div id="corps">
 <DIV ALIGN="CENTER">
-
-<h1>Recherche Patient</h1>
- <form action="recherche_patient.php?" method="Post">
- 	 nom ou prénom  <input type="text" name="requete" size="20"> Date de naissance  <input type="text" name="requete2" size="20">
-	<input type="submit" value="Ok">
-</form>
-<br>
-<a href="ajouter_patient.php"><img src='image/fleche.png' width='20'/> Ajouter un nouveau patient</a>
+	<h1><img src='image/loupe.jpg' width='25'/> Recherche Patient</h1>
 </DIV>
+
+ <form action="recherche_rdv.php" method="Post">
+ <div>
+ <label>Nom ou prénom </label>
+ <input type="text" name="requete" size="20">
+</div> 
+
+<div>
+<label>Date de naissance </label> 
+ <input type="text" name="requete2" size="20">
+</div>   
+
+<div class="button">
+	<input type="submit" value="Rechercher">
+</div> 
+</form>
+
 </div>
+
 <?php
 }
 // et voilà, c'est fini !

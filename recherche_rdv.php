@@ -56,15 +56,30 @@ else
 ?>
 </DIV>
 </div>
-<div id="corps2">
+<head>
+	<link rel="stylesheet" href="styles/recherche.css">
+</head>
+<div id="corps">
 <DIV ALIGN="CENTER">
-
-<h1>Recherche RDV</h1>
- <form action="recherche_rdv.php" method="Post">
- Nom ou prénom <input type="text" name="requete" size="20"> Date de naissance  <input type="text" name="requete2" size="20">
-<input type="submit" value="Ok">
-</form>
+	<h1><img src='image/loupe.jpg' width='25'/> Recherche RDV</h1>
 </DIV>
+
+ <form action="recherche_rdv.php" method="Post">
+ <div>
+ <label>Nom ou prénom </label>
+ <input type="text" name="requete" size="20">
+</div> 
+
+<div>
+<label>Date de naissance </label> 
+ <input type="text" name="requete2" size="20">
+</div>   
+
+<div class="button">
+	<input type="submit" value="Rechercher">
+</div> 
+</form>
+
 </div>
 
 <?php

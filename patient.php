@@ -2,29 +2,7 @@
 require_once ('includes/connexion_bdd.php');
 require_once ('includes/header.php');
 ?>
-<?php 
 
- mysql_connect("localhost", "root","");
-mysql_select_db("agenda");
-$select = $db->query ("select * from agenda_patient ");
-$e = $select->fetch ( PDO::FETCH_OBJ );
-$sql = "SELECT COUNT(id_patient) As nbPat FROM agenda_patient ORDER BY nom ASC";
-$req=mysql_query($sql) or die (mysql_error());
-$data=mysql_fetch_assoc($req);
-
-$nbPat = $data['nbPat'];
-$perPage = 30;
-$nbPage = ceil($nbPat/$perPage);
-
-if(isset($_GET['p']) && $_GET['p']>0 && $_GET['p']<=$nbPage){
-	$cPage = $_GET['p'];
-	
-}
-else{
-	$cPage=1;
-}
-
-?>	
 
 <html>
 <head>
@@ -32,6 +10,22 @@ else{
 	<title>CHIC LFM Patient</title>
 </head>
 	
+<?php include_once('recherche_patient.php')?>
 
-	<?php include_once('recherche_patient.php')?>
+<div id="corps">
+<DIV ALIGN="CENTER">
+
+<?php
+
+$conn = oci_connect('kalam70', 'kalam70', 'HEXA2');
+if (!$conn) die("Error connecting to Oracle database: " . oci_error());
+
+echo "Successfully connected to Oracle database!";
+
+?>
+
+
+
+</DIV>
+</div>
 

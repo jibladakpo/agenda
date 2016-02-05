@@ -12,7 +12,7 @@ if($_GET['action']=='supprimer'){
 	      WHERE id_rdv = $id ");
   $delete->execute ();
   echo '<script>alert("rendez-vous supprimé")</script>';
-  header ( 'location: rdv.php' );
+  header ( 'location: accueil.php' );
 
 }
 ?>

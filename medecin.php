@@ -10,7 +10,7 @@ require_once ('includes/header.php');
 
 	  <div id="corps">
     <DIV ALIGN="CENTER">
-<h1>Médecins</h1>
+<h1><img src='image/steth.png' width='25'/> Médecins <img src='image/steth.png' width='25'/></h1>
 <table>
 <tr>
 <th>fiche médecin</th>

@@ -47,7 +47,7 @@ $id_praticien=$s->id_praticien;
 		$update->execute ();
 		
 		echo '<script>alert("informations modifié")</script>';
-		header ( 'location: rdv.php' );
+		header ( 'location: rdv_jour.php?id_praticien='.$id_praticien.'&dt='.$date_debut.'' );
 		}
 	
 ?>

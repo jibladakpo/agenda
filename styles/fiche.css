@@ -1,0 +1,27 @@
+label {
+    /* Afin de s'assurer que toutes les étiquettes aient la même dimension et soient alignées correctement */
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+}
+
+h1{
+	margin: 0 auto;
+}
+
+ div {
+    margin-top: 1em;
+}
+
+.fiche{
+	 margin: 0 auto;
+    width: 400px;
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+}
+
+.button {
+  
+    padding-left: 130px; 
+}

@@ -1,0 +1,24 @@
+label {
+    /* Afin de s'assurer que toutes les étiquettes aient la même dimension et soient alignées correctement */
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+}
+
+ div {
+    margin-top: 1em;
+}
+
+form{
+	 margin: 0 auto;
+    width: 400px;
+    /* Pour voir les limites du formulaire */
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+}
+
+
+.button {
+  padding-left: 160px;
+}

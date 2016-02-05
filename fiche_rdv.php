@@ -13,42 +13,89 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 <html>
 
 	<head>
-	 	<link rel="stylesheet" href="">
+	 	<link rel="stylesheet" href="styles/fiche.css">
 		<title>CHIC LFM Fiche RDV</title>
 	</head>
 	
 <div id="corps">
-<h1>Fiche rendez vous</h1>
+<DIV ALIGN="CENTER">
+<h1><img src='image/fiche.png' width='30'/>Fiche rendez vous</h1>
+</DIV>
+<div class="fiche">
 
-		<p>Nom  et prénom du patient: <?php echo "$s->nom"; ?> <?php echo "$s->prenom"; ?></p>
+		<div>
+		<label>Nom  du patient:</label>
+		<?php echo "$s->nom"; ?>
+		</div>
+		
+		<div>
+		<label>Prénom  du patient:</label>
+		<?php echo "$s->prenom"; ?>
+		</div>
 	
-		<input type="hidden" name="id_praticien" id=id_praticien value="<?php echo $s->id_praticien;?>"><p>Nom: <?php echo "$s->nom_medecin"; ?></p>
+		<input type="hidden" name="id_praticien" id=id_praticien value="<?php echo $s->id_praticien;?>">
+		<div>
+		<label>Nom:</label>
+		 <?php echo "$s->nom_medecin"; ?>
+		 </div>
+		 
+		<div>
+		<label>Date:</label> 
+		<?php echo "$s->date_debut"; ?>
+		</div>
 		
-		<p>Date: <?php echo "$s->date_debut"; ?></p>
+		<div>
+		<label>Heure :</label>
+		 <?php echo "$s->heure_deb"; ?>
+		 </div>
+		 
+		<div>
+		<label>Observation:</label> 
+		<?php echo "$s->observation"; ?>
+		</div>
 		
-		<p>Heure : <?php echo "$s->heure_deb"; ?></p>
+		<div>
+		<label>Dossier:</label>
+		 <?php echo "$s->dossier"; ?>
+		 </div>
+		 
+		<div>
+		<label>Lieu du dossier: </label>
+		<?php echo "$s->dossier_lieu"; ?>
+		</div>
 		
-		<p>Observation: <?php echo "$s->observation"; ?></p>
-		
-		<p>Dossier: <?php echo "$s->dossier"; ?></p>
-		
-		<p>Lieu du dossier: <?php echo "$s->dossier_lieu"; ?></p>
-		
-		<p>Motif: <?php echo "$s->motif"; ?></p>
+		<div>
+		<label>Motif: </label>
+		<?php echo "$s->motif"; ?>
+		</div>
 		<?php if($s->id_praticien == 2){?> 
-		<p>Examen: <?php echo "$s->examen"; ?></p>
-		<p>Articulation concernée: <?php echo "$s->articulation"; ?></p>
+		
+		<div>
+		<label>Examen: </label>
+		<?php echo "$s->examen"; ?>
+		</div>
+		
+		<div>
+		<label>Articulation concernée: </label>
+		<?php echo "$s->articulation"; ?>
+		</div>
 		<?php }?>
 		
 		<?php if($s->id_praticien == 1){?> 
-		<p>Raison: <?php echo "$s->raison"; ?></p>
+		<div>
+		<label>Raison: </label>
+		<?php echo "$s->raison"; ?>
+		</div>
 		<?php }?>
 <?php }?>
-		
+		<div class="button">
 		 <a href="modifier_rdv.php?action=modifier&amp;id=<?php echo $s->id_rdv;?>"><input type="button" value="Modifier"
 	name="modifier rdv"></a>
 			<a href="supprimer_rdv.php?action=supprimer&amp;id=<?php echo $s->id_rdv;?>"><input type="button" value="Supprimer"
 	name="supprimer_rdv"></a>
+	</div>
+	</div>
+	
 	</div>
 
 </html>	

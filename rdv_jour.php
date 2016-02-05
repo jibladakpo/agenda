@@ -4,7 +4,7 @@ require_once ('includes/header.php');
 
 ?>
 
-<?php error_reporting(0); ?>
+
 <head>
 <title>CHIC LFM Planning Agenda</title>
 
@@ -12,13 +12,15 @@ require_once ('includes/header.php');
 <body>
 <div id="corps">
 <DIV ALIGN="CENTER">
-<h1>Horaires disponibles</h1> 
+<h1><img src='image/heure.png' width='25'/> Horaires disponibles <img src='image/heure.png' width='25'/></h1> 
 
 <!--  ========Partie calendrier======== -->
+
 <?php 
 if(isset($_GET['id_praticien']) && isset($_GET['mois']) && isset($_GET['annee']))
 {
 	$id_praticien=$_GET['id_praticien'];
+	$d=$_GET['dt'];
 	$mois=$_GET['mois'];
 	$annee=$_GET['annee'];
 	$select = $db->query ("SELECT * FROM `agenda_praticien` WHERE id_praticien=$id_praticien");
@@ -256,7 +258,7 @@ return $horaire;
 ?>
 <!-- problème à corriger avec le tableau lors de l'ajout d'un nouveau rdv sur une même heure -->
 
-<table>
+<table width=800>
 
 <tr bgcolor="#b3b3ff">
 	<td colspan="5"><a href="fiche_medecin.php?action=afficher&amp;id_praticien=<?php echo$s->id_praticien;?>"  style="font-size:25px"><b><?php echo $s->nom_medecin?></b></a><br>
@@ -303,7 +305,7 @@ return $horaire;
 <?php }}?>
 
 <?php if($valeur){?>
-<td colspan=2 width="500"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $d;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='20'/></a></td>
+<td colspan=2 width="200"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $d;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='20'/></a></td>
 <?php }?>
 <?php }?>
 

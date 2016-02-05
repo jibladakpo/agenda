@@ -8,11 +8,9 @@ require_once ('includes/header.php');
 <link href="" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<br>
-
 <div id="corps">
 <DIV ALIGN="CENTER">
-<h1>Planning horaires disponibles</h1>
+<h1><img src='image/heure.png' width='25'/> Planning horaires disponibles <img src='image/heure.png' width='25'/></h1>
 <?php 
 if(isset($_GET['id_praticien']) && isset($_GET['mois']) && isset($_GET['annee']))
 {
