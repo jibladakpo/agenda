@@ -202,8 +202,8 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 	<?php if ($id_praticien == 2){?>
 	<?php if(isset($s->heure_deb)==2){//condition si il existe 2 rdv sur la même heure à revoir?>
 	<!-- rien -->
-	
-	 <?php }elseif(isset($s->heure_deb)==1){//condition si il existe 1 rdv sur l'heure à revoir?>
+	<?php }?>
+	 <?php if(isset($s->heure_deb)==1){//condition si il existe 1 rdv sur la même heure à revoir?>
 	 <td width='' bgcolor="#dddddd"> <?php echo $valeur ?></td>
 	 <td colspan=2 width="500"  bgcolor="#ffffff"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $da;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='20'/></a></td>
 	 <?php }else{ ?>
