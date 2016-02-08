@@ -58,7 +58,7 @@ else
 <div id="corps">
 <h1>Pas de résultats</h1>
 <p>Nous n'avons trouvé aucun résultat pour votre requête. <a href="recherche_patient.php">Réessayez</a> avec autre chose.</p>
-<p><a href="ajouter_patient2.php?id_praticien=<?php echo $id;?>&amp;h=<?php echo $h;?>&amp;dt=<?php echo $d;?>">Ajouter un nouveau patient</a></p>
+<p><a href="ajouter_patient.php?id_praticien=<?php echo $id;?>&amp;h=<?php echo $h;?>&amp;dt=<?php echo $d;?>">Ajouter un nouveau patient</a></p>
 <?php
 }// Fini d'afficher l'erreur ^^
 mysql_close(); // on ferme mysql
@@ -80,7 +80,7 @@ $h=$_GET['h'];
 	<h1><img src='image/loupe.jpg' width='25'/> Recherche Patient</h1>
 </DIV>
 
- <form action="recherche_rdv.php" method="Post">
+ <form action="" method="Post">
  <div>
  <label>Nom ou prénom </label>
  <input type="text" name="requete" size="20">

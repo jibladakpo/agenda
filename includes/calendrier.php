@@ -143,7 +143,7 @@ for($i=1;$i<($l_day+1);$i++)
 	}
 	else if(in_array($f, $list_indispo))
 	{
-		echo " class='indispo' onmouseover='over(this,0,2)'";
+		echo " class='indispo' onmouseover='over(this,0,2)'"; //non développer
 		if($clic==3)
 			echo " onclick='go_lien(\"$lien\")' ";
 	}

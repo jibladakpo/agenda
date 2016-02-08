@@ -16,7 +16,7 @@ echo'<!DOCTYPE html>
 	  <p id="rdv"><a href="rdv_dispo.php">Rdv dispo</a></p>
       <p id="rdv"><a href="recherche_rdv.php">Recherche rdv</a></p>
 	  <p id="docteur"><a href="medecin.php">Médecins</a></p>
-      <p id="patient"><a href="recherche_patient.php">Recherche Patients</a></p>
+      <p id="patient"><a href="patient.php">Recherche Patients</a></p>
       <p id="deconnexion"><a href="deconnexion.php">Déconnexion<img src="image/deconnexion.jpg" width="20"/></a></p>
 		
     </nav>

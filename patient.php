@@ -14,7 +14,9 @@ require_once ('includes/header.php');
 
 <div id="corps">
 <DIV ALIGN="CENTER">
+<h1><a href="ajouter_patient.php">>Enregistrer un nouveau patient</a></h1>
 
+<!--  
 <?php
 
 $conn = oci_connect('kalam70', 'kalam70', 'HEXA2');
@@ -23,6 +25,8 @@ if (!$conn) die("Error connecting to Oracle database: " . oci_error());
 echo "Successfully connected to Oracle database!";
 
 ?>
+-->
+
 
 
 

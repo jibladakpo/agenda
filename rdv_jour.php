@@ -1,7 +1,7 @@
 <?php
 require_once ('includes/connexion_bdd.php');
 require_once ('includes/header.php');
-
+error_reporting(0);
 ?>
 
 
@@ -14,7 +14,7 @@ require_once ('includes/header.php');
 <DIV ALIGN="CENTER">
 <h1><img src='image/heure.png' width='25'/> Horaires disponibles <img src='image/heure.png' width='25'/></h1> 
 
-<!--  ========Partie calendrier======== -->
+<!--  ========Partie calendrier========  pas de include once car problème de centrage du calendrier-->
 
 <?php 
 if(isset($_GET['id_praticien']) && isset($_GET['mois']) && isset($_GET['annee']))

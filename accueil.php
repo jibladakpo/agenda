@@ -33,6 +33,7 @@ else
 require_once ('includes/condition_jour.php');
 ?>
 <?php 
+$clic=1;
 $lien_redir="recherche_patient.php";
 $jours_fr = Array("", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche");
 $mois_fr = Array("", "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août","Septembre", "Octobre", "Novembre", "Décembre");
@@ -142,7 +143,7 @@ if($x>1)
 	}
  for($i=1;$i<($l_day+1);$i++)
 {
-	
+	$lien=$lien_redir;
 	$f=$y=date("N", mktime(0, 0, 0, $mois,$i , $annee));
 	if($i<10)
 		$i="0".$i;
@@ -160,7 +161,7 @@ if($x>1)
 	
 	?>
 	
-	<table> <!-- invalide location of tag table = c'est voulu sinon problème avec le tableau -->
+	<table > <!-- invalide location of tag table = c'est voulu sinon problème avec le tableau -->
 
 <?php 
 $select = $db->query ("SELECT *
@@ -193,7 +194,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 
 <?php }else{?>
 <td width='' bgcolor="#dddddd"> <?php echo $valeur ?></td>
-<td colspan=2 width="500"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $da;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='20'/></a></td>
+<td colspan=2 width="500"  bgcolor="#ffffff"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $da;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='20'/></a></td>
 <?php }?>
 <?php }else{?>
 
@@ -226,6 +227,18 @@ for($i=$y;$i<7;$i++)
 function change()
 {
 	document.dt.submit();
+}
+
+function over(this_,a,t)
+{
+	<?php 
+	echo "var c2=['$ccl2[0]','$ccl2[1]','$ccl2[2]'];";
+	?>
+	var col;
+	if(t==2)
+		this_.style.backgroundColor=c2[a];
+	else
+		this_.style.backgroundColor="";
 }
 function go_lien(a)
 {
