@@ -43,7 +43,7 @@ require_once ('includes/header.php');
 			<INPUT type="checkbox" name="jour_presence" id="jour_presence" value="mardi"> mardi
 			<INPUT type="checkbox" name="jour_presence" id="jour_presence" value="mercredi"> mercredi
 			<INPUT type="checkbox" name="jour_presence" id="jour_presence" value="jeudi"> jeudi
-			<INPUT type="checkbox" name="jour_presence" id="jour_presence" value="vendredi"> vendredi
+			<INPUT type="checkbox" name="jour_presence" id="jour_presence" value="vendredi"> vendredi<br>
 			<INPUT type="checkbox" name="jour_presence" id="jour_presence" value="samedi"> samedi
 			<INPUT type="checkbox" name="jour_presence" id="jour_presence" value="dimanche"> dimanche
 	</div>

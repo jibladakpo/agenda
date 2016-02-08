@@ -68,7 +68,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		<label>Motif: </label>
 		<?php echo "$s->motif"; ?>
 		</div>
-		<?php if($s->id_praticien == 2){?> 
+		<?php if($s->id_praticien == 2){// Dr Pages à modifier selon id_praticien ?> 
 		
 		<div>
 		<label>Examen: </label>
@@ -81,7 +81,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		</div>
 		<?php }?>
 		
-		<?php if($s->id_praticien == 1){?> 
+		<?php if($s->id_praticien == 1){// Dr Gombert à modifier selon id_praticien?> 
 		<div>
 		<label>Raison: </label>
 		<?php echo "$s->raison"; ?>

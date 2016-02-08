@@ -127,7 +127,7 @@ $select = $db->query ("SELECT * FROM `agenda_praticien` WHERE id_praticien = $id
 $s = $select->fetch ( PDO::FETCH_OBJ )
 	?>
 
-<div><h2>Jours de présence: <?php echo $s->jour_presence;?></h2></div>	
+
 <!-- créneaux horaires -->		
 <table class="tableau">
 <caption><?php echo $titre ;?></caption>
@@ -155,7 +155,11 @@ if($x>1)
 					$mm=$mois;
 	$da=$i."/".$mm."/".$annee;
 	
-	echo "<td>";
+	
+	if(in_array($f, $list_dispo)){
+	echo "<td bgcolor='#c1ffc1'>";}
+	else{echo"<td>";}
+
 	
 	echo "<input type='hidden' name='id_patient' value='$da'>$jours_fr[$f] $i <br> $mois_fr[$mois] $annee";
 	
@@ -188,21 +192,31 @@ $s = $select->fetch ( PDO::FETCH_OBJ );
 				");
 $s = $select->fetch ( PDO::FETCH_OBJ )
 ?>
-<?php if($jours_fr[$f] == 'lundi'|| $jours_fr[$f] == 'mardi' || $jours_fr[$f] == 'mercredi' || $jours_fr[$f] == 'jeudi' || $jours_fr[$f] == 'vendredi' ){?>
-<?php if(isset($s->heure_deb)){ ?>
-
-
+<?php if(in_array($f, $list_dispo)){?>
+	<?php if(isset($s->heure_deb)){ ?>
+		<!-- rien -->
+	<?php }else{?>
+		<td width='' bgcolor="#dddddd"> <?php echo $valeur ?></td>
+		<td colspan=2 width="500"  bgcolor="#ffffff"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $da;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='20'/></a></td>
+	<?php }?>
+	<?php if ($id_praticien == 2){?>
+	<?php if(isset($s->heure_deb)==2){//condition si il existe 2 rdv sur la même heure à revoir?>
+	<!-- rien -->
+	
+	 <?php }elseif(isset($s->heure_deb)==1){//condition si il existe 1 rdv sur l'heure à revoir?>
+	 <td width='' bgcolor="#dddddd"> <?php echo $valeur ?></td>
+	 <td colspan=2 width="500"  bgcolor="#ffffff"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $da;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='20'/></a></td>
+	 <?php }else{ ?>
+	 
+		<td colspan=2 width="500"  bgcolor="#ffffff"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $da;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='20'/></a></td>
+	 <?php }}?>
 <?php }else{?>
-<td width='' bgcolor="#dddddd"> <?php echo $valeur ?></td>
-<td colspan=2 width="500"  bgcolor="#ffffff"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $da;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='20'/></a></td>
-<?php }?>
-<?php }else{?>
-
-<?php }?>
+<!-- rien -->
+<?php }//fin condition jours?>
 </tr>
 <?php }//fin de la boucle des heures?>
 
-</tr>
+</tr> <!-- laisser sinon erreur -->
 </table>
 	
 	<?php 
@@ -229,21 +243,7 @@ function change()
 	document.dt.submit();
 }
 
-function over(this_,a,t)
-{
-	<?php 
-	echo "var c2=['$ccl2[0]','$ccl2[1]','$ccl2[2]'];";
-	?>
-	var col;
-	if(t==2)
-		this_.style.backgroundColor=c2[a];
-	else
-		this_.style.backgroundColor="";
-}
-function go_lien(a)
-{
-	top.document.location=a;
-}
+
 
 </script>
 		

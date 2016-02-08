@@ -68,7 +68,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ );
 			<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="mardi"<?php if(strstr($s->jour_presence, "mardi")){echo "checked";}else{echo"";}?>> mardi
 			<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="mercredi"<?php if(strstr($s->jour_presence, "mercredi")) {echo"checked";}else{echo"";}?>> mercredi
 			<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="jeudi"<?php if(strstr($s->jour_presence, "jeudi")){echo"checked";}else{echo"";}?>> jeudi
-			<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="vendredi"<?php if(strstr($s->jour_presence, "vendredi")){echo"checked";}else{echo"";}?>> vendredi
+			<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="vendredi"<?php if(strstr($s->jour_presence, "vendredi")){echo"checked";}else{echo"";}?>> vendredi<br>
 			<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="samedi"<?php if(strstr($s->jour_presence, "samedi"))echo"checked";}else{echo"";}?>> samedi
 			<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="dimanche"<?php if(strstr($s->jour_presence, "dimanche")){echo"checked";}else{echo"";}?>> dimanche
 	</div>

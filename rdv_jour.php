@@ -297,7 +297,7 @@ return $horaire;
 									<a href="" title="dossier à <?php echo $s->dossier_lieu;?>"><?php if(strstr($s->dossier, "ailleurs")){echo" <img src='image/ailleurs.jpg' width='25'/>";}?></a>
 									<a href="" title="aucun"><?php if(strstr($s->dossier, "aucun")){echo" <img src='image/aucun dossier.gif' width='30'/>";}?></a>
 									<a href="" title="nez"><?php if(strstr($s->raison, "nez")){echo" <img src='image/nez.gif' width='25'/>";}?></a>
-									<a href="" title="gorge"><?php if(strstr($s->raison, "gorge")){echo" <img src='image/gorge.gif' width='25'/>";}?></a>
+									<a href="" title="gorge"><?php if(strstr($s->raison, "gorge")){echo" <img src='image/gorge.gif' width='35'/>";}?></a>
 									<a href="" title="oreille"><?php if(strstr($s->raison, "oreille")){echo" <img src='image/oreille1.gif' width='25'/>";}?></a>
 									<a href="" title="<?php echo $s->articulation;?>"><?php if($s->articulation == ""){echo"";}else{echo" <img src='image/os.png' width='25'/>";}?></a>
 									<br><?php echo $s->observation?>

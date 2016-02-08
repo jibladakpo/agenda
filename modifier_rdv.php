@@ -117,7 +117,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 	<label>Lieu du dossier:</label>
 	<input type="text" name="dossier_lieu" id="dossier_lieu" value="<?php echo $s->dossier_lieu;?>" size="20" placeholder="" class="" >
 	</div>
-		<?php if($s->id_praticien == 2){?> <!-- modifier l'id selon les praticiens -->
+		<?php if($s->id_praticien == 2){// Dr Pages à modifier selon id_praticien?>
 				<div>
 				<label>Examen:</label>
 		<INPUT type="checkbox" name="examen" id="examen" value="Déjà réalisé"<?php if(strstr($s->examen, "Déjà réalisé")){echo" checked";}else{echo"";}?>> Déjà réalisé
@@ -133,7 +133,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 				</div>
 			<?php }?>
 			
-			<?php if($s->id_praticien == 1){?> <!-- modifier l'id selon les praticiens -->
+			<?php if($s->id_praticien == 1){// Dr Gombert à modifier selon id_praticien?> 
 				<div>
 				<label>Raison:</label>
 		<INPUT type="checkbox" name="raison[]" id="raison" value="nez"<?php if(strstr($s->raison, "nez")){echo" checked";}else{echo"";}?>> Nez

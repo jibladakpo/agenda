@@ -116,7 +116,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 	<?php if($s->id_praticien == 2){?> <!-- modifier l'id selon les praticiens -->
 				<div>
 				<label>Examen:</label>
-		<INPUT type="checkbox" name="examen" id="examen" value="Déja réalisé">Déjà réalisé
+		<INPUT type="checkbox" name="examen" id="examen" value="Déjà réalisé">Déjà réalisé
 		<INPUT type="checkbox" name="examen" id="examen" value="A prévoir"> A prévoir
 	
 				
