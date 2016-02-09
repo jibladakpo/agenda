@@ -75,15 +75,25 @@ $id_praticien=$s->id_praticien;
 	
 	<div>
 	<label>Nom du médecin:</label>
-	<select name="id_praticien" id="id_praticien">
-	<?php $select = $db->query ("SELECT * FROM `agenda_praticien` ");
+	
+	
+	<select name="id_praticien" id="id_praticien" >
+	<?php $select = $db->query ("SELECT * FROM `agenda_praticien`");
 	while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
-		
 	?>
-	<option value="<?php echo $s->id_praticien;?>" <?php  if($s->id_praticien==$id_praticien)echo'selected';else'';?> ><?php echo $s->nom_medecin?><option/>
+	<option value="<?php echo $s->id_praticien;?>" <?php  if($s->id_praticien==$id_praticien)echo'selected';else'';?> >	<?php echo $s->nom_medecin;?></option>
 	<?php }?>
 	</select>
+	
+	
+
+	
+
+	
 	</div>
+	
+	
+	
 <?php $select = $db->query ("SELECT * FROM `agenda_rdv`,`agenda_patient`, `agenda_praticien` 
 		WHERE agenda_patient.id_patient = agenda_rdv.id_patient 
 		AND agenda_praticien.id_praticien = agenda_rdv.id_praticien 

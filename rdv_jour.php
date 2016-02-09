@@ -2,6 +2,7 @@
 require_once ('includes/connexion_bdd.php');
 require_once ('includes/header.php');
 error_reporting(0);
+
 ?>
 
 
@@ -17,6 +18,7 @@ error_reporting(0);
 <!--  ========Partie calendrier========  pas de include once car problème de centrage du calendrier-->
 
 <?php 
+$id_praticien=$_GET['id_praticien'];
 if(isset($_GET['id_praticien']) && isset($_GET['mois']) && isset($_GET['annee']))
 {
 	$id_praticien=$_GET['id_praticien'];
@@ -28,7 +30,11 @@ if(isset($_GET['id_praticien']) && isset($_GET['mois']) && isset($_GET['annee'])
 }
 else
 {
-	$select = $db->query ("SELECT * FROM `agenda_praticien` WHERE id_praticien=1");
+	$id_praticien=$_GET['id_praticien'];
+	$d=$_GET['dt'];
+	$mois=$_GET['mois'];
+	$annee=$_GET['annee'];
+	$select = $db->query ("SELECT * FROM `agenda_praticien` WHERE id_praticien=$id_praticien");
 	$s = $select->fetch ( PDO::FETCH_OBJ );
 	
 }
@@ -55,14 +61,14 @@ $mois_fr = Array("", "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juil
 
 if(isset($_GET['id_praticien']) && isset($_GET['mois']) && isset($_GET['annee']))
 {
-	$id_praticien=$_GET['id_praticien'];
+	
 	$mois=$_GET['mois'];
 	$annee=$_GET['annee'];
 	
 }
 else
 {
-	$id_praticien=("1");
+	//$id_praticien=("1");
 	$mois=date("n");
 	$annee=date("Y");
 }
@@ -72,16 +78,29 @@ $x=date("N", mktime(0, 0, 0, $mois,1 , $annee));
 $y=date("N", mktime(0, 0, 0, $mois,$l_day , $annee));
 $titre=$mois_fr[$mois]." : ".$annee;
 //echo $l_day;
+
 ?>
 
 <!-- selection du médecin, mois et année -->
 <form name="dt" method="get" action="">
 <select name="id_praticien" id="id_praticien" onChange="change()" class="liste">
 				<?php $select = $db->query ("SELECT * FROM `agenda_praticien`");
+				
 				while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
 				?>
-				<option value="<?php echo $s->id_praticien;?>" <?php if($s->id_praticien==$id_praticien)echo'selected';else'';?> ><?php echo $s->nom_medecin;?></option>
-				<?php }?>
+				<?php if($s->id_praticien==$id_praticien) 
+				{?>
+				<option value="<?php echo $s->id_praticien;?>" selected ><?php echo $s->nom_medecin;?></option>
+				<?php 
+				}
+				else
+				{
+				?>
+				<option value="<?php echo $s->id_praticien;?>" ><?php echo $s->nom_medecin;?></option>
+				<?php
+				}
+				
+				}?>
 		</select>
 <select name="mois" id="mois" onChange="change()" class="liste">
 <?php
@@ -141,7 +160,7 @@ for($i=1;$i<($l_day+1);$i++)
 	$date = "date('d/m/Y')";
 	$id= "$id_praticien";
 	$lien=$lien_redir;
-	$lien.="?action=afficher&amp;id_praticien=$id&amp;dt=".$da;
+	$lien.="?action=afficher&amp;id_praticien=$id&amp;dt=$da";
 	echo "<td";
 	if(in_array($date, $list_spe))
 	{

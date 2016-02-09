@@ -11,6 +11,9 @@ require_once ('includes/header.php');
 <div id="corps">
 <DIV ALIGN="CENTER">
 <h1><img src='image/heure.png' width='25'/> Planning horaires disponibles <img src='image/heure.png' width='25'/></h1>
+
+
+
 <?php 
 if(isset($_GET['id_praticien']) && isset($_GET['mois']) && isset($_GET['annee']))
 {
@@ -199,17 +202,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		<td width='' bgcolor="#dddddd"> <?php echo $valeur ?></td>
 		<td colspan=2 width="500"  bgcolor="#ffffff"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $da;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='20'/></a></td>
 	<?php }?>
-	<?php if ($id_praticien == 2){?>
-	<?php if(isset($s->heure_deb)==2){//condition si il existe 2 rdv sur la même heure à revoir?>
-	<!-- rien -->
-	<?php }?>
-	 <?php if(isset($s->heure_deb)==1){//condition si il existe 1 rdv sur la même heure à revoir?>
-	 <td width='' bgcolor="#dddddd"> <?php echo $valeur ?></td>
-	 <td colspan=2 width="500"  bgcolor="#ffffff"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $da;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='20'/></a></td>
-	 <?php }else{ ?>
-	 
-		<td colspan=2 width="500"  bgcolor="#ffffff"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $da;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='20'/></a></td>
-	 <?php }}?>
+	
 <?php }else{?>
 <!-- rien -->
 <?php }//fin condition jours?>

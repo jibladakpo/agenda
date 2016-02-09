@@ -8,6 +8,9 @@ require_once ('includes/header.php');
 
 </head>
 <?php
+$id_praticien=$_GET['id_praticien'];
+$d=$_GET['dt'];
+$h=$_GET['h'];
 if(isset($_POST['requete']) && $_POST['requete'] != NULL  || isset($_POST['requete2']) && $_POST['requete2'] != NULL ) // on vérifie d'abord l'existence du POST et aussi si la requete n'est pas vide.
 {
 mysql_connect('localhost','root','');
@@ -29,14 +32,17 @@ if($nb_resultats > 1) { echo ' résultats '; } else { echo ' résultat '; } // on 
  dans notre base de données.<br/>
 <br/>
 <?php
+
+
+
 while($donnees = mysql_fetch_array($query)) // on fait un while pour afficher la liste des fonctions trouvées, ainsi que l'id qui permettra de faire le lien vers la page de la fonction
 {
 ?>
 <?php 
 
-	$id_praticien=$_GET['id_praticien'];
-	$d=$_GET['dt'];
-	$h=$_GET['h'];	
+	
+	
+	
 ?>
 <p><?php echo $donnees['nom']; ?> <?php echo $donnees['prenom']; ?>
 	 <?php echo $donnees['date_naissance']; ?><a href="ajouter_rdv.php?action=ajouter&amp;id=<?php echo $donnees['id_patient']; ?>&amp;id_praticien=<?php echo $id_praticien;?>&amp;h=<?php echo $h;?>&amp;dt=<?php echo $d;?>"> 
@@ -58,7 +64,7 @@ else
 <div id="corps">
 <h1>Pas de résultats</h1>
 <p>Nous n'avons trouvé aucun résultat pour votre requête. <a href="recherche_patient.php">Réessayez</a> avec autre chose.</p>
-<p><a href="ajouter_patient.php?id_praticien=<?php echo $id;?>&amp;h=<?php echo $h;?>&amp;dt=<?php echo $d;?>">Ajouter un nouveau patient</a></p>
+<p><a href="ajouter_patient.php?id_praticien=<?php echo $id_praticien;?>&amp;h=<?php echo $h;?>&amp;dt=<?php echo $d;?>">Ajouter un nouveau patient</a></p>
 <?php
 }// Fini d'afficher l'erreur ^^
 mysql_close(); // on ferme mysql

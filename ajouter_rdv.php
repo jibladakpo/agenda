@@ -1,9 +1,21 @@
-<?php
+<?php 
 require_once ('includes/connexion_bdd.php');
 require_once ('includes/header.php');
 ?>
+		<script type="text/javascript">
+function change()
+{
+	document.dt.submit();
+}
+
+</script>
 <?php 
+
+
+
 if($_GET['action']=='ajouter'){
+$action=$_GET['action'];
+$_SESSION['action']=$action;
 	$id=$_GET['id'];
 	$id_praticien=$_GET['id_praticien'];
 	$d=$_GET['dt'];
@@ -47,6 +59,19 @@ if($_GET['action']=='ajouter'){
 <DIV ALIGN="CENTER">
 <div id="corps">
 	<h1>Prendre rendez-vous</h1>
+	
+	
+	<!--<form name="dt" method="get" action="">
+<select name="id_praticien" id="id_praticien" onChange="change()" class="liste2">
+				<?php $select = $db->query ("SELECT * FROM `agenda_praticien`");
+				while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
+				?>
+				<option value="<?php echo $s->id_praticien.'&='.$test;?>" <?php if($s->id_praticien==$id_praticien)echo'selected';else'';?> ><?php echo $s->nom_medecin;?></option>
+				<?php }?>
+		</select>
+		</form>-->
+	
+	
 	<form action="" method="POST">
 	
 <?php 	 
@@ -73,8 +98,22 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 ?>
 
 	<div>
-		<label>Nom du médecin:</label>
-		<input type="hidden" name="id_praticien" id=id_praticien value="<?php echo $s->id_praticien;?>"><input type="text" name="nom_praticien" id="nom_praticien" value="<?php echo "$s->nom_medecin"; ?>" size="20"placeholder="" class="">
+	<label>Nom du médecin:</label>
+	
+	
+	<select name="id_praticien" id="id_praticien" onChange="change()">
+	<?php $select = $db->query ("SELECT * FROM `agenda_praticien`");
+	while ( $s = $select->fetch ( PDO::FETCH_OBJ ) ) {
+	?>
+	<option value="<?php echo $s->id_praticien;?>" <?php  if($s->id_praticien==$id_praticien)echo'selected';else'';?> >	<?php echo $s->nom_medecin;?></option>
+	<?php }?>
+	</select>
+	
+	
+
+	
+
+	
 	</div>
 
 	<div>
@@ -88,7 +127,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 	</div>
 	
 	<div>
-		<label>Observartion:</label>
+		<label>Observation:</label>
 		<textarea name="observation" id="observation"  placeholder="" class=""></textarea>
 	</div>
 	<?php 	 
@@ -116,14 +155,14 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 	<?php if($s->id_praticien == 2){?> <!-- modifier l'id selon les praticiens -->
 				<div>
 				<label>Examen:</label>
-		<INPUT type="checkbox" name="examen" id="examen" value="Déjà réalisé">Déjà réalisé
-		<INPUT type="checkbox" name="examen" id="examen" value="A prévoir"> A prévoir
+		<INPUT type="checkbox" name="examen" id="examen" value="DÃƒÂ©jÃƒÂ  rÃƒÂ©alisÃƒÂ©">DÃƒÂ©jÃƒÂ  rÃƒÂ©alisÃƒÂ©
+		<INPUT type="checkbox" name="examen" id="examen" value="A prÃƒÂ©voir"> A prÃƒÂ©voir
 	
 				
 				</div>
 						
 				<div>
-					<label>Articulation concerné:</label>
+					<label>Articulation concernÃƒÂ©:</label>
 					<textarea name="articulation" id="articulation"  placeholder="" class=""></textarea>
 				</div>
 			<?php }?>

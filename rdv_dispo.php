@@ -61,7 +61,7 @@ $da=$i."/".$mois."/".$annee;
 <table style="width:560px">
 
 <tr bgcolor="#b3b3ff">
-	<td colspan="5"><a href="fiche_medecin.php?action=afficher&amp;id_praticien=<?php echo$s->id_praticien;?>"  style="font-size:25px"><b><?php echo $s->nom_medecin?></b></a><br>
+	<td colspan="5"><a href="fiche_medecin.php?action=afficher&amp;id=<?php echo$s->id_praticien;?>"  style="font-size:25px"><b><?php echo $s->nom_medecin?></b></a><br>
 	 <h2><input type="hidden" name="id_patient" value="<?php echo $date = date('d/m/Y');?>"> <?php setlocale(LC_TIME, 'fra_fra'); echo strftime('%A %d %B %Y'); ?></h2></td>
 	
 </tr>

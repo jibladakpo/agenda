@@ -73,20 +73,20 @@ $s = $select->fetch ( PDO::FETCH_OBJ );
 			<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="dimanche"<?php if(strstr($s->jour_presence, "dimanche")){echo"checked";}else{echo"";}?>> dimanche
 	</div>
 	
+	
 	<div>	
-	<label>Durée du rendez-vous:</label>
-		<input type="text" name="duree_rdv" size="80" id="duree_rdv"  placeholder="" value="<?php echo "$s->duree_rdv"; ?>"size="">
-	</div>	
-	<div>	
-	<label>Heure début <br>(heure:minute):</label>
+	<label>Heure début RDV <br>(heure:minute):</label>
 		<input type="text" name="heure_debut" size="80" id="heure_debut"  placeholder="" placeholder=">"value="<?php echo "$s->heure_debut"; ?> " class="">
 	</div>
 		
 	<div>	
-	<label>Heure fin <br>(heure:minute):</label>
+	<label>Heure fin RDV <br>(heure:minute):</label>
 		<input type="text" name="heure_fin" size="80" id="heure_fin" placeholder=""  value="<?php echo "$s->heure_fin"; ?> " class="">
 	</div>	
-		
+	<div>	
+	<label>Durée RDV (en seconde):</label>
+		<input type="text" name="duree_rdv" size="80" id="duree_rdv"  placeholder="" value="<?php echo "$s->duree_rdv"; ?>"size="">
+	</div>		
 		   
 	<div class="button">
        	<button type="submit" name="submit">Valider</button>

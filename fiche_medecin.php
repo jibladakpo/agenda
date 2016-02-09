@@ -36,17 +36,17 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		</div>
 		
 		<div>
-		<label>Heure début: </label>
+		<label>Heure début RDV: </label>
 		<?php  echo "$s->heure_debut"; ?>
 		</div>
 		
 		<div>
-		<label>Heure fin: </label>
+		<label>Heure fin RDV: </label>
 		<?php  echo "$s->heure_fin"; ?>
 		</div>
 
 		<div>
-		<label>Durée des rendez-vous:</label>
+		<label>Durée RDV(en seconde):</label>
 		 <?php  echo "$s->duree_rdv"; ?>
 		</div>
 		
