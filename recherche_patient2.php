@@ -54,6 +54,7 @@ while($donnees = mysql_fetch_array($query)) // on fait un while pour afficher la
 ?><br/>
 <br/>
 <p><a href="recherche_patient2.php?&amp;id_praticien=<?php echo $id_praticien;?>&amp;h=<?php echo $h;?>&amp;dt=<?php echo $d;?>">Faire une nouvelle recherche</a></p>
+<p><a href="ajouter_patient2.php?id_praticien=<?php echo $id_praticien;?>&amp;h=<?php echo $h;?>&amp;dt=<?php echo $d;?>">Ajouter un nouveau patient</a></p>
 </div>
 </div>
 <?php
@@ -62,9 +63,10 @@ else
 { // de nouveau, un peu de HTML
 ?>
 <div id="corps">
+<DIV ALIGN="CENTER">
 <h1>Pas de résultats</h1>
 <p>Nous n'avons trouvé aucun résultat pour votre requête. <a href="recherche_patient.php">Réessayez</a> avec autre chose.</p>
-<p><a href="ajouter_patient.php?id_praticien=<?php echo $id_praticien;?>&amp;h=<?php echo $h;?>&amp;dt=<?php echo $d;?>">Ajouter un nouveau patient</a></p>
+<p><a href="ajouter_patient2.php?id_praticien=<?php echo $id_praticien;?>&amp;h=<?php echo $h;?>&amp;dt=<?php echo $d;?>">Ajouter un nouveau patient</a></p>
 <?php
 }// Fini d'afficher l'erreur ^^
 mysql_close(); // on ferme mysql

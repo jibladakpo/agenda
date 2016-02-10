@@ -79,7 +79,7 @@ $titre=$mois_fr[$mois]." : ".$annee;
 		
 		<select name="annee" id="annee" onChange="change()" class="liste">
 <?php
-	for($i=2000;$i<2100;$i++) // l'année va de 1950 à 2500
+	for($i=2000;$i<2051;$i++) // l'année va de 1950 à 2500
 	{
 		echo '<option value="'.$i.'"';
 		if($i==$annee)

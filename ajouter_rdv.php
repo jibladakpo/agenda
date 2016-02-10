@@ -76,8 +76,8 @@ $_SESSION['action']=$action;
 	
 <?php 	 
 
-	$select = $db->query ("SELECT * FROM `agenda_patient` WHERE id_patient=$id");
-$s = $select->fetch ( PDO::FETCH_OBJ )
+	$select = $db->query ("SELECT * FROM `agenda_patient` WHERE id_patient='$id'");
+$s = $select->fetch ( PDO::FETCH_OBJ );
 
 ?>
 	<div>
@@ -131,7 +131,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		<textarea name="observation" id="observation"  placeholder="" class=""></textarea>
 	</div>
 	<?php 	 
-	$select = $db->query ("SELECT * FROM `agenda_patient` WHERE id_patient=$id");
+	$select = $db->query ("SELECT * FROM `agenda_patient` WHERE id_patient='$id'");
 $s = $select->fetch ( PDO::FETCH_OBJ )
 
 ?>
@@ -155,14 +155,14 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 	<?php if($s->id_praticien == 2){?> <!-- modifier l'id selon les praticiens -->
 				<div>
 				<label>Examen:</label>
-		<INPUT type="checkbox" name="examen" id="examen" value="DÃ©jÃ  rÃ©alisÃ©">DÃ©jÃ  rÃ©alisÃ©
-		<INPUT type="checkbox" name="examen" id="examen" value="A prÃ©voir"> A prÃ©voir
+		<INPUT type="checkbox" name="examen" id="examen" value="D�j� r�alis�">D�j� r�alis�
+		<INPUT type="checkbox" name="examen" id="examen" value="A pr�voir"> A pr�voir
 	
 				
 				</div>
 						
 				<div>
-					<label>Articulation concernÃ©:</label>
+					<label>Articulation concern�e:</label>
 					<textarea name="articulation" id="articulation"  placeholder="" class=""></textarea>
 				</div>
 			<?php }?>

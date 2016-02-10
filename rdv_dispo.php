@@ -14,6 +14,21 @@ require_once ('includes/header.php');
 <div class="wrapper_liste">
 <h1>Calendrier</h1>
 <?php include_once('includes/calendrier.php')?>
+<table>
+
+	<tr>
+		<td colspan=2>Légende</td>
+	</tr>
+	<tr>
+		<td bgcolor="#9cbdfb"width=30></td>
+		<td> Jours disponibles </td>
+	</tr>
+	<tr>
+		<td bgcolor="#ffffff"width=30></td>
+		<td>  Jours indisponibles </td>
+	</tr>
+
+</table>
 </div>
 <!-- agenda du jour -->
 <?php
@@ -90,7 +105,7 @@ $da=$i."/".$mois."/".$annee;
 									<a href="" title="Examen à prévoir"><?php if(strstr($s->examen, "A prévoir")){echo" <img src='image/radio a faire.jpg' width='25'/>";}?></a>
 									<a href="" title="dossier à LFM"><?php if(strstr($s->dossier, "LFM")){echo" <img src='image/logo_chic_lfm.gif' width='25'/>";}?></a>
 									<a href="" title="dossier à <?php echo $s->dossier_lieu;?>"><?php if(strstr($s->dossier, "ailleurs")){echo" <img src='image/ailleurs.jpg' width='25'/>";}?></a>
-									<a href="" title="aucun"><?php if(strstr($s->dossier, "aucun")){echo" <img src='image/aucun dossier.gif' width='30'/>";}?></a>
+									<a href="" title="aucun"><?php if(strstr($s->dossier, "aucun")){echo" <img src='image/aucun dossier.gif' width='25'/>";}?></a>
 									<a href="" title="nez"><?php if(strstr($s->raison, "nez")){echo" <img src='image/nez.gif' width='25'/>";}?></a>
 									<a href="" title="gorge"><?php if(strstr($s->raison, "gorge")){echo" <img src='image/gorge.gif' width='35'/>";}?></a>
 									<a href="" title="oreille"><?php if(strstr($s->raison, "oreille")){echo" <img src='image/oreille1.gif' width='25'/>";}?></a>
@@ -105,6 +120,7 @@ $da=$i."/".$mois."/".$annee;
 
 
 </table>
+
 
 
 
