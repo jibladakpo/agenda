@@ -164,7 +164,7 @@ if($x>1)
 	else{echo"<td>";}
 
 	
-	echo "<input type='hidden' name='id_patient' value='$da'>$jours_fr[$f] $i <br> $mois_fr[$mois] $annee";
+	echo "<input type='hidden' name='id_patient' value='$da'>$jours_fr[$f] $i <br> $mois_fr[$mois] $annee <a href='mettre_absence.php?id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $da;?>' title='Mettre absent'> <img src='image/interdit.png' width='20'/></a>";
 	
 	?>
 	

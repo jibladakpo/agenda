@@ -12,7 +12,7 @@ if($_GET['action']=='supprimer'){
 	      WHERE id_praticien = $id ");
   $delete->execute ();
   echo '<script>alert("médecin supprimé")</script>';
-  header ( 'location: docteur.php' );
+  header ( 'location: medecin.php' );
 
 }
 ?>

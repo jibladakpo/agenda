@@ -37,15 +37,15 @@ require_once ('includes/header.php');
 		
 		<div>
 			<label>Nom:</label>
-			<input type="text" name="nom" id="nom" value="" placeholder="" class="">
+			<input type="text" name="nom" id="nom" value="" placeholder="" class=""required>
 		</div>
 		<div>
 			<label>Prénom:</label>
-			<input type="text" name="prenom" id="prenom" class="">
+			<input type="text" name="prenom" id="prenom" class=""required>
 		</div>
 		<div>
 			<label>Date de naissance :</label>
-			<input type="text" name="date_naissance" id="date_naissance" value="" size="20" placeholder="" class="">
+			<input type="text" name="date_naissance" id="date_naissance" value="" size="20" placeholder="" class=""required>
 		</div>
 		<div>
 			<label>Téléphone:</label>

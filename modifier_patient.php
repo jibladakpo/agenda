@@ -39,7 +39,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		$update->execute ();
 		
 		echo '<script>alert("patient ajouté")</script>';
-		header ( 'location: patient.php' );
+		header ( 'location: fiche_patient.php?action=afficher&id_patient='.$id.'' );
 		}
 	
 ?>

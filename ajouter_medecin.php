@@ -14,7 +14,7 @@ require_once ('includes/header.php');
 		$db->query ( "INSERT INTO agenda_praticien VALUES ('','" . $nom_medecin . "','" . $specialite . "','" . $jour_presence . "','" . $heure_debut . "','" . $heure_fin . "','" . $duree_rdv . "')" );
 		
 		echo '<script>alert("médecin ajoutée")</script>';
-		header ( 'location: docteur.php' );
+		header ( 'location: medecin.php' );
 		}
 	
 ?>
@@ -48,7 +48,7 @@ require_once ('includes/header.php');
 			<INPUT type="checkbox" name="jour_presence" id="jour_presence" value="dimanche"> dimanche
 	</div>
 	<div>	
-		<label>Durée du rendez-vous:</label>
+		<label>Durée RDV(en sec):</label>
 		<input type="text" name="duree_rdv" id="duree_rdv" value="" size="20" placeholder="" class="">
 	</div>
 	

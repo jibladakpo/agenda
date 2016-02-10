@@ -115,14 +115,7 @@ $da=$i."/".$mois."/".$annee;
 </tr>
 <?php }?>
 
-
-
-
-
 </table>
-
-
-
 
 </div>
 </div>
