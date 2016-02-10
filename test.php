@@ -36,11 +36,11 @@ function array_doublon($array){
 				");
 while ($s = $select->fetch ( PDO::FETCH_OBJ )){
 	
-$heure = array("$s->heure_deb");
+$heure = array($s->heure_deb);
 
 
-$heure1 = array('$s->heure_deb');
-$heure_d = array_doublon($heure1);
+
+$heure_d = array_doublon($heure);
 foreach ($heure_d as $heure_doublon){
 	echo $heure_doublon;
 }
@@ -50,10 +50,6 @@ foreach($heure2 as $heure3){
 	echo $heure3. ' ';
 }
 
-for($i=1;$i<1;$i++){
-	
-		echo $heure[$i];
-	}
 	
 }
 
@@ -72,14 +68,6 @@ echo $array_3. ' ';
 // pommeorange 
 ?>
 
-<select>
-<?php 
-	$select = $db->query ("SELECT * FROM `agenda_praticien`");
-	while ( $s = $select->fetch ( PDO::FETCH_OBJ ) )  {
-?>
-	<option> value="<?php echo $s->id_praticien;?>"><?php echo $s->nom_medecin?><option/>
-	<?php }?>
-</select>
 	
 </DIV>
 </div>

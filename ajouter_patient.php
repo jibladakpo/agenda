@@ -15,13 +15,12 @@ require_once ('includes/header.php');
 	$medecin_traitant = ($_POST ['medecin_traitant']);
 	
 	
-	
-		$db->query ( "INSERT INTO agenda_patient VALUES ('','" . $nom . "','" . $prenom . "','" . $date_naissance . "','" . $tel_fixe . "','" . $mail . "','" . $adresse . "','" . $cp . "','" . $ville . "','". $medecin_traitant ."')" );
-		
+	$db->query ( "INSERT INTO agenda_patient VALUES ('','" . $nom . "','" . $prenom . "','" . $date_naissance . "','" . $tel_fixe . "','" . $mail . "','" . $adresse . "','" . $cp . "','" . $ville . "','". $medecin_traitant ."')" );
+
 		echo 
 		header ( 'location: patient.php' );
-		'<script LANGUAGE="JavaScript">alert("patient enregistré")</script>';
-		}
+	}
+		
 	
 ?>
 <html>

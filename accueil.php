@@ -185,7 +185,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ );
 ?>
 <tr>
 <?php 
-		$select = $db->query ("SELECT * FROM `agenda_rdv`,`agenda_patient`, `agenda_praticien` 
+		$select = $db->query ("SELECT COUNT(id_rdv) AS nbheure FROM `agenda_rdv`,`agenda_patient`, `agenda_praticien` 
 				WHERE agenda_patient.id_patient = agenda_rdv.id_patient 
 				AND agenda_praticien.id_praticien = agenda_rdv.id_praticien 
 				AND agenda_rdv.id_praticien = $id_praticien
@@ -196,14 +196,26 @@ $s = $select->fetch ( PDO::FETCH_OBJ );
 $s = $select->fetch ( PDO::FETCH_OBJ )
 ?>
 <?php if(in_array($f, $list_dispo)){?>
-	<?php if(isset($s->heure_deb)){ ?>
+	<?php if($id_praticien == 1 || $id_praticien == 2 || $id_praticien == 7){?>
+
+	<?php if($s->nbheure==2){ ?>
 		<!-- rien -->
-	<?php }else{?>
+	<?php }elseif($s->nbheure==1){?>
 		<td width='' bgcolor="#dddddd"> <?php echo $valeur ?></td>
 		<td colspan=2 width="500"  bgcolor="#ffffff"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $da;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='20'/></a></td>
-	<?php }?>
 	
-<?php }else{?>
+	<?php }elseif($s->nbheure==0){?>
+		<td width='' bgcolor="#dddddd"> <?php echo $valeur ?></td>
+		<td colspan=2 width="500"  bgcolor="#ffffff"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $da;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='20'/></a></td>
+		<td colspan=2 width="500"  bgcolor="#ffffff"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $da;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='20'/></a></td>
+	<?php }?>
+	<?php }else{?>
+	<?php if($s->nbheure==1){?>
+			<!-- rien -->
+	<?php }elseif($s->nbheure==0){?>
+	<td width='' bgcolor="#dddddd"> <?php echo $valeur ?></td>
+		<td colspan=2 width="500"  bgcolor="#ffffff"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $da;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='20'/></a></td>
+<?php }}}else{?>
 <!-- rien -->
 <?php }//fin condition jours?>
 </tr>

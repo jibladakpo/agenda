@@ -34,9 +34,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 				adresse = '".$adresse."', 
 				cp = '".$cp."', 
 				ville = '".$ville."', 
-				medecin_traitant = '".$medecin_traitant."',
-				
-				
+				medecin_traitant = '".$medecin_traitant."'
 				WHERE id_patient=$id");
 		$update->execute ();
 		

@@ -20,6 +20,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 <div id="corps">
 <DIV ALIGN="CENTER">
 <h1><img src='image/fiche.png' width='30'/>Fiche rendez vous</h1>
+
 </DIV>
 <div class="fiche">
 
@@ -91,7 +92,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		<div class="button">
 		 <a href="modifier_rdv.php?action=modifier&amp;id=<?php echo $s->id_rdv;?>"><input type="button" value="Modifier"
 	name="modifier rdv"></a>
-			<a href="supprimer_rdv.php?action=supprimer&amp;id=<?php echo $s->id_rdv;?>"><input type="button" value="Supprimer"
+			<a href="supprimer_rdv.php?action=supprimer&amp;id=<?php echo $s->id_rdv;?>&amp;id_praticien=<?php echo$s->id_praticien;?>&amp;dt=<?php echo $s->date_debut;?>"><input type="button" value="Supprimer"
 	name="supprimer_rdv"></a>
 	</div>
 	</div>

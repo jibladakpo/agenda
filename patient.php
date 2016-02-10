@@ -9,7 +9,12 @@ require_once ('includes/header.php');
  	<link rel="stylesheet" href="">
 	<title>CHIC LFM Patient</title>
 </head>
-	
+<div id="corps">
+<DIV ALIGN="CENTER">
+<h1>Patient</h1>
+
+</DIV>
+</div>	
 <?php include_once('recherche_patient.php')?>
 
 <div id="corps">
