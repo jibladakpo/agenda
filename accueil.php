@@ -58,6 +58,7 @@ $x=date("N", mktime(0, 0, 0, $mois,1 , $annee));
 $y=date("N", mktime(0, 0, 0, $mois,$l_day , $annee));
 $titre=$mois_fr[$mois]." : ".$annee;
 ?>
+
 <!-- liste déroulante -->
 <form name="dt" method="get" action="">
 <select name="id_praticien" id="id_praticien" onChange="change()" class="liste2">
@@ -168,15 +169,15 @@ if($x>1)
 				");
 $s = $select->fetch ( PDO::FETCH_OBJ );
 ?>
-<?php if(isset($s->date)){echo"<td>"; ?>
+<?php if(isset($s->date)){echo"<td>"; ?> <!-- absences -->
 <?php }else{?>
 
 <?php	
-	if(in_array($f, $list_dispo)){
+	if(in_array($f, $list_dispo)){ // jours de présences
 	echo "<td bgcolor='#c1ffc1'>";}
 	else{echo"<td>";}
 	
-	if(in_array($f, $list_dispo)){
+	if(in_array($f, $list_dispo)){ 
 		
 	echo "<input type='hidden' name='date' value='$da'>$jours_fr[$f] $i <br> $mois_fr[$mois] $annee 
 	<a href='mettre_absence.php?id_praticien=$id_praticien&amp;dt=$da&amp;mois=$m&amp;annee=$a' title='Mettre absent'> <img src='image/interdit.png' width='20'/></a>";
@@ -202,7 +203,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ );
 				");
 $s = $select->fetch ( PDO::FETCH_OBJ );
 ?>
-<?php if(isset($s->date)){?>
+<?php if(isset($s->date)){?> <!-- absences -->
 <!-- rien -->
 <?php }else{?>
 <?php 
@@ -232,7 +233,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 ?>
 
 <?php if(in_array($f, $list_dispo)){?>
-	<?php if($id_praticien == 1 || $id_praticien == 2 || $id_praticien == 7){//2 rendez-vous?>
+	<?php if($id_praticien == 1 || $id_praticien == 2 || $id_praticien == 7){//2 rendez-vous pour un médécin?>
 
 	<?php if($s->nbheure==2){ ?>
 		<!-- rien -->
@@ -245,7 +246,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 		<td colspan=2 width="500"  bgcolor="#ffffff"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $da;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='20'/></a></td>
 		<td colspan=2 width="500"  bgcolor="#ffffff"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $da;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='20'/></a></td>
 	<?php }?>
-	<?php }else{//un seul rendez-vous?>
+	<?php }else{//un seul rendez-vous pour un médecin?>
 	<?php if($s->nbheure==1){?>
 			<!-- rien -->
 	<?php }elseif($s->nbheure==0){?>

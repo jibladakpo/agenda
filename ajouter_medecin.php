@@ -1,6 +1,8 @@
 <?php
 require_once ('includes/connexion_bdd.php');
 require_once ('includes/header.php');
+
+//script pour ajouter un nouveau médecin
 ?>
 <?php if (isset ( $_POST ['submit'] )) {
 
@@ -11,7 +13,7 @@ require_once ('includes/header.php');
 	$heure_fin = ($_POST ['heure_fin']);
 	$duree_rdv = ($_POST ['duree_rdv']);
 	
-	foreach($_POST ['jour_presence'] as $chkb){
+	foreach($_POST ['jour_presence'] as $chkb){ //checkbox
 	
 		$chk .= $chkb." ";
 	}

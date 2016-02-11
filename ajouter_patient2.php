@@ -1,6 +1,7 @@
 <?php
 require_once ('includes/connexion_bdd.php');
 require_once ('includes/header.php');
+//script pour ajouter un patient (prise de rendez-vous)
 ?>
 
 <?php 

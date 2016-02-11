@@ -3,7 +3,7 @@ require_once ('includes/connexion_bdd.php'); // inclure une fois le fichier head
 ?>
 
 <?php
-
+//connexion au site 
 if(isset($_SESSION['admin_id'])){ 
 	
 	header('location: accueil.php');

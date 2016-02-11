@@ -1,6 +1,8 @@
 <?php
 require_once ('includes/connexion_bdd.php');
 require_once ('includes/header.php');
+
+//script rdv non utilisé pour le site
 ?>
 <?php 
 

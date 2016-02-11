@@ -13,7 +13,10 @@ require_once ('includes/header.php');
 <div id="corps">
 <div class="wrapper_liste">
 <h1>Calendrier</h1>
+<!-- Calendrier (voir dans dossier includes) -->
 <?php include_once('includes/calendrier.php')?>
+
+<!-- Légende -->
 <table>
 
 	<tr>
@@ -70,7 +73,7 @@ return $horaire;
 $da=$i."/".$mois."/".$annee;
 ?>
 
-<div class="wrapper_liste">
+<div class="wrapper_liste"> <!-- css mise en place des éléments côte à côte -->
 <h1>Planning du jour</h1>
 
 <table style="width:560px">
@@ -80,7 +83,7 @@ $da=$i."/".$mois."/".$annee;
 	 <h2><input type="hidden" name="date_jour" value="<?php echo $date = date('d/m/Y');?>"> <?php setlocale(LC_TIME, 'fra_fra'); echo strftime('%A %d %B %Y'); ?></h2>
 	
 
-<?php 
+<?php //rqt absence médecin
 		$select = $db->query ("SELECT * FROM `agenda_absence`, `agenda_praticien`
 				WHERE agenda_praticien.id_praticien = agenda_absence.id_praticien
 				AND agenda_absence.id_praticien = $id_praticien
@@ -94,7 +97,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ );
 </tr>
 <tr>
 
-		<?php 
+		<?php //rqt planning horaire
 		$select = $db->query ("SELECT * FROM `agenda_rdv`,`agenda_patient`, `agenda_praticien` 
 				WHERE agenda_patient.id_patient = agenda_rdv.id_patient 
 				AND agenda_praticien.id_praticien = agenda_rdv.id_praticien 
