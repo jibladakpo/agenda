@@ -68,8 +68,6 @@ return $horaire;
 } 
 
 $da=$i."/".$mois."/".$annee;
-$m=$mois;
-$a=$annee;
 ?>
 
 <div class="wrapper_liste">
@@ -79,14 +77,25 @@ $a=$annee;
 
 <tr bgcolor="#b3b3ff">
 	<td colspan="5"><a href="fiche_medecin.php?action=afficher&amp;id=<?php echo$s->id_praticien;?>"  style="font-size:25px"><b><?php echo $s->nom_medecin?></b></a><br>
-	 <h2><input type="hidden" name="id_patient" value="<?php echo $date = date('d/m/Y');?>"> <?php setlocale(LC_TIME, 'fra_fra'); echo strftime('%A %d %B %Y'); ?></h2></td>
+	 <h2><input type="hidden" name="date_jour" value="<?php echo $date = date('d/m/Y');?>"> <?php setlocale(LC_TIME, 'fra_fra'); echo strftime('%A %d %B %Y'); ?></h2>
 	
-</tr>
 
+<?php 
+		$select = $db->query ("SELECT * FROM `agenda_absence`, `agenda_praticien`
+				WHERE agenda_praticien.id_praticien = agenda_absence.id_praticien
+				AND agenda_absence.id_praticien = $id_praticien
+				AND date = '$da'
+				
+				");
+$s = $select->fetch ( PDO::FETCH_OBJ );
+?>
+
+<input type='hidden' name='date' value='<?php echo'$da'?>'><?php if(isset($s->date)){echo'(absent)';}else{echo'(présent)';}?></td>
+</tr>
 <tr>
 
 		<?php 
-		$select = $db->query ("SELECT * FROM `agenda_rdv`,`agenda_patient`, `agenda_praticien`,`agenda_absent` 
+		$select = $db->query ("SELECT * FROM `agenda_rdv`,`agenda_patient`, `agenda_praticien` 
 				WHERE agenda_patient.id_patient = agenda_rdv.id_patient 
 				AND agenda_praticien.id_praticien = agenda_rdv.id_praticien 
 				AND agenda_rdv.id_praticien = $id_praticien

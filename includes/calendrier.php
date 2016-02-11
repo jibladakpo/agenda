@@ -118,6 +118,8 @@ for($i=1;$i<($l_day+1);$i++)
 		
 	
 	$da=$i."/".$mm."/".$annee;
+	$m=$mois;
+	$a=$annee;
 	$date = "date('d/m/Y')";
 	$id= "$id_praticien";
 	$lien=$lien_redir;

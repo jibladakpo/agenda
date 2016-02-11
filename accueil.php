@@ -178,7 +178,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ );
 	
 	if(in_array($f, $list_dispo)){
 		
-	echo "<input type='hidden' name='id_patient' value='$da'>$jours_fr[$f] $i <br> $mois_fr[$mois] $annee 
+	echo "<input type='hidden' name='date' value='$da'>$jours_fr[$f] $i <br> $mois_fr[$mois] $annee 
 	<a href='mettre_absence.php?id_praticien=$id_praticien&amp;dt=$da&amp;mois=$m&amp;annee=$a' title='Mettre absent'> <img src='image/interdit.png' width='20'/></a>";
 	}
 	

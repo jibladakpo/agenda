@@ -281,12 +281,33 @@ return $horaire;
 
 <tr bgcolor="#b3b3ff">
 	<td colspan="5"><a href="fiche_medecin.php?action=afficher&amp;id_praticien=<?php echo$s->id_praticien;?>"  style="font-size:25px"><b><?php echo $s->nom_medecin?></b></a><br>
-	Date: <?php echo $d;?></td>
+	Date: <?php echo $d;?>
+	<?php 
+		$select = $db->query ("SELECT * FROM `agenda_absence`, `agenda_praticien`
+				WHERE agenda_praticien.id_praticien = agenda_absence.id_praticien
+				AND agenda_praticien.id_praticien = $id_praticien
+				AND date = '$d'
+				
+				");
+$s = $select->fetch ( PDO::FETCH_OBJ );
+?>
+
+<input type='hidden' name='date' value='<?php echo'$d'?>'><?php if(isset($s->date)){echo'(absent)';}else{echo'(présent)';}?>
+	
+	</td>
 	
 </tr>
 
+<?php if(isset($s->date)){?>
+<!-- rien -->
+<?php }else{?>
+<?php 
+$select = $db->query ("SELECT *
+						FROM `agenda_praticien`
+						WHERE agenda_praticien.id_praticien = $id_praticien");
 
-
+$s = $select->fetch ( PDO::FETCH_OBJ );
+?>
 <?php
 			
 			$h = horaire("$s->heure_debut", "$s->heure_fin", "$minute"); 
@@ -327,7 +348,7 @@ return $horaire;
 <td colspan=2 width="200"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $d;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='20'/></a></td>
 <?php }?>
 <?php }?>
-
+<?php }?>
 
 </tr>
 </table>
