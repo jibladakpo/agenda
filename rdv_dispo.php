@@ -111,7 +111,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ );
 	?>	
 	<td width='100' bgcolor="#dddddd"> <?php echo $s->heure_deb ?></td>
 <td width="500" bgcolor="#c1ffc1"><a href="fiche_rdv.php?action=afficher&amp;id=<?php echo $s->id_rdv?>">
-									<?php echo $s->nom?> <?php echo $s->prenom?></a>
+									<?php echo $s->nom?> <?php echo $s->prenom?> <?php echo $s->date_naissance?></a>
 									<a href="" title="Examen déjà réalisé"><?php if(strstr($s->examen, "Déjà réalisé")){echo" <img src='image/radio_faite.gif' width='25'/>";}?></a>
 									<a href="" title="Examen à prévoir"><?php if(strstr($s->examen, "A prévoir")){echo" <img src='image/radio a faire.jpg' width='25'/>";}?></a>
 									<a href="" title="dossier à LFM"><?php if(strstr($s->dossier, "LFM")){echo" <img src='image/logo_chic_lfm.gif' width='25'/>";}?></a>
