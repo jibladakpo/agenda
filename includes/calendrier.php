@@ -27,8 +27,8 @@ $date_jour= array(date('d/m/y'));//date du jour  ==>NON DEVELLOPPER!
 $list_spe=array();//Mettez vos dates des evenements ; NB format(annee-m-j) ==>NON DEVELLOPPER!
 $lien_redir="rdv_jour.php";//Lien de redirection apres un clic sur une date, NB la date selectionner va etre ajouter Ã  ce lien afin de la rÃ©cuperer ultÃ©rieurement 
 $clic=1;//1==>Activer les clic sur tous les dates; 2==>Activer les clic uniquement sur les dates speciaux; 3==>Désactiver les clics sur tous les dates
-$col1="#d6f21a";//couleur au passage du souris pour les dates normales ==>NON DEVELLOPPER!
-$col2="#8af5b5";//couleur au passage du souris pour les dates speciaux ==>NON DEVELLOPPER!
+$col1="#d6f21a";//couleur au passage du souris pour les dates normales 
+$col2="#8af5b5";//couleur au passage du souris pour les dates speciaux
 $col3="#6a92db";//couleur au passage du souris pour les dates disponibles
 $jours_fr = Array("", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche");
 $mois_fr = Array("", "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août","Septembre", "Octobre", "Novembre", "Décembre");
@@ -76,7 +76,7 @@ $titre=$mois_fr[$mois]." : ".$annee;
 </select>
 <select name="annee" id="annee" onChange="change()" class="liste">
 <?php
-	for($i=1950;$i<2051;$i++) // l'année va de 1950 à 2500
+	for($i=1950;$i<2051;$i++)
 	{
 		echo '<option value="'.$i.'"';
 		if($i==$annee)
@@ -137,7 +137,7 @@ for($i=1;$i<($l_day+1);$i++)
 		if($clic==1||$clic==2)
 			echo " onclick='go_lien(\"$lien\")' ";
 	}
-	else if(in_array($date,$date_jour)) //condition à revoir
+	else if(in_array($date,$date_jour)) 
 	{
 		echo " class='date_jour' onmouseover='over(this,2,2)'"; 
 		if($clic==1||$clic==2)

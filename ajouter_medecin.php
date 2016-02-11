@@ -11,7 +11,11 @@ require_once ('includes/header.php');
 	$heure_fin = ($_POST ['heure_fin']);
 	$duree_rdv = ($_POST ['duree_rdv']);
 	
-		$db->query ( "INSERT INTO agenda_praticien VALUES ('','" . $nom_medecin . "','" . $specialite . "','" . $jour_presence . "','" . $heure_debut . "','" . $heure_fin . "','" . $duree_rdv . "')" );
+	foreach($_POST ['jour_presence'] as $chkb){
+	
+		$chk .= $chkb." ";
+	}
+		$db->query ( "INSERT INTO agenda_praticien VALUES ('','" . $nom_medecin . "','" . $specialite . "','" . $chkb . "','" . $heure_debut . "','" . $heure_fin . "','" . $duree_rdv . "')" );
 		
 		echo '<script>alert("médecin ajoutée")</script>';
 		header ( 'location: medecin.php' );
@@ -39,13 +43,13 @@ require_once ('includes/header.php');
 	</div>
 	<div>
 		<label>Jours de présences:</label>
-			<INPUT  type="checkbox" name="jour_presence" id="jour_presence" value="lundi"> lundi
-			<INPUT type="checkbox" name="jour_presence" id="jour_presence" value="mardi"> mardi
-			<INPUT type="checkbox" name="jour_presence" id="jour_presence" value="mercredi"> mercredi
-			<INPUT type="checkbox" name="jour_presence" id="jour_presence" value="jeudi"> jeudi
-			<INPUT type="checkbox" name="jour_presence" id="jour_presence" value="vendredi"> vendredi<br>
-			<INPUT type="checkbox" name="jour_presence" id="jour_presence" value="samedi"> samedi
-			<INPUT type="checkbox" name="jour_presence" id="jour_presence" value="dimanche"> dimanche
+			<INPUT  type="checkbox" name="jour_presence[]" id="jour_presence" value="lundi"> lundi
+			<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="mardi"> mardi
+			<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="mercredi"> mercredi
+			<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="jeudi"> jeudi
+			<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="vendredi"> vendredi<br>
+			<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="samedi"> samedi
+			<INPUT type="checkbox" name="jour_presence[]" id="jour_presence" value="dimanche"> dimanche
 	</div>
 	<div>	
 		<label>Durée RDV(en sec):</label>
