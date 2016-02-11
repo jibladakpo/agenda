@@ -1,6 +1,7 @@
 <?php
 require_once ('includes/connexion_bdd.php');
 require_once ('includes/header.php');
+
 ?>
 <head>
 <title>CHIC LFM rdv dipo</title>
@@ -125,10 +126,7 @@ return $horaire;
 </select>
 		</form>
 		
-		<?php 
-$select = $db->query ("SELECT * FROM `agenda_praticien` WHERE id_praticien = $id_praticien");
-$s = $select->fetch ( PDO::FETCH_OBJ )
-	?>
+	
 
 
 <!-- créneaux horaires -->		
@@ -157,19 +155,56 @@ if($x>1)
 				else
 					$mm=$mois;
 	$da=$i."/".$mm."/".$annee;
-	
-	
+	$m=$mois;
+	$a=$annee;
+?>	
+
+<?php 
+		$select = $db->query ("SELECT * FROM `agenda_absence`, `agenda_praticien`
+				WHERE agenda_praticien.id_praticien = agenda_absence.id_praticien
+				AND agenda_absence.id_praticien = $id_praticien
+				AND date = '$da'
+				
+				");
+$s = $select->fetch ( PDO::FETCH_OBJ );
+?>
+<?php if(isset($s->date)){echo"<td>"; ?>
+<?php }else{?>
+
+<?php	
 	if(in_array($f, $list_dispo)){
 	echo "<td bgcolor='#c1ffc1'>";}
 	else{echo"<td>";}
-
 	
-	echo "<input type='hidden' name='id_patient' value='$da'>$jours_fr[$f] $i <br> $mois_fr[$mois] $annee <a href='mettre_absence.php?id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $da;?>' title='Mettre absent'> <img src='image/interdit.png' width='20'/></a>";
+	if(in_array($f, $list_dispo)){
+		
+	echo "<input type='hidden' name='id_patient' value='$da'>$jours_fr[$f] $i <br> $mois_fr[$mois] $annee 
+	<a href='mettre_absence.php?id_praticien=$id_praticien&amp;dt=$da&amp;mois=$m&amp;annee=$a' title='Mettre absent'> <img src='image/interdit.png' width='20'/></a>";
+	}
 	
+	else{
+	echo "<input type='hidden' name='id_patient' value='$da'>$jours_fr[$f] $i <br> $mois_fr[$mois] $annee 
+	<a href='supprimer_absence.php?id_praticien=$id_praticien&amp;dt=$da' > </a>"	
+		;}
 	?>
-	
+	<?php }?>
+	<?php  if(isset($s->date)){
+		echo "<input type='hidden' name='id_patient' value='$da'>$jours_fr[$f] $i <br> $mois_fr[$mois] $annee
+		<a href='supprimer_absence.php?id_praticien=$id_praticien&amp;dt=$da&amp;mois=$m&amp;annee=$a' title='Mettre présent'> <img src='image/v.jpg' width='20'/></a>"
+		;} ?>
 	<table > <!-- invalide location of tag table = c'est voulu sinon problème avec le tableau -->
-
+<?php 
+		$select = $db->query ("SELECT * FROM `agenda_absence`, `agenda_praticien`
+				WHERE agenda_praticien.id_praticien = agenda_absence.id_praticien
+				AND agenda_absence.id_praticien = $id_praticien
+				AND date = '$da'
+				
+				");
+$s = $select->fetch ( PDO::FETCH_OBJ );
+?>
+<?php if(isset($s->date)){?>
+<!-- rien -->
+<?php }else{?>
 <?php 
 $select = $db->query ("SELECT *
 						FROM `agenda_praticien`
@@ -185,9 +220,9 @@ $s = $select->fetch ( PDO::FETCH_OBJ );
 ?>
 <tr>
 <?php 
-		$select = $db->query ("SELECT COUNT(id_rdv) AS nbheure FROM `agenda_rdv`,`agenda_patient`, `agenda_praticien` 
+		$select = $db->query ("SELECT COUNT(id_rdv) AS nbheure FROM `agenda_rdv`,`agenda_patient`, `agenda_praticien`
 				WHERE agenda_patient.id_patient = agenda_rdv.id_patient 
-				AND agenda_praticien.id_praticien = agenda_rdv.id_praticien 
+				AND agenda_praticien.id_praticien = agenda_rdv.id_praticien
 				AND agenda_rdv.id_praticien = $id_praticien
 				AND agenda_rdv.date_debut = '$da'
 				AND heure_deb = '$valeur'
@@ -195,6 +230,7 @@ $s = $select->fetch ( PDO::FETCH_OBJ );
 				");
 $s = $select->fetch ( PDO::FETCH_OBJ )
 ?>
+
 <?php if(in_array($f, $list_dispo)){?>
 	<?php if($id_praticien == 1 || $id_praticien == 2 || $id_praticien == 7){?>
 
@@ -215,12 +251,12 @@ $s = $select->fetch ( PDO::FETCH_OBJ )
 	<?php }elseif($s->nbheure==0){?>
 	<td width='' bgcolor="#dddddd"> <?php echo $valeur ?></td>
 		<td colspan=2 width="500"  bgcolor="#ffffff"><a href="recherche_patient2.php?action=afficher&amp;id_praticien=<?php echo $id_praticien;?>&amp;dt=<?php echo $da;?>&amp;h=<?php echo $valeur;?>"><img src='image/plus.jpg' width='20'/></a></td>
-<?php }}}else{?>
+<?php }}}else{?><!-- fin de condition else if not in_array | else not in_array | if in_array -->
 <!-- rien -->
 <?php }//fin condition jours?>
 </tr>
 <?php }//fin de la boucle des heures?>
-
+<?php }//fin boucle date absence?>
 </tr> <!-- laisser sinon erreur -->
 </table>
 	

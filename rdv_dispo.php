@@ -68,6 +68,8 @@ return $horaire;
 } 
 
 $da=$i."/".$mois."/".$annee;
+$m=$mois;
+$a=$annee;
 ?>
 
 <div class="wrapper_liste">
@@ -84,7 +86,7 @@ $da=$i."/".$mois."/".$annee;
 <tr>
 
 		<?php 
-		$select = $db->query ("SELECT * FROM `agenda_rdv`,`agenda_patient`, `agenda_praticien` 
+		$select = $db->query ("SELECT * FROM `agenda_rdv`,`agenda_patient`, `agenda_praticien`,`agenda_absent` 
 				WHERE agenda_patient.id_patient = agenda_rdv.id_patient 
 				AND agenda_praticien.id_praticien = agenda_rdv.id_praticien 
 				AND agenda_rdv.id_praticien = $id_praticien
